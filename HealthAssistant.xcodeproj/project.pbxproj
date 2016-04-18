@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
+		CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B161CC3F78E00CDB417 /* LoginViewController.m */; };
+		CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B191CC3F7C900CDB417 /* RegisterViewController.m */; };
+		CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */; };
+		CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */; };
+		CBE791E01CC34450001E9FDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791DF1CC34450001E9FDE /* main.m */; };
+		CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E21CC34450001E9FDE /* AppDelegate.m */; };
+		CBE791E61CC34450001E9FDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E51CC34450001E9FDE /* ViewController.m */; };
+		CBE791E91CC34450001E9FDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE791E71CC34450001E9FDE /* Main.storyboard */; };
+		CBE791EC1CC34450001E9FDE /* HealthAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE791EA1CC34450001E9FDE /* HealthAssistant.xcdatamodeld */; };
+		CBE791EE1CC34450001E9FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE791ED1CC34450001E9FDE /* Assets.xcassets */; };
+		CBE791F11CC34450001E9FDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */; };
+		CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.release.xcconfig"; sourceTree = "<group>"; };
+		C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB033B151CC3F78E00CDB417 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CB033B161CC3F78E00CDB417 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CB033B181CC3F7C900CDB417 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		CB033B191CC3F7C900CDB417 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = HealthAssistant/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CBE791DB1CC34450001E9FDE /* HealthAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE791DF1CC34450001E9FDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CBE791E11CC34450001E9FDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CBE791E21CC34450001E9FDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CBE791E41CC34450001E9FDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CBE791E51CC34450001E9FDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CBE791E81CC34450001E9FDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CBE791EB1CC34450001E9FDE /* HealthAssistant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthAssistant.xcdatamodel; sourceTree = "<group>"; };
+		CBE791ED1CC34450001E9FDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBE791F01CC34450001E9FDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CBE791F21CC34450001E9FDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeCollectionViewCell.h; sourceTree = "<group>"; };
+		CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeCollectionViewCell.m; sourceTree = "<group>"; };
+		F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBE791D81CC34450001E9FDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */,
+				CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */,
+				CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		90B7AA4E6898D756683B8359 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */,
+				CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */,
+				C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7CAA462F3DB58F74D3B56C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */,
+				5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CBE791D21CC34450001E9FDE = {
+			isa = PBXGroup;
+			children = (
+				CBE791DD1CC34450001E9FDE /* HealthAssistant */,
+				CBE791DC1CC34450001E9FDE /* Products */,
+				B7CAA462F3DB58F74D3B56C9 /* Pods */,
+				90B7AA4E6898D756683B8359 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CBE791DC1CC34450001E9FDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBE791DB1CC34450001E9FDE /* HealthAssistant.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBE791DD1CC34450001E9FDE /* HealthAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				CBE792021CC348B1001E9FDE /* Model */,
+				CBE792031CC348B5001E9FDE /* View */,
+				CBE792041CC348BB001E9FDE /* Controller */,
+				CBE791DE1CC34450001E9FDE /* Supporting Files */,
+			);
+			path = HealthAssistant;
+			sourceTree = "<group>";
+		};
+		CBE791DE1CC34450001E9FDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBE791E11CC34450001E9FDE /* AppDelegate.h */,
+				CBE791E21CC34450001E9FDE /* AppDelegate.m */,
+				CBE791DF1CC34450001E9FDE /* main.m */,
+				CBE791F21CC34450001E9FDE /* Info.plist */,
+				CBE791EA1CC34450001E9FDE /* HealthAssistant.xcdatamodeld */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CBE792021CC348B1001E9FDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */,
+				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CBE792031CC348B5001E9FDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBE791E71CC34450001E9FDE /* Main.storyboard */,
+				CBE791ED1CC34450001E9FDE /* Assets.xcassets */,
+				CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CBE792041CC348BB001E9FDE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CBE791E41CC34450001E9FDE /* ViewController.h */,
+				CBE791E51CC34450001E9FDE /* ViewController.m */,
+				CB033B151CC3F78E00CDB417 /* LoginViewController.h */,
+				CB033B161CC3F78E00CDB417 /* LoginViewController.m */,
+				CB033B181CC3F7C900CDB417 /* RegisterViewController.h */,
+				CB033B191CC3F7C900CDB417 /* RegisterViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBE791DA1CC34450001E9FDE /* HealthAssistant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBE791F51CC34450001E9FDE /* Build configuration list for PBXNativeTarget "HealthAssistant" */;
+			buildPhases = (
+				C062636D0114F716F6778FE3 /* Check Pods Manifest.lock */,
+				CBE791D71CC34450001E9FDE /* Sources */,
+				CBE791D81CC34450001E9FDE /* Frameworks */,
+				CBE791D91CC34450001E9FDE /* Resources */,
+				9D9A51D7FD9BCBD724F3E581 /* Embed Pods Frameworks */,
+				772048E5493362C6CA32682E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthAssistant;
+			productName = HealthAssistant;
+			productReference = CBE791DB1CC34450001E9FDE /* HealthAssistant.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBE791D31CC34450001E9FDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Pei Xiong";
+				TargetAttributes = {
+					CBE791DA1CC34450001E9FDE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = CBE791D61CC34450001E9FDE /* Build configuration list for PBXProject "HealthAssistant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CBE791D21CC34450001E9FDE;
+			productRefGroup = CBE791DC1CC34450001E9FDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBE791DA1CC34450001E9FDE /* HealthAssistant */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBE791D91CC34450001E9FDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBE791F11CC34450001E9FDE /* LaunchScreen.storyboard in Resources */,
+				CBE791EE1CC34450001E9FDE /* Assets.xcassets in Resources */,
+				CBE791E91CC34450001E9FDE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		772048E5493362C6CA32682E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D9A51D7FD9BCBD724F3E581 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C062636D0114F716F6778FE3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBE791D71CC34450001E9FDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBE791EC1CC34450001E9FDE /* HealthAssistant.xcdatamodeld in Sources */,
+				CBE791E61CC34450001E9FDE /* ViewController.m in Sources */,
+				CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */,
+				CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */,
+				CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */,
+				CBE791E01CC34450001E9FDE /* main.m in Sources */,
+				CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CBE791E71CC34450001E9FDE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBE791E81CC34450001E9FDE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBE791F01CC34450001E9FDE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CBE791F31CC34450001E9FDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CBE791F41CC34450001E9FDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBE791F61CC34450001E9FDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HealthAssistant",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = HealthAssistant/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CBE791F71CC34450001E9FDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HealthAssistant",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = HealthAssistant/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBE791D61CC34450001E9FDE /* Build configuration list for PBXProject "HealthAssistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBE791F31CC34450001E9FDE /* Debug */,
+				CBE791F41CC34450001E9FDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBE791F51CC34450001E9FDE /* Build configuration list for PBXNativeTarget "HealthAssistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBE791F61CC34450001E9FDE /* Debug */,
+				CBE791F71CC34450001E9FDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBE791EA1CC34450001E9FDE /* HealthAssistant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBE791EB1CC34450001E9FDE /* HealthAssistant.xcdatamodel */,
+			);
+			currentVersion = CBE791EB1CC34450001E9FDE /* HealthAssistant.xcdatamodel */;
+			path = HealthAssistant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CBE791D31CC34450001E9FDE /* Project object */;
+}
