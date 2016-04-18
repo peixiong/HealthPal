@@ -31,6 +31,7 @@
     [ref authUser:useremail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         if (error) {
             NSLog(@"There was an error: %@", error.localizedDescription);
+            [self showAlertWithMessage:@"Email or password are incorrect."];
         } else {
             NSLog(@"We are now logged in with userId = %@", authData.uid);
             NSString *url = [NSString stringWithFormat:@"https://blinding-heat-8730.firebaseio.com/users/%@", authData.uid];
@@ -47,6 +48,13 @@
             }];
         }
     }];
+}
+
+-(void)showAlertWithMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 @end
