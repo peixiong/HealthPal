@@ -4,7 +4,7 @@
 
 # HealthPal
 
-##### [Pei Xiong](https://github.com/peixiong), 
+##### [Pei Xiong](https://github.com/peixiong), [David Iskander](https://github.com/Davidiskander)
 
 HealthPal is the final team project assigned at [Mobile Makers](http://mobilemakers.co) in San Francisco. Our group decided to do something about healthy life. And the target is to record our food nutritions, compare with our target. Based on this record and our analysis, we will give some food suggetions for your next meal or next shopping plan. You can also add your family members to see their nutrition supplies as well. 
 
