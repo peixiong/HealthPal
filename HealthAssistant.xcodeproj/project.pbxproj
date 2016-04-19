@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */; };
 		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
 		CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B161CC3F78E00CDB417 /* LoginViewController.m */; };
 		CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B191CC3F7C900CDB417 /* RegisterViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionsTableViewCell.h; sourceTree = "<group>"; };
+		1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionsTableViewCell.m; sourceTree = "<group>"; };
 		5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB033B151CC3F78E00CDB417 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				CB98FC491CC569940051C177 /* ScanEntryViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
 				CB98FC4B1CC569940051C177 /* ProfileViewController.m */,
+				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
+				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				TargetAttributes = {
 					CBE791DA1CC34450001E9FDE = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PN5D3T49DB;
 					};
 				};
 			};
@@ -304,6 +310,7 @@
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
 				CBE791E01CC34450001E9FDE /* main.m in Sources */,
+				1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */,
 				CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +426,8 @@
 			baseConfigurationReference = F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HealthAssistant",
@@ -428,6 +437,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,6 +446,8 @@
 			baseConfigurationReference = 5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HealthAssistant",
@@ -445,6 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
