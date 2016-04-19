@@ -1,18 +1,18 @@
 //
-//  ManualEntryViewController.m
-//  
+//  ManualEntryTabBarViewController.m
+//  HealthAssistant
 //
-//  Created by Pei Xiong on 4/18/16.
-//
+//  Created by Pei Xiong on 4/19/16.
+//  Copyright © 2016 Pei Xiong. All rights reserved.
 //
 
-#import "ManualEntryViewController.h"
+#import "ManualEntryTabBarViewController.h"
 
-@interface ManualEntryViewController ()
+@interface ManualEntryTabBarViewController ()
 
 @end
 
-@implementation ManualEntryViewController
+@implementation ManualEntryTabBarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
