@@ -31,24 +31,28 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     // return appropriate cell(s) based on section
-    if(indexPath.section == 0)
+    if(indexPath.row == 0)
     {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"nutritionsCell"];
+    }if (indexPath.row == 1){
+        // do stuff
+    }else {
+        // do stuff
     }
 
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 3;
 }
 
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 
