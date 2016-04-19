@@ -14,9 +14,18 @@
 		CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */; };
 		CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */; };
 		CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC441CC568DC0051C177 /* ChartsViewController.m */; };
-		CB98FC4C1CC569940051C177 /* ManualEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC471CC569940051C177 /* ManualEntryViewController.m */; };
-		CB98FC4D1CC569940051C177 /* ScanEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC491CC569940051C177 /* ScanEntryViewController.m */; };
 		CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC4B1CC569940051C177 /* ProfileViewController.m */; };
+		CBA00F711CC6E70D003CEE69 /* ManualEntryTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F701CC6E70D003CEE69 /* ManualEntryTabBarViewController.m */; };
+		CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */; };
+		CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */; };
+		CBA00F7D1CC6E819003CEE69 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */; };
+		CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */; };
+		CBA00F831CC6E990003CEE69 /* Charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F811CC6E990003CEE69 /* Charts.storyboard */; };
+		CBA00F851CC6E9CF003CEE69 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F841CC6E9CF003CEE69 /* Group.storyboard */; };
+		CBA00F881CC6EA05003CEE69 /* ManualEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */; };
+		CBA00F8A1CC6EA21003CEE69 /* Suggestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */; };
+		CBA00F8D1CC6EA43003CEE69 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */; };
+		CBA00F901CC6EBD6003CEE69 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F8F1CC6EBD6003CEE69 /* MainTabBarController.m */; };
 		CBE791E01CC34450001E9FDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791DF1CC34450001E9FDE /* main.m */; };
 		CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E21CC34450001E9FDE /* AppDelegate.m */; };
 		CBE791E61CC34450001E9FDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E51CC34450001E9FDE /* ViewController.m */; };
@@ -40,12 +49,25 @@
 		CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		CB98FC431CC568DC0051C177 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
 		CB98FC441CC568DC0051C177 /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsViewController.m; sourceTree = "<group>"; };
-		CB98FC461CC569940051C177 /* ManualEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryViewController.h; sourceTree = "<group>"; };
-		CB98FC471CC569940051C177 /* ManualEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryViewController.m; sourceTree = "<group>"; };
-		CB98FC481CC569940051C177 /* ScanEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanEntryViewController.h; sourceTree = "<group>"; };
-		CB98FC491CC569940051C177 /* ScanEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanEntryViewController.m; sourceTree = "<group>"; };
 		CB98FC4A1CC569940051C177 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CB98FC4B1CC569940051C177 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		CBA00F6F1CC6E70D003CEE69 /* ManualEntryTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryTabBarViewController.h; sourceTree = "<group>"; };
+		CBA00F701CC6E70D003CEE69 /* ManualEntryTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryTabBarViewController.m; sourceTree = "<group>"; };
+		CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodEntryViewController.h; sourceTree = "<group>"; };
+		CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodEntryViewController.m; sourceTree = "<group>"; };
+		CBA00F781CC6E7CB003CEE69 /* WaterEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterEntryViewController.h; sourceTree = "<group>"; };
+		CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterEntryViewController.m; sourceTree = "<group>"; };
+		CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
+		CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
+		CBA00F821CC6E990003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Charts.storyboard; sourceTree = "<group>"; };
+		CBA00F841CC6E9CF003CEE69 /* Group.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
+		CBA00F871CC6EA05003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ManualEntry.storyboard; sourceTree = "<group>"; };
+		CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Suggestions.storyboard; sourceTree = "<group>"; };
+		CBA00F8C1CC6EA43003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		CBA00F8E1CC6EBD6003CEE69 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		CBA00F8F1CC6EBD6003CEE69 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		CBE791DB1CC34450001E9FDE /* HealthAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE791DF1CC34450001E9FDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBE791E11CC34450001E9FDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,6 +163,8 @@
 			children = (
 				CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */,
 				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
+				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
+				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -149,6 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				CBE791E71CC34450001E9FDE /* Main.storyboard */,
+				CBA00F811CC6E990003CEE69 /* Charts.storyboard */,
+				CBA00F841CC6E9CF003CEE69 /* Group.storyboard */,
+				CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */,
+				CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */,
+				CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */,
 				CBE791ED1CC34450001E9FDE /* Assets.xcassets */,
 				CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */,
 			);
@@ -164,16 +193,22 @@
 				CB033B161CC3F78E00CDB417 /* LoginViewController.m */,
 				CB033B181CC3F7C900CDB417 /* RegisterViewController.h */,
 				CB033B191CC3F7C900CDB417 /* RegisterViewController.m */,
+				CBA00F8E1CC6EBD6003CEE69 /* MainTabBarController.h */,
+				CBA00F8F1CC6EBD6003CEE69 /* MainTabBarController.m */,
 				CB98FC431CC568DC0051C177 /* ChartsViewController.h */,
 				CB98FC441CC568DC0051C177 /* ChartsViewController.m */,
-				CB98FC461CC569940051C177 /* ManualEntryViewController.h */,
-				CB98FC471CC569940051C177 /* ManualEntryViewController.m */,
-				CB98FC481CC569940051C177 /* ScanEntryViewController.h */,
-				CB98FC491CC569940051C177 /* ScanEntryViewController.m */,
+				CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */,
+				CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */,
+				CBA00F6F1CC6E70D003CEE69 /* ManualEntryTabBarViewController.h */,
+				CBA00F701CC6E70D003CEE69 /* ManualEntryTabBarViewController.m */,
+				CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */,
+				CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */,
+				CBA00F781CC6E7CB003CEE69 /* WaterEntryViewController.h */,
+				CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */,
+				CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */,
+				CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
 				CB98FC4B1CC569940051C177 /* ProfileViewController.m */,
-				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
-				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,8 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE791F11CC34450001E9FDE /* LaunchScreen.storyboard in Resources */,
+				CBA00F831CC6E990003CEE69 /* Charts.storyboard in Resources */,
+				CBA00F8D1CC6EA43003CEE69 /* Profile.storyboard in Resources */,
 				CBE791EE1CC34450001E9FDE /* Assets.xcassets in Resources */,
 				CBE791E91CC34450001E9FDE /* Main.storyboard in Resources */,
+				CBA00F8A1CC6EA21003CEE69 /* Suggestions.storyboard in Resources */,
+				CBA00F851CC6E9CF003CEE69 /* Group.storyboard in Resources */,
+				CBA00F881CC6EA05003CEE69 /* ManualEntry.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,15 +340,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA00F7D1CC6E819003CEE69 /* GroupViewController.m in Sources */,
 				CBE791EC1CC34450001E9FDE /* HealthAssistant.xcdatamodeld in Sources */,
+				CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */,
 				CBE791E61CC34450001E9FDE /* ViewController.m in Sources */,
-				CB98FC4C1CC569940051C177 /* ManualEntryViewController.m in Sources */,
 				CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */,
-				CB98FC4D1CC569940051C177 /* ScanEntryViewController.m in Sources */,
 				CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */,
+				CBA00F901CC6EBD6003CEE69 /* MainTabBarController.m in Sources */,
 				CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
+				CBA00F711CC6E70D003CEE69 /* ManualEntryTabBarViewController.m in Sources */,
+				CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */,
+				CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */,
 				CBE791E01CC34450001E9FDE /* main.m in Sources */,
 				1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */,
 				CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */,
@@ -318,6 +362,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		CBA00F811CC6E990003CEE69 /* Charts.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA00F821CC6E990003CEE69 /* Base */,
+			);
+			name = Charts.storyboard;
+			sourceTree = "<group>";
+		};
+		CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA00F871CC6EA05003CEE69 /* Base */,
+			);
+			name = ManualEntry.storyboard;
+			sourceTree = "<group>";
+		};
+		CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA00F8C1CC6EA43003CEE69 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
 		CBE791E71CC34450001E9FDE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
