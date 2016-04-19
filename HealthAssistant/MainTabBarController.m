@@ -1,18 +1,18 @@
 //
-//  ScanEntryViewController.m
-//  
+//  MainTabBarController.m
+//  HealthAssistant
 //
-//  Created by Pei Xiong on 4/18/16.
-//
+//  Created by Pei Xiong on 4/19/16.
+//  Copyright © 2016 Pei Xiong. All rights reserved.
 //
 
-#import "ScanEntryViewController.h"
+#import "MainTabBarController.h"
 
-@interface ScanEntryViewController ()
+@interface MainTabBarController ()
 
 @end
 
-@implementation ScanEntryViewController
+@implementation MainTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
