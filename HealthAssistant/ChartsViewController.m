@@ -28,20 +28,22 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     // return appropriate cell(s) based on section
     if(indexPath.row == 0)
     {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nutritions"];
+        return cell;
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"nutritionsCell"];
     }if (indexPath.row == 1){
-        // do stuff
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Water"];
+        return cell;
     }else {
-        // do stuff
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activities"];
+        return cell;
     }
 
-    return cell;
+    //return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

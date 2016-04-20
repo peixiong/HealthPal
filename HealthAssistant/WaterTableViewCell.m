@@ -1,21 +1,19 @@
 //
-//  NutritionsTableViewCell.m
+//  WaterTableViewCell.m
 //  HealthAssistant
 //
-//  Created by David Iskander on 4/18/16.
+//  Created by David Iskander on 4/19/16.
 //  Copyright © 2016 Pei Xiong. All rights reserved.
 //
 
-#import "NutritionsTableViewCell.h"
+#import "WaterTableViewCell.h"
 
-@implementation NutritionsTableViewCell
-
+@implementation WaterTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
-    self.label.text = @"Nutritions";
-    
+    self.label.text = @"Water";
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
