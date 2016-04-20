@@ -16,5 +16,5 @@
 @interface PopUPButton : UIButton
 @property id<PopUPButtonDelegate>delegate;
 -(instancetype)initWithFrame:(CGRect)frame title:(NSString *)str destinationFrame:(CGRect)destFrame tag:(NSInteger)tag;
-
+-(void)popDownToLowerCenterAndDispear;
 @end
