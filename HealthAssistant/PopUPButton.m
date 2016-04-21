@@ -32,4 +32,11 @@
     [self.delegate buttonSelected:button];
 }
 
+-(void)popDownToLowerCenterAndDispear {
+    [UIView animateWithDuration:0.35 animations:^{
+        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height+self.frame.size.height);
+    }];
+    [NSTimer scheduledTimerWithTimeInterval:0.35 target:self selector:@selector(removeFromSuperview) userInfo:nil repeats:false];
+}
+
 @end
