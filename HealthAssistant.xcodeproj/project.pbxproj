@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */; };
+		1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */; };
+		1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */; };
 		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
 		CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B161CC3F78E00CDB417 /* LoginViewController.m */; };
 		CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B191CC3F7C900CDB417 /* RegisterViewController.m */; };
@@ -42,6 +44,10 @@
 /* Begin PBXFileReference section */
 		1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionsTableViewCell.h; sourceTree = "<group>"; };
 		1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionsTableViewCell.m; sourceTree = "<group>"; };
+		1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterTableViewCell.h; sourceTree = "<group>"; };
+		1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterTableViewCell.m; sourceTree = "<group>"; };
+		1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesTableViewCell.h; sourceTree = "<group>"; };
+		1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesTableViewCell.m; sourceTree = "<group>"; };
 		5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB033B151CC3F78E00CDB417 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -172,8 +178,6 @@
 			children = (
 				CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */,
 				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
-				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
-				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
 				CB282E4F1CC6F5D00054A47B /* PopUPButton.h */,
 				CB282E501CC6F5D00054A47B /* PopUPButton.m */,
 				CBDEDF741CC8395B007335BE /* ManualEntryTableViewCell.h */,
@@ -209,6 +213,12 @@
 				CB282E531CC6F5E90054A47B /* TabbarViewController.m */,
 				CB98FC431CC568DC0051C177 /* ChartsViewController.h */,
 				CB98FC441CC568DC0051C177 /* ChartsViewController.m */,
+				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
+				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
+				1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */,
+				1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */,
+				1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */,
+				1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */,
 				CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */,
 				CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */,
 				CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */,
@@ -357,11 +367,13 @@
 			files = (
 				CBA00F7D1CC6E819003CEE69 /* GroupViewController.m in Sources */,
 				CBE791EC1CC34450001E9FDE /* HealthAssistant.xcdatamodeld in Sources */,
+				1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */,
 				CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */,
 				CBE791E61CC34450001E9FDE /* ViewController.m in Sources */,
 				CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */,
 				CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */,
 				CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */,
+				1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */,
 				CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */,
 				CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
