@@ -10,6 +10,4 @@
 
 @interface EntryNutritionTabBarController : UITabBarController
 
-@property int index;
-
 @end
