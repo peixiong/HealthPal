@@ -29,6 +29,7 @@
 		CBA00F8D1CC6EA43003CEE69 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */; };
 		CBDEDF731CC82093007335BE /* ManualEntryFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */; };
 		CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */; };
+		CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF791CC8987D007335BE /* FirebaseManager.m */; };
 		CBE791E01CC34450001E9FDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791DF1CC34450001E9FDE /* main.m */; };
 		CBE791E31CC34450001E9FDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E21CC34450001E9FDE /* AppDelegate.m */; };
 		CBE791E61CC34450001E9FDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE791E51CC34450001E9FDE /* ViewController.m */; };
@@ -77,6 +78,8 @@
 		CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryFoodTableViewController.m; sourceTree = "<group>"; };
 		CBDEDF741CC8395B007335BE /* ManualEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryTableViewCell.h; sourceTree = "<group>"; };
 		CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryTableViewCell.m; sourceTree = "<group>"; };
+		CBDEDF781CC8987D007335BE /* FirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseManager.h; sourceTree = "<group>"; };
+		CBDEDF791CC8987D007335BE /* FirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseManager.m; sourceTree = "<group>"; };
 		CBE791DB1CC34450001E9FDE /* HealthAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE791DF1CC34450001E9FDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBE791E11CC34450001E9FDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -126,6 +129,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CBDEDF771CC89845007335BE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CBDEDF781CC8987D007335BE /* FirebaseManager.h */,
+				CBDEDF791CC8987D007335BE /* FirebaseManager.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		CBE791D21CC34450001E9FDE = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +159,7 @@
 		CBE791DD1CC34450001E9FDE /* HealthAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				CBDEDF771CC89845007335BE /* Service */,
 				CBE792021CC348B1001E9FDE /* Model */,
 				CBE792031CC348B5001E9FDE /* View */,
 				CBE792041CC348BB001E9FDE /* Controller */,
@@ -367,6 +380,7 @@
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
 				CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */,
+				CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */,
 				CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */,
 				CB282E541CC6F5E90054A47B /* TabbarViewController.m in Sources */,
 				CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */,
