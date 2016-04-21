@@ -54,7 +54,11 @@
     return nil;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ManualEntryTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.textField becomeFirstResponder];
+}
 
 /*
 // Override to support conditional editing of the table view.
