@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="t0w-Bf-7eA" kind="relationship" relationship="viewControllers" id="936-Ay-HXL"/>
+                        <segue destination="OG4-zH-579" kind="relationship" relationship="viewControllers" id="936-Ay-HXL"/>
                         <segue destination="jg7-jX-U0A" kind="relationship" relationship="viewControllers" id="8bP-TE-2YL"/>
                     </connections>
                 </tabBarController>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="2462.5" y="223.5"/>
         </scene>
-        <!--Item-->
+        <!--Add Food-->
         <scene sceneID="ihU-NW-3as">
             <objects>
                 <viewController id="t0w-Bf-7eA" customClass="FoodEntryViewController" sceneMemberID="viewController">
@@ -37,26 +37,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnW-jG-eew">
-                                <rect key="frame" x="175" y="195" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXM-y0-l4y">
-                                <rect key="frame" x="151" y="96" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GkH-c6-w5r">
+                                <rect key="frame" x="20" y="68" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Creat Your Own Food"/>
+                                <connections>
+                                    <segue destination="bk9-lp-1Kq" kind="show" id="qLH-Ne-23P"/>
+                                </connections>
                             </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XrR-2A-JkK">
+                                <rect key="frame" x="0.0" y="105" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="t0w-Bf-7eA" id="VX4-ce-mYI"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="aon-en-mAO"/>
+                    <navigationItem key="navigationItem" title="Add Food" id="yQ6-n7-u90"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="2gC-6S-7kw" id="uqf-kZ-sCF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VU2-Yc-A7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="2gC-6S-7kw">
+                    <connections>
+                        <outlet property="delegate" destination="t0w-Bf-7eA" id="PgC-YG-aJP"/>
+                        <outlet property="searchBar" destination="XrR-2A-JkK" id="OGs-dr-5Zy"/>
+                        <outlet property="searchContentsController" destination="t0w-Bf-7eA" id="9EF-c8-kUf"/>
+                        <outlet property="searchResultsDataSource" destination="t0w-Bf-7eA" id="r4X-LG-4Km"/>
+                        <outlet property="searchResultsDelegate" destination="t0w-Bf-7eA" id="zJS-En-Cle"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3036.5" y="-114.5"/>
+            <point key="canvasLocation" x="3623.5" y="-114.5"/>
+        </scene>
+        <!--Manual Entry Food Table View Controller-->
+        <scene sceneID="9Zy-Zc-YPT">
+            <objects>
+                <tableViewController id="bk9-lp-1Kq" customClass="ManualEntryFoodTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wsA-vb-8QO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellID" id="ihF-to-tgM" customClass="ManualEntryTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ihF-to-tgM" id="K0x-tL-4mG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bk9-lp-1Kq" id="6A6-8V-5WN"/>
+                            <outlet property="delegate" destination="bk9-lp-1Kq" id="IFH-j8-wLR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qWv-rx-slX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="HuU-tX-qna"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crb-JT-Sd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4084.5" y="-114.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="bMF-ty-zq2">
@@ -86,6 +135,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezi-Og-cmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3036.5" y="643.5"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="S2C-sK-g2V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OG4-zH-579" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aon-en-mAO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Lf-SO-0gU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="t0w-Bf-7eA" kind="relationship" relationship="rootViewController" id="Sbb-R4-rWb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQL-NF-SGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036.5" y="-114.5"/>
         </scene>
     </scenes>
 </document>

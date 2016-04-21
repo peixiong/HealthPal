@@ -10,13 +10,16 @@
 
 @interface FoodEntryViewController ()
 
+@property (nonatomic, strong) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation FoodEntryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
 
