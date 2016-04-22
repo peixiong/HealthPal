@@ -10,4 +10,6 @@
 
 @interface TabbarViewController : UITabBarController
 
+@property NSString *authData;
+
 @end

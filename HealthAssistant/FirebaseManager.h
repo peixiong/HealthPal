@@ -10,8 +10,8 @@
 #import <Firebase/Firebase.h>
 
 @protocol FirebaseManagerDelegate <NSObject>
-
-
+@optional
+-(void)userDidLoginWithUid:(NSString *)uid;
 
 @end
 
@@ -19,4 +19,7 @@
 
 + (instancetype)sharedInstance;
 @property id<FirebaseManagerDelegate> delegate;
+-(void)facebookLogin;
+-(void)loginUserEmail:(NSString *)emailAdress password:(NSString *)password;
+-(void)createNewUserWithUsername:(NSString *)username emailAddress:(NSString *)emailAddress password:(NSString *)password ConfirmedPassword:(NSString *)confirmedPassword andImageStr:(NSString *)imageStr;
 @end
