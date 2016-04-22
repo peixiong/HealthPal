@@ -8,8 +8,9 @@
 
 #import "RegisterViewController.h"
 #import <Firebase/Firebase.h>
+#import "FirebaseManager.h"
 
-@interface RegisterViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface RegisterViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,FirebaseManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
@@ -31,7 +32,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.imageView.layer.cornerRadius = 50;
+    self.imageView.layer.masksToBounds = YES;
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.width*0.1;
 }
 
 - (IBAction)onSignUpButtonPressed:(UIButton *)sender {
@@ -39,57 +41,14 @@
     NSString *emailAddress = self.emailAddressTextField.text;
     NSString *password = self.passwordTextField.text;
     NSString *confirmedPassword = self.confirmPasswordTextField.text;
-    NSString *alertMessage;
-    
-    if (username.length == 0 || emailAddress.length == 0 || password.length == 0 || confirmedPassword.length == 0) {
-        alertMessage = @"One of the required fields is empty";
-    } else if (![password isEqualToString:confirmedPassword]) {
-        alertMessage = @"Password are different";
-    }
-    
-    if (alertMessage != nil) {
-        [self showAlertWithMessage:alertMessage];
-    } else {
-        [self createNewUser];
-    }
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.1);
+    NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
+    [FirebaseManager sharedInstance].delegate = self;
+    [[FirebaseManager sharedInstance] createNewUserWithUsername:username emailAddress:emailAddress password:password ConfirmedPassword:confirmedPassword andImageStr:imageStr];
 }
 
--(void)createNewUser{
-    NSString *username = self.usernameTextField.text;
-    NSString *emailAddress = self.emailAddressTextField.text;
-    NSString *password = self.passwordTextField.text;
-    
-    // Create a reference to a Firebase database URL
-    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://blinding-heat-8730.firebaseio.com"];
-    [myRootRef createUser:emailAddress password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
-        if (error) {
-            NSLog(@"There was an error creating the account, error: %@", error.localizedDescription);
-            [self showAlertWithMessage:error.localizedDescription];
-        } else {
-            //get data from firebase
-            NSString *uid = [result objectForKey:@"uid"];
-            NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 1.0);
-            NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
-            NSLog(@"Successfully created user account with uid: %@", uid);
-            
-            //generate user dictionary
-            NSDictionary *user = @{
-                                   @"username" : username,
-                                   @"email" : emailAddress,
-                                   @"image" : imageStr
-                                   };
-            NSString *path = [NSString stringWithFormat:@"users/%@", uid];
-            Firebase *userRef = [myRootRef childByAppendingPath: path];
-            [userRef setValue:user];
-        }
-    }];
-}
-
--(void)showAlertWithMessage:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:true completion:nil];
+-(void)userDidLoginWithUid:(NSString *)uid {
+    [self performSegueWithIdentifier:@"loggedin" sender:uid];
 }
 
 //pick an image for user
@@ -108,13 +67,14 @@
         }
     }
     [self presentViewController:imagePicker animated:true completion:nil];
+    [self.segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     
     //compress image size
-    CGSize newSize = CGSizeMake(250.0f, 250.0f);
+    CGSize newSize = CGSizeMake(200, 200);
     UIGraphicsBeginImageContext(newSize);
     [editedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();

@@ -95,9 +95,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nLA-bE-MpV">
-                                <rect key="frame" x="42" y="471" width="82" height="62"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.055731005966663361" green="0.65751367807388306" blue="0.96607321500778198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -114,7 +111,7 @@
                     <connections>
                         <outlet property="collectionView" destination="azo-fO-Q5v" id="SK3-vF-Afg"/>
                         <outlet property="introductionLabel" destination="4eP-Yh-rG9" id="Uky-Oy-s7U"/>
-                        <outlet property="testImageView" destination="nLA-bE-MpV" id="3ky-QW-Mvu"/>
+                        <segue destination="ZSz-wb-30b" kind="show" identifier="loggedin" id="Ojc-dO-ATn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -174,12 +171,9 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6jr-it-lId" kind="unwind" unwindAction="unwindSegue:" id="re1-Fh-5RK"/>
+                                    <segue destination="6jr-it-lId" kind="unwind" unwindAction="unwindSegue:" id="um3-55-TsY"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fyU-0v-XMn">
-                                <rect key="frame" x="67" y="367" width="250" height="250"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.055731005966663361" green="0.65751367807388306" blue="0.96607321500778198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -187,7 +181,7 @@
                     <connections>
                         <outlet property="emailAddressTextField" destination="e44-ib-Vqh" id="5a5-cO-x9w"/>
                         <outlet property="passwordTextField" destination="ch0-aS-bHc" id="Fjg-fT-uSq"/>
-                        <outlet property="testImageView" destination="fyU-0v-XMn" id="g94-P1-veO"/>
+                        <segue destination="ZSz-wb-30b" kind="show" identifier="loggedin" id="syI-9h-BOD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHw-9H-Ea7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,7 +235,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Xw0-FU-wVd" kind="unwind" unwindAction="unwindSegue:" id="GGE-lj-fT0"/>
+                                    <segue destination="Xw0-FU-wVd" kind="unwind" unwindAction="unwindSegue:" id="erl-jE-Qtj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOA-H9-Ss1">
@@ -286,12 +280,13 @@
                         <outlet property="passwordTextField" destination="Jty-ZA-IIF" id="Zhv-Zx-ijV"/>
                         <outlet property="segmentControl" destination="dPa-k7-r7d" id="54A-Ey-ZOw"/>
                         <outlet property="usernameTextField" destination="gsY-Me-V26" id="IN9-a0-SsP"/>
+                        <segue destination="ZSz-wb-30b" kind="show" identifier="loggedin" id="4pm-M5-30l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDv-m6-gjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Xw0-FU-wVd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1520.5" y="637.5"/>
+            <point key="canvasLocation" x="1506.5" y="767.5"/>
         </scene>
         <!--Tabbar View Controller-->
         <scene sceneID="lyI-0g-4iR">
@@ -388,4 +383,7 @@
     <resources>
         <image name="007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky" width="1185" height="1215"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4pm-M5-30l"/>
+    </inferredMetricsTieBreakers>
 </document>
