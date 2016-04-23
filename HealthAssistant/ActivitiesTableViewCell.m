@@ -23,6 +23,11 @@
     
     
     self.label.text = @"Activities";
+    self.label.layer.masksToBounds = YES;
+    self.label.layer.cornerRadius = 8.0;
+    
+    self.chartView.layer.masksToBounds = YES;
+    self.chartView.layer.cornerRadius = 8.0;
     
     self.chart = [[NCISimpleChartView alloc]initWithFrame:
                   CGRectMake(-20, -30, self.frame.size.width*0.95, self.frame.size.height/2) andOptions: @{
@@ -85,6 +90,8 @@
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 40)];
     label.text = [self.activitiesArray objectAtIndex:indexPath.row];
     label.clipsToBounds = YES;
+    label.layer.masksToBounds = YES;
+    label.layer.cornerRadius = 8.0;
     label.backgroundColor = [UIColor grayColor];
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
@@ -103,7 +110,7 @@
     //        self.minimumInteritemSpacing = 1.0;
     //        self.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    return CGSizeMake(160, 40);
+    return CGSizeMake(95, 40);
 }
 
 

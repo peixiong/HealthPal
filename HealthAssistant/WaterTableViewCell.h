@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NCISimpleChartView.h"
-#import "NCIZoomGraphView.h"
-#import "NCIAxis.h"
+#import "BEMSimpleLineGraphView.h"
 
-@interface WaterTableViewCell : UITableViewCell
+
+@interface WaterTableViewCell : UITableViewCell <BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UIView *chartView;
-@property NCISimpleChartView *chart;
+@property (strong, nonatomic) NSMutableArray *arrayOfValues;
+@property (strong, nonatomic) NSMutableArray *arrayOfDates;
+@property (weak, nonatomic) IBOutlet UILabel *labelValues;
+@property (weak, nonatomic) IBOutlet UIStepper *graphObjectIncrement;
+
+@property BEMSimpleLineGraphView *myGraph;
+@property int previousStepperValue;
+@property int totalNumber;
+- (IBAction)addOrRemovePointFromGraph:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *labelDates;
+
+@property NSArray *points;
+
+
+
 
 @end

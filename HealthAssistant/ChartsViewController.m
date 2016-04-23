@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.userInteractionEnabled = true;
         
 }
 
@@ -32,7 +33,7 @@
     if(indexPath.row == 0)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nutritions"];
-        //cell.userInteractionEnabled = true;
+        cell.userInteractionEnabled = true;
 
         return cell;
         
