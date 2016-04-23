@@ -10,6 +10,7 @@
 #import "NutritionsTableViewCell.h"
 
 
+
 @interface ChartsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBar;
@@ -21,29 +22,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
+        
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    // return appropriate cell(s) based on section
+    // return appropriate cell(s) based on row
     if(indexPath.row == 0)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nutritions"];
+        //cell.userInteractionEnabled = true;
+
         return cell;
         
     }if (indexPath.row == 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Water"];
         return cell;
+        
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activities"];
         return cell;
     }
 
-    //return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -52,10 +53,6 @@
 
 
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 
 
