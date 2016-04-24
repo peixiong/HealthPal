@@ -7,20 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NCISimpleChartView.h"
-#import "NCIZoomGraphView.h"
-#import "NCIAxis.h"
+#import "BEMSimpleLineGraphView.h"
 
 
-@interface NutritionsTableViewCell : UITableViewCell <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface NutritionsTableViewCell : UITableViewCell <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource>
 
+// Title
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-//Chart
-@property (weak, nonatomic) IBOutlet UIView *chartView;
-@property NCISimpleChartView *chart;
+// Chart
+@property (strong, nonatomic) NSMutableArray *arrayOfValues;
+@property (strong, nonatomic) NSMutableArray *arrayOfDates;
+@property (weak, nonatomic) IBOutlet UILabel *labelValues;
+@property (weak, nonatomic) IBOutlet UIStepper *graphObjectIncrement;
+@property BEMSimpleLineGraphView *myGraph;
+@property int previousStepperValue;
+@property int totalNumber;
+- (IBAction)addOrRemovePointFromGraph:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *labelDates;
 
-//Collection View
+@property NSArray *points;
+
+
+// Collection View (buttons)
+
 @property (weak, nonatomic) IBOutlet UICollectionView *nutritionsButtonView;
 @property NSArray *nutritionsArray;
 

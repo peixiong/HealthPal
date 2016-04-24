@@ -13,27 +13,25 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+
+    self.points = @[@34.1f,@25.1f,@38.1f,@24.1f,@42.f, @25.1f,@38.1f,@24.1f,@42.f];
+    self.dates = @[@"2016-01-01 03:34:42 +0000", @"2016-01-02 03:34:42 +0000", @"2016-01-03 03:34:42 +0000", @"2016-01-04 03:34:42 +0000", @"2016-01-05 03:34:42 +0000", @"2016-01-06 03:34:42 +0000", @"2016-01-07 03:34:42 +0000", @"2016-01-08 03:34:42 +0000", @"2016-01-09 03:34:42 +0000"];
     
-    self.label.text = @"Water";
-    self.label.layer.masksToBounds = YES;
-    self.label.layer.cornerRadius = 8.0;
     
-    
-    //Pulling data for graph
+    [self cellTitle];
     [self hydrateDatasets];
-    
-    //Creating a graph
-    BEMSimpleLineGraphView *myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, self.frame.size.height/3.8, self.frame.size.width-40, self.frame.size.height/2.5)];
-    myGraph.dataSource = self;
-    myGraph.delegate = self;
-    myGraph.enablePopUpReport = YES;
-    myGraph.layer.masksToBounds = YES;
-    myGraph.layer.cornerRadius = 8.0;
-    [self.contentView addSubview:myGraph];
+    [self createGraph];
+    [self.contentView addSubview:self.myGraph];
+    [self graphProperties];
+    [self drawAverageLine];
+    [self graphLabels];
+    [self gradientForGraphLine];
     
     
-    
-    // Create & apply a gradient to apply to the bottom portion of the graph
+}
+
+// Create & apply a gradient to apply to the bottom portion of the graph
+-(void)gradientForGraphLine{
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
     size_t num_locations = 2;
     CGFloat locations[2] = { 0.0, 1.0 };
@@ -41,44 +39,76 @@
         1.0, 1.0, 1.0, 1.0,
         1.0, 1.0, 1.0, 0.0};
     self.myGraph.gradientBottom = CGGradientCreateWithColorComponents(colorspace, components, locations, num_locations);
-    
-    
-    // Enable and disable various graph properties and axis displays
-    myGraph.enableTouchReport = YES;
-    myGraph.enablePopUpReport = YES;
-    myGraph.enableYAxisLabel = YES;
-    myGraph.autoScaleYAxis = YES;
-    myGraph.alwaysDisplayDots = NO;
-    myGraph.enableReferenceXAxisLines = YES;
-    myGraph.enableReferenceYAxisLines = YES;
-    myGraph.enableReferenceAxisFrame = YES;
-    
-    // Draw an average line
-    myGraph.averageLine.enableAverageLine = YES;
-    myGraph.averageLine.alpha = 0.6;
-    myGraph.averageLine.color = [UIColor darkGrayColor];
-    myGraph.averageLine.width = 2.5;
-    myGraph.averageLine.dashPattern = @[@(2),@(2)];
-    
-    // Set the graph's animation style to draw, fade, or none
-    myGraph.animationGraphStyle = BEMLineAnimationDraw;
-    
-    // Dash the y reference lines
-    myGraph.lineDashPatternForReferenceYAxisLines = @[@(2),@(2)];
-    
-    // Show the y axis values with this format string
-    myGraph.formatStringForValues = @"%.1f";
-    
-    // Setup initial curve selection segment
-    //self.curveChoice.selectedSegmentIndex = self.myGraph.enableBezierCurve;
+}
 
-    // The labels to report the values of the graph when the user touches it
-    self.labelValues.text = [NSString stringWithFormat:@"%i", [[self.myGraph calculatePointValueSum] intValue]];
-    self.labelDates.text = @"now and later";
-
+// Setup the cell title
+- (void) cellTitle{
+    self.label.text = @"Water";
+    self.label.layer.masksToBounds = YES;
+    self.label.layer.cornerRadius = 8.0;
+    self.label.layer.borderWidth = 1;
+    self.label.layer.borderColor = [UIColor blueColor].CGColor;
+    self.label.textColor = [UIColor blueColor];
 }
 
 
+
+// Draw an average line for values on the graph
+- (void)drawAverageLine{
+    self.myGraph.averageLine.enableAverageLine = YES;
+    self.myGraph.averageLine.alpha = 0.6;
+    self.myGraph.averageLine.color = [UIColor darkGrayColor];
+    self.myGraph.averageLine.width = 2.5;
+    self.myGraph.averageLine.dashPattern = @[@(2),@(2)];
+}
+
+
+
+//Creating a graph
+-(void)createGraph{
+    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 60, self.frame.size.width-40, self.frame.size.height/2.5)];
+    
+    //[self.myGraph sizeToFit];
+    //self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
+    
+    self.myGraph.dataSource = self;
+    self.myGraph.delegate = self;
+    self.myGraph.enablePopUpReport = YES;
+    self.myGraph.layer.masksToBounds = YES;
+    self.myGraph.layer.cornerRadius = 8.0;
+}
+
+
+
+// Enable and disable various graph properties and axis displays
+- (void)graphProperties{
+    self.myGraph.enableTouchReport = YES;
+    self.myGraph.enablePopUpReport = YES;
+    self.myGraph.enableYAxisLabel = YES;
+    self.myGraph.autoScaleYAxis = YES;
+    self.myGraph.alwaysDisplayDots = NO;
+    self.myGraph.enableReferenceXAxisLines = YES;
+    self.myGraph.enableReferenceYAxisLines = YES;
+    self.myGraph.enableReferenceAxisFrame = YES;
+    // Set the graph's animation style to draw, fade, or none
+    self.myGraph.animationGraphStyle = BEMLineAnimationDraw;
+    // Dash the y reference lines
+    self.myGraph.lineDashPatternForReferenceYAxisLines = @[@(2),@(2)];
+    // Show the y axis values with this format string
+    self.myGraph.formatStringForValues = @"%.1f";
+}
+
+
+// Graph labels
+-(void)graphLabels{
+    self.labelValues.text = [NSString stringWithFormat:@"%i", [[self.myGraph calculatePointValueSum] intValue]];
+    self.labelDates.text = @"now and later";
+}
+
+
+
+//Pulling data for graph
 - (void)hydrateDatasets {
     // Reset the arrays of values (Y-Axis points) and dates (X-Axis points / labels)
     if (!self.arrayOfValues) self.arrayOfValues = [[NSMutableArray alloc] init];
@@ -93,11 +123,18 @@
     
     // Add objects to the array based on the stepper value
     for (int i = 0; i < 9; i++) {
-        [self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
+        //[self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
+        [self.arrayOfValues addObject:self.points[i]];
         if (i == 0) {
             [self.arrayOfDates addObject:baseDate]; // Dates for the X-Axis of the graph
+            //[self.arrayOfDates addObject:self.dates[i]]; // Dates for the X-Axis of the graph
+
         } else if (showNullValue && i == 4) {
             [self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]]; // Dates for the X-Axis of the graph
+            //[self.arrayOfDates addObject:[self getDate:self.dates[i]]];
+            
+            
+            
             self.arrayOfValues[i] = @(BEMNullGraphValue);
         } else {
             [self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]]; // Dates for the X-Axis of the graph
@@ -106,6 +143,7 @@
         self.totalNumber = self.totalNumber + [[self.arrayOfValues objectAtIndex:i] intValue]; // All of the values added together
     }
 }
+
 
 
 //Getting one more day on pressing (+)
@@ -127,29 +165,26 @@
 
 
 
-
+//Not being used now "It used to generate random numbers for graph"
 - (float)getValues {
     float i1 = (float)(arc4random() % 5) / 100 ;
-    NSLog(@"%float",i1);
+    NSLog(@"%f",i1);
     return i1;
 }
 
-//- (float)getValues:(float)number {
-//    float i1 = (float)(arc4random() % 5) / 100 ;
-//    NSLog(@"%float",i1);
-//    return i1;
-//}
 
 
 - (IBAction)addOrRemovePointFromGraph:(id)sender {
     if (self.graphObjectIncrement.value > _previousStepperValue) {
         // Add point
+        NSLog(@" + pressed");
         [self.arrayOfValues addObject:@([self getValues])];
         NSDate *newDate = [self getDate:(NSDate *)[self.arrayOfDates lastObject]];
         [self.arrayOfDates addObject:newDate];
         [self.myGraph reloadGraph];
     } else if (self.graphObjectIncrement.value < self.previousStepperValue) {
         // Remove point
+        NSLog(@" + pressed");
         [self.arrayOfValues removeObjectAtIndex:0];
         [self.arrayOfDates removeObjectAtIndex:0];
         [self.myGraph reloadGraph];
