@@ -7,6 +7,7 @@
 //
 
 #import "EntryNutritionTabBarController.h"
+#import "FoodEntryViewController.h"
 
 @interface EntryNutritionTabBarController ()
 
@@ -16,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    UINavigationController *nav = [self.viewControllers objectAtIndex:0];
+    FoodEntryViewController *fevc = [nav.viewControllers objectAtIndex:0];
+    fevc.user = self.user;
 }
 
 @end

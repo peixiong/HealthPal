@@ -9,7 +9,7 @@
 #import "RegisterViewController.h"
 #import <Firebase/Firebase.h>
 #import "FirebaseManager.h"
-
+#import "TabbarViewController.h"
 @interface RegisterViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,FirebaseManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -47,8 +47,10 @@
     [[FirebaseManager sharedInstance] createNewUserWithUsername:username emailAddress:emailAddress password:password ConfirmedPassword:confirmedPassword andImageStr:imageStr];
 }
 
--(void)userDidLoginWithUid:(NSString *)uid {
-    [self performSegueWithIdentifier:@"loggedin" sender:uid];
+-(void)didLoginWithUser:(User *)user {
+    TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 //pick an image for user

@@ -69,7 +69,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login With Facebook"/>
                                 <connections>
-                                    <action selector="onFacebookLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bkb-wk-DWt"/>
+                                    <action selector="onFacebookLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Tf-Hy-g5T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hov-AD-F2G">
@@ -111,7 +111,6 @@
                     <connections>
                         <outlet property="collectionView" destination="azo-fO-Q5v" id="SK3-vF-Afg"/>
                         <outlet property="introductionLabel" destination="4eP-Yh-rG9" id="Uky-Oy-s7U"/>
-                        <segue destination="ZSz-wb-30b" kind="show" identifier="loggedin" id="Ojc-dO-ATn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -291,7 +290,7 @@
         <!--Tabbar View Controller-->
         <scene sceneID="lyI-0g-4iR">
             <objects>
-                <tabBarController id="ZSz-wb-30b" customClass="TabbarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabbar" id="ZSz-wb-30b" customClass="TabbarViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rGD-tq-Da9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -384,6 +383,6 @@
         <image name="007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky" width="1185" height="1215"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4pm-M5-30l"/>
+        <segue reference="syI-9h-BOD"/>
     </inferredMetricsTieBreakers>
 </document>

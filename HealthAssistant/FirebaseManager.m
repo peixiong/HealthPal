@@ -11,6 +11,16 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+@interface FirebaseManager ()
+
+@property Firebase *rootRef;
+@property Firebase *foodsRef;
+@property Firebase *usersRef;
+
+@end
+
+
 @implementation FirebaseManager
 
 +(instancetype) sharedInstance
@@ -19,30 +29,45 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sInstance = [[FirebaseManager alloc] init];
+        sInstance.rootRef = [[Firebase alloc] initWithUrl:@"https://blinding-heat-8730.firebaseio.com"];
+        sInstance.foodsRef = [sInstance.rootRef childByAppendingPath:@"foods"];
+        sInstance.usersRef = [sInstance.rootRef childByAppendingPath:@"users"];
     });
     return sInstance;
 }
 
-+(Firebase *)sharedRootRef {
-    static Firebase *rootRef;
-    static dispatch_once_t onceToken2;
-    dispatch_once(&onceToken2, ^{
-        rootRef = [[Firebase alloc] initWithUrl:@"https://blinding-heat-8730.firebaseio.com"];
-    });
-    return rootRef;
+
+//MARK........save data
+-(void)saveToFoodsWithFood:(Food *)food{
+    NSMutableArray *foodInfo = [NSMutableArray new];
+    for (FoodProperty *foodProperty in food.foodProperties) {
+        if (foodProperty.value != nil && foodProperty.value.length >0) {
+            [foodInfo addObject:@{@"name":foodProperty.name,
+                                  @"fpId":@(foodProperty.fpId),
+                                  @"value":foodProperty.value}];
+        }
+    }
+    Firebase *foodRef = [self.foodsRef childByAutoId];
+    food.foodId = foodRef.key;
+    [foodRef setValue:foodInfo];
+}
+
+//add the food to user's path, and create a new food in database
+-(void)addNewFood{
 }
 
 //MARK........user login
 -(void)loginUserEmail:(NSString *)emailAdress password:(NSString *)password {
-    Firebase *ref = [FirebaseManager sharedRootRef];
-    [ref authUser:emailAdress password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
+    [self.rootRef authUser:emailAdress password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         if (error) {
             NSLog(@"There was an error: %@", error.localizedDescription);
             [self showAlertWithMessage:@"Email or password are incorrect."];
         } else {
             NSLog(@"We are now logged in with userId = %@", authData.uid);
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(userDidLoginWithUid:)]) {
-                [self.delegate userDidLoginWithUid:authData.uid];
+            User *user = [self retrieveUserDataWithUid:authData.uid];
+            
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
+                [self.delegate didLoginWithUser:user];
             } else {
                 NSLog(@"Self.delegate = nil or delegate does not have the (userDidLoginWithUid) method");
             }
@@ -51,11 +76,31 @@
 }
 
 
+//MARK.......retrieve data from firebase using user id
+-(User *)retrieveUserDataWithUid:(NSString *)uid{
+    User *user =[User new];
+    Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@",uid]];
+    [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        user.username = snapshot.value[@"username"];
+        user.email = snapshot.value[@"email"];
+        user.imageStr = snapshot.value[@"imageStr"];
+        NSData *imageData = [[NSData alloc] initWithBase64EncodedString:user.imageStr options:0];
+        user.image = [[UIImage alloc] initWithData:imageData];
+        user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
+        user.time_Food = snapshot.value[@"time_food"];
+        user.weight = snapshot.value[@"weight"];
+        user.height = snapshot.value[@"height"];
+        user.gender = snapshot.value[@"gender"];
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+    return user;
+};
+
+
 //MARK.....facebook login
 -(void)facebookLogin {
-    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://blinding-heat-8730.firebaseio.com"];
     FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
-    
     [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:(UIViewController *)(self.delegate) handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             NSLog(@"Facebook login failed. Error: %@", error);
@@ -65,21 +110,50 @@
             [self showAlertWithMessage:@"Facebook login is cancelled"];
         } else {
             NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
-            [ref authWithOAuthProvider:@"facebook" token:accessToken withCompletionBlock:^(NSError *error, FAuthData *authData) {
+            [self.rootRef authWithOAuthProvider:@"facebook" token:accessToken withCompletionBlock:^(NSError *error, FAuthData *authData) {
                 if (error) {
                     NSLog(@"Login failed. %@", error);
                     [self showAlertWithMessage:error.localizedDescription];
                 } else {
-                    [self.delegate userDidLoginWithUid:authData.uid];
-                    //if in firebase, users/uid = nil, setvalue
-                    //if user/uid != nil,
-//                    NSLog(@"Logged in! %@", authData);
-//                    NSLog(@"facebook usename = [%@]", authData.providerData[@"displayName"]);
-//                    NSLog(@"facebook login email = [%@]", authData.providerData[@"email"]);
-//                    NSString *url = authData.providerData[@"profileImageURL"];
-//                    NSLog(@"facebook profile image url = [%@]", url);
-//                    //UIImage *image = [UIImage imageWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]]];
-//                    //self.testImageView.image = image;
+                    //facebook logged in successfully
+                    Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@", authData.uid]];
+                    [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                        if (snapshot.value == [NSNull null]) {
+                            //generate new user dictionary
+                            NSString *url = authData.providerData[@"profileImageURL"];
+                            NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+                            UIImage *image = [UIImage imageWithData:imageData];
+                            
+                            //compress image size
+                            CGSize newSize = CGSizeMake(200, 200);
+                            UIGraphicsBeginImageContext(newSize);
+                            [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+                            UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+                            UIGraphicsEndImageContext();
+                            NSData *newImageData = UIImageJPEGRepresentation(newImage, 0.5);
+                            NSString *imageStr = [newImageData base64EncodedStringWithOptions:0];
+                            
+                            
+                            NSDictionary *firebaseUser = @{
+                                                           @"username" : authData.providerData[@"displayName"],
+                                                           @"email" : authData.providerData[@"email"],
+                                                           @"imageStr": imageStr
+                                                           };
+                            [readRef setValue:firebaseUser];
+                            
+                            //create user
+                            User *user = [User new];
+                            user.username = authData.providerData[@"displayName"];
+                            user.email = authData.providerData[@"email"];
+                            user.imageStr = imageStr;
+                            user.image = newImage;
+                            [self.delegate didLoginWithUser:user];
+                        } else {
+                            //user already exist
+                            User *user = [self retrieveUserDataWithUid:authData.uid];
+                            [self.delegate didLoginWithUser:user];
+                        }
+                    }];
                 }
             }];
         }
@@ -87,27 +161,13 @@
 }
 
 
-//MARK.......retrieve data from firebase using user id
 
-//        NSString *url = [NSString stringWithFormat:@"https://blinding-heat-8730.firebaseio.com/users/%@", authData.uid];
-//        Firebase *readRef = [[Firebase alloc] initWithUrl:url];
-//        
-//        [readRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//            NSLog(@"%@", snapshot.value);
-//            NSLog(@"username = [%@]", snapshot.value[@"username"]);
-//            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:snapshot.value[@"image"] options:0];
-//            UIImage *image = [[UIImage alloc] initWithData:imageData];
-//        } withCancelBlock:^(NSError *error) {
-//            NSLog(@"%@", error.description);
-//        }];
-//}];
 
 
 //MARK........sign up
 -(void)createNewUserWithUsername:(NSString *)username emailAddress:(NSString *)emailAddress password:(NSString *)password ConfirmedPassword:(NSString *)confirmedPassword andImageStr:(NSString *)imageStr {
     // Create a reference to a Firebase database URL
-    Firebase *ref = [FirebaseManager sharedRootRef];
-    [ref createUser:emailAddress password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+    [self.rootRef createUser:emailAddress password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         NSString *alertMessage;
         if (username.length == 0 || emailAddress.length == 0 || password.length == 0 || confirmedPassword.length == 0) {
             alertMessage = @"One of the required fields is empty";
@@ -124,19 +184,27 @@
             //get data from firebase
             NSString *uid = [result objectForKey:@"uid"];
             NSLog(@"Successfully created user account with uid: %@", uid);
-            [self.delegate userDidLoginWithUid:uid];
+            User *user = [User new];
+            user.uid = uid;
+            user.username = username;
+            user.email = emailAddress;
+            user.imageStr = imageStr;
+            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:imageStr options:0];
+            user.image = [[UIImage alloc] initWithData:imageData];
+            [self.delegate didLoginWithUser:user];
             //generate user dictionary
-            NSDictionary *user = @{
+            NSDictionary *firebaseUser = @{
                                    @"username" : username,
                                    @"email" : emailAddress,
                                    @"imageStr": imageStr
                                    };
             NSString *path = [NSString stringWithFormat:@"users/%@", uid];
-            Firebase *userRef = [ref childByAppendingPath: path];
-            [userRef setValue:user];
+            Firebase *userRef = [self.rootRef childByAppendingPath: path];
+            [userRef setValue:firebaseUser];
         }
     }];
 }
+        
 
 -(void)showAlertWithMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
