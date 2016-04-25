@@ -24,6 +24,7 @@
 		CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E501CC6F5D00054A47B /* PopUPButton.m */; };
 		CB282E541CC6F5E90054A47B /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E531CC6F5E90054A47B /* TabbarViewController.m */; };
 		CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */; };
+		CB4D07041CCDF3A90099CF6A /* LunchImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */; };
 		CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC441CC568DC0051C177 /* ChartsViewController.m */; };
 		CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC4B1CC569940051C177 /* ProfileViewController.m */; };
 		CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */; };
@@ -81,6 +82,8 @@
 		CB282E531CC6F5E90054A47B /* TabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarViewController.m; sourceTree = "<group>"; };
 		CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryNutritionTabBarController.h; sourceTree = "<group>"; };
 		CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryNutritionTabBarController.m; sourceTree = "<group>"; };
+		CB4D07021CCDF3A90099CF6A /* LunchImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchImageTableViewCell.h; sourceTree = "<group>"; };
+		CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchImageTableViewCell.m; sourceTree = "<group>"; };
 		CB98FC431CC568DC0051C177 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
 		CB98FC441CC568DC0051C177 /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsViewController.m; sourceTree = "<group>"; };
 		CB98FC4A1CC569940051C177 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 		CBE792021CC348B1001E9FDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB4D07021CCDF3A90099CF6A /* LunchImageTableViewCell.h */,
+				CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */,
 				CB0812621CCB3FAC008C985C /* Food.h */,
 				CB0812631CCB3FAC008C985C /* Food.m */,
 				CB0812651CCB3FEA008C985C /* FoodProperty.h */,
@@ -421,6 +426,7 @@
 				CB0812671CCB3FEA008C985C /* FoodProperty.m in Sources */,
 				CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */,
 				1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */,
+				CB4D07041CCDF3A90099CF6A /* LunchImageTableViewCell.m in Sources */,
 				CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */,
 				CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,

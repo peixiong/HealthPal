@@ -11,6 +11,7 @@
 #import "FirebaseManager.h"
 #import "food.h"
 #import "foodProperty.h"
+#import "LunchImageTableViewCell.h"
 @interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
@@ -30,25 +31,14 @@
     [FirebaseManager sharedInstance].delegate = self;
     self.navigationItem.title = @"Creat Your Food";
     self.food = [Food new];
-    
-    //current time;
-    NSDate *today = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *currentTime = [dateFormatter stringFromDate:today];
-
-    NSLog(@"User's current time in their preference format:%@",currentTime);
 
     //test date for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @9];
-    
     self.selected = [NSMutableArray new];
     for (int i =0; i< self.food.foodProperties.count; i++) {
         if ([self.user ifSelected:self.food.foodProperties[i].fpId]) {
             [self.selected addObject:self.food.foodProperties[i]];
         }
-        
     }
     
     NSMutableArray *basicInfo = [NSMutableArray new];
@@ -82,7 +72,6 @@
             food.foodProperties[foodProperty.fpId].value = foodProperty.value;
         }
     }
-        
     [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
 }
 
@@ -106,33 +95,56 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.infoTypes.count;
+    return self.infoTypes.count+1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.infoTypes[section].count;
+    if (section == 0) {
+        return 1;
+    } else {
+        return self.infoTypes[section-1].count;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ManualEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
-    cell.delegate = self;
-    cell.typeLabel.text = self.infoTypes[indexPath.section][indexPath.row];
-    cell.textField.placeholder = self.placeHolders[indexPath.section][indexPath.row];
-    return cell;
+    if (indexPath.section == 0) {
+        LunchImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
+        return cell;
+    } else {
+        ManualEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+        cell.delegate = self;
+        cell.typeLabel.text = self.infoTypes[indexPath.section-1][indexPath.row];
+        cell.textField.placeholder = self.placeHolders[indexPath.section-1][indexPath.row];
+        return cell;
+    }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section < self.headers.count) {
-        return self.headers[section];
+    if (section == 0) {
+        return nil;
+    } else {
+        return self.headers[section-1];
     }
-    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ManualEntryTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell.textField becomeFirstResponder];
+    if (indexPath.section == 0) {
+        LunchImageTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    } else{
+        ManualEntryTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell.textField becomeFirstResponder];
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 180.0;
+    } else {
+        return 40.0;
+    }
 }
 
 @end
