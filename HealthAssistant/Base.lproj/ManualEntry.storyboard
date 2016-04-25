@@ -95,17 +95,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Lj-1E3">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Lj-1E3">
                                             <rect key="frame" x="51" y="66" width="43" height="30"/>
                                             <state key="normal" title="Lunch"/>
+                                            <connections>
+                                                <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="TnQ-yH-EhD"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyp-ac-euM">
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyp-ac-euM">
                                             <rect key="frame" x="51" y="98" width="45" height="30"/>
                                             <state key="normal" title="Dinner"/>
+                                            <connections>
+                                                <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="ilC-Q8-IKI"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-jI-IEI">
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-jI-IEI">
                                             <rect key="frame" x="51" y="130" width="42" height="30"/>
                                             <state key="normal" title="Snack"/>
+                                            <connections>
+                                                <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="kQM-dD-tnd"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-AD-IOC">
                                             <rect key="frame" x="175" y="8" width="182" height="163"/>
@@ -117,6 +126,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-NH-c5A">
                                             <rect key="frame" x="41" y="37" width="65" height="30"/>
                                             <state key="normal" title="Breakfast"/>
+                                            <connections>
+                                                <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="qnI-CY-AIG"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>

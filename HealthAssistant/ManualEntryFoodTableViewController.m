@@ -21,6 +21,7 @@
 @property Food *food;
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
+@property NSString *meal;
 //@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -67,6 +68,7 @@
     }
 
     Food *food = [Food new];
+
     for (FoodProperty *foodProperty in self.selected) {
         if (foodProperty.value != nil) {
             food.foodProperties[foodProperty.fpId].value = foodProperty.value;
@@ -74,12 +76,32 @@
     }
     [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
     
-    [self ]
+//    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+//    [DateFormatter setDateFormat:@"yyyyMMdd"];
+//    [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+//    NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
+//    
+//    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForDay:dayStr meal:self.meal andFood:food];
     
-//    self.user.timeFood addObject:@{time:food};
+//    if (self.user.timeFood[dayStr] == nil) {
+//        [self.user.timeFood addObject:@{dayStr:[food]}];
+//    } else {
+//        [self.user.timeFood[dayStr] addObject:food];
+//    }
 }
 
 
+- (IBAction)onMealButtonPressed:(UIButton *)sender {
+    if (sender.tag == 0) {
+        self.meal = @"Breakfast";
+    } else if (sender.tag == 1) {
+        self.meal = @"Lunch";
+    } else if (sender.tag == 2) {
+        self.meal = @"Dinner";
+    } else if (sender.tag == 3) {
+        self.meal = @"Snack";
+    }
+}
 
 
 -(void)textFieldDidChangedWithCell:(ManualEntryTableViewCell *)cell {
