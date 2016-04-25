@@ -22,7 +22,8 @@
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
 @property NSString *meal;
-//@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation ManualEntryFoodTableViewController
@@ -34,7 +35,7 @@
     self.food = [Food new];
 
     //test date for user.selectedFoodProperties
-    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @9];
+    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @7, @9];
     self.selected = [NSMutableArray new];
     for (int i =0; i< self.food.foodProperties.count; i++) {
         if ([self.user ifSelected:self.food.foodProperties[i].fpId]) {
@@ -46,11 +47,11 @@
     NSMutableArray *nutritionInfo = [NSMutableArray new];
     NSMutableArray *basicInfoPlaceHolders = [NSMutableArray new];
     NSMutableArray *nutritionInfoPlaceHolders = [NSMutableArray new];
-    for (int i = 0; i<4; i++) {
+    for (int i = 1; i<5; i++) {
         [basicInfo addObject:self.selected[i].name];
         [basicInfoPlaceHolders addObject:self.selected[i].placeHolder];
     }
-    for (int i = 4; i<self.selected.count; i++) {
+    for (int i = 5; i<self.selected.count; i++) {
         [nutritionInfo addObject:self.selected[i].name];
         [nutritionInfoPlaceHolders addObject:self.selected[i].placeHolder];
     }
@@ -63,12 +64,25 @@
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
     // Manually fire textFieldDidEndEditing events for all textfields visable:
     for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
-        ManualEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        [cell.textField resignFirstResponder];
+        if (indexPath.section != 0) {
+            ManualEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            [cell.textField resignFirstResponder];
+        }
     }
-
+    
+    UIImage *foodImage = self.imageView.image;
+    //compress image size
+    CGSize newSize = CGSizeMake(200, 200);
+    UIGraphicsBeginImageContext(newSize);
+    [foodImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData *imageData = UIImageJPEGRepresentation(newImage, 0.5);
+    NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
+    self.selected[0].value = imageStr;
+    
     Food *food = [Food new];
-
+    
     for (FoodProperty *foodProperty in self.selected) {
         if (foodProperty.value != nil) {
             food.foodProperties[foodProperty.fpId].value = foodProperty.value;
@@ -76,12 +90,12 @@
     }
     [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
     
-//    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
-//    [DateFormatter setDateFormat:@"yyyyMMdd"];
-//    [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-//    NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
-//    
-//    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForDay:dayStr meal:self.meal andFood:food];
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyyMMdd"];
+    [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
+    
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:food];
     
 //    if (self.user.timeFood[dayStr] == nil) {
 //        [self.user.timeFood addObject:@{dayStr:[food]}];
@@ -107,14 +121,15 @@
 -(void)textFieldDidChangedWithCell:(ManualEntryTableViewCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         self.selected[indexPath.row].value = cell.textField.text;
-    } else {
-        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:0]].value = cell.textField.text;
+    } else if (indexPath.section == 2){
+        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]].value = cell.textField.text;
     };
     NSLog(@"indexPath.row = %li", (long)indexPath.row);
     NSLog(@"indexPath.section = %li", (long)indexPath.section);
     NSLog(@"string = %@", cell.textField.text);
+    NSLog(@"%lu", (unsigned long)self.selected.count);
     //infirebase, set the key value to be "string"
 }
 

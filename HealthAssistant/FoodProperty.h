@@ -9,21 +9,22 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(int, FoodPropertyType) {
-    FoodPropertyDescription          = 0,
-    FoodPropertyRestrantOrHomemade   = 1,
-    FoodPropertyServingSize          = 2,
-    FoodPropertyServingsPerContainer = 3,
-    FoodPropertyCalories             = 4,
-    FoodPropertyTotalCarbohydrates   = 5,
-    FoodPropertyProtein              = 6,
-    FoodPropertyTotalFat             = 7,
-    FoodPropertySuger                = 8,
-    FoodPropertyTotalFiber           = 9,
-    FoodPropertySodium               = 10,
-    FoodPropertyCalcium              = 11,
-    FoodPropertyIron                 = 12,
-    FoodPropertyVitaminA             = 13,
-    FoodPropertyVitaminC             = 14
+    FoodPropertyFoodImageStr         = 0,
+    FoodPropertyDescription          = 1,
+    FoodPropertyRestrantOrHomemade   = 2,
+    FoodPropertyServingSize          = 3,
+    FoodPropertyServingsPerContainer = 4,
+    FoodPropertyCalories             = 5,
+    FoodPropertyTotalCarbohydrates   = 6,
+    FoodPropertyProtein              = 7,
+    FoodPropertyTotalFat             = 8,
+    FoodPropertySuger                = 9,
+    FoodPropertyTotalFiber           = 10,
+    FoodPropertySodium               = 11,
+    FoodPropertyCalcium              = 12,
+    FoodPropertyIron                 = 13,
+    FoodPropertyVitaminA             = 14,
+    FoodPropertyVitaminC             = 15
 };
 
 @interface FoodProperty : NSObject
@@ -32,6 +33,7 @@ typedef NS_ENUM(int, FoodPropertyType) {
 @property NSString *name;
 @property NSString *placeHolder;
 @property NSString *value;
+
 
 
 @end

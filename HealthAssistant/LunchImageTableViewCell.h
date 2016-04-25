@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LunchImageTableViewCell : UITableViewCell
-
+@property (strong, nonatomic) IBOutlet UIImageView *foodImageView;
+@property UIImage *foodImage;
 @end

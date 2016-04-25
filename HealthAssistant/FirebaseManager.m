@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-
+#import "User.h"
 @interface FirebaseManager ()
 
 @property Firebase *rootRef;
@@ -53,8 +53,8 @@
 }
 
 //add the food to user's path, and create a new food in database
--(void)saveFoodtoUserTimeFoodForDay:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food{
-    Firebase *whichMealRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@/%@",dayStr, whichMeal]];
+-(void)saveFoodtoUserTimeFoodForUser:(User *)user day:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food{
+    Firebase *whichMealRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@/timeFood/%@/%@",user.uid, dayStr, whichMeal]];
     Firebase *theMealFoodRef = [whichMealRef childByAutoId];
     [theMealFoodRef setValue:food.foodId];
 }
@@ -84,6 +84,7 @@
     User *user =[User new];
     Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@",uid]];
     [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        user.uid = uid;
         user.username = snapshot.value[@"username"];
         user.email = snapshot.value[@"email"];
         user.imageStr = snapshot.value[@"imageStr"];

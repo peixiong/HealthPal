@@ -116,9 +116,6 @@
                                                 <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="kQM-dD-tnd"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-AD-IOC">
-                                            <rect key="frame" x="175" y="8" width="182" height="163"/>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-TT-veP">
                                             <rect key="frame" x="37" y="8" width="93" height="30"/>
                                             <state key="normal" title="Take a image"/>
@@ -130,8 +127,14 @@
                                                 <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="qnI-CY-AIG"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-AD-IOC">
+                                            <rect key="frame" x="171" y="8" width="182" height="163"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="foodImageView" destination="wcv-AD-IOC" id="xfC-ZB-FUN"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellID" rowHeight="46" id="aee-pM-kh2" customClass="ManualEntryTableViewCell">
                                 <rect key="frame" x="0.0" y="272" width="375" height="46"/>
@@ -213,6 +216,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="0" width="960" height="640"/>
         <image name="icon_plus" width="30" height="30"/>
     </resources>
 </document>
