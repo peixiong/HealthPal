@@ -57,8 +57,10 @@
     [[FirebaseManager sharedInstance] facebookLogin];
 }
 
--(void)userDidLoginWithUid:(NSString *)uid{
-    [self performSegueWithIdentifier:@"loggedin" sender:uid];
+-(void)didLoginWithUser:(User *)user{
+    TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 
@@ -95,10 +97,6 @@
     return 0;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    TabbarViewController *dvc = segue.destinationViewController;
-    dvc.authData = sender;
-}
 
 -(IBAction)unwindSegue:(UIStoryboardSegue *)sender {
     

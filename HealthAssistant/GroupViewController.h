@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "User.h"
 @interface GroupViewController : UIViewController
-
+@property User *user;
 @end

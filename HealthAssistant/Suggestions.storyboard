@@ -8,7 +8,7 @@
         <!--Suggestion-->
         <scene sceneID="RBD-o2-mGQ">
             <objects>
-                <viewController id="vMk-d5-tna" customClass="ManualEntryViewController" sceneMemberID="viewController">
+                <viewController id="vMk-d5-tna" customClass="SuggestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q1f-16-sJ7"/>
                         <viewControllerLayoutGuide type="bottom" id="Fki-oB-vxm"/>

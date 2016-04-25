@@ -7,11 +7,11 @@
 //
 
 #import "FoodEntryViewController.h"
-
+#import "ManualEntryFoodTableViewController.h"
 @interface FoodEntryViewController ()
 
 @property (nonatomic, strong) UISearchController *searchController;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -22,7 +22,9 @@
 
 }
 
-
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ManualEntryFoodTableViewController *dvc = segue.destinationViewController;
+    dvc.user = self.user;
+}
 
 @end

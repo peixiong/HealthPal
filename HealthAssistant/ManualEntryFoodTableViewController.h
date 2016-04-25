@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "User.h"
 @interface ManualEntryFoodTableViewController : UITableViewController
-
+@property User *user;
 @end

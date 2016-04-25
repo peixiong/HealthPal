@@ -32,16 +32,10 @@
     
 }
 
--(void)userDidLoginWithUid:(NSString *)uid {
-    [self performSegueWithIdentifier:@"loggedin" sender:uid];
+-(void)didLoginWithUser:(User *)user{
+    TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:true];
 }
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"loggedin"]) {
-        TabbarViewController *dvc = segue.destinationViewController;
-        dvc.authData = sender;
-    }
-}
-
 
 @end
