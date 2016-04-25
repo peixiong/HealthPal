@@ -30,6 +30,15 @@
     [FirebaseManager sharedInstance].delegate = self;
     self.navigationItem.title = @"Creat Your Food";
     self.food = [Food new];
+    
+    //current time;
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *currentTime = [dateFormatter stringFromDate:today];
+
+    NSLog(@"User's current time in their preference format:%@",currentTime);
 
     //test date for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @9];
