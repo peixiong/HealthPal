@@ -77,6 +77,9 @@
     self.myGraph.enablePopUpReport = YES;
     self.myGraph.layer.masksToBounds = YES;
     self.myGraph.layer.cornerRadius = 8.0;
+    self.myGraph.backgroundColor = [UIColor blueColor];
+    self.myGraph.colorTop = [UIColor blueColor];
+    self.myGraph.colorBottom = [UIColor blueColor];
 }
 
 

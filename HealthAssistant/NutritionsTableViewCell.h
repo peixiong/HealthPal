@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 // Chart
+@property (weak, nonatomic) IBOutlet UIView *graphView;
 @property (strong, nonatomic) NSMutableArray *arrayOfValues;
 @property (strong, nonatomic) NSMutableArray *arrayOfDates;
 @property (weak, nonatomic) IBOutlet UILabel *labelValues;
@@ -27,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelDates;
 
 @property NSArray *points;
+@property NSArray *dates;
+
 
 
 // Collection View (buttons)
