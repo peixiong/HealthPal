@@ -8,11 +8,12 @@
 
 #import "LoginViewController.h"
 #import <Firebase/Firebase.h>
+#import "FirebaseManager.h"
+#import "TabbarViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <FirebaseManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *testImageView;
 
 @end
 
@@ -26,35 +27,15 @@
 - (IBAction)onLoginButtonPressed:(UIButton *)sender {
     NSString *useremail = self.emailAddressTextField.text;
     NSString *password = self.passwordTextField.text;
+    [FirebaseManager sharedInstance].delegate = self;
+    [[FirebaseManager sharedInstance] loginUserEmail:useremail password:password];
     
-    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://blinding-heat-8730.firebaseio.com"];
-    [ref authUser:useremail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
-        if (error) {
-            NSLog(@"There was an error: %@", error.localizedDescription);
-            [self showAlertWithMessage:@"Email or password are incorrect."];
-        } else {
-            NSLog(@"We are now logged in with userId = %@", authData.uid);
-            NSString *url = [NSString stringWithFormat:@"https://blinding-heat-8730.firebaseio.com/users/%@", authData.uid];
-            Firebase *readRef = [[Firebase alloc] initWithUrl:url];
-            
-            [readRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                NSLog(@"%@", snapshot.value);
-                NSLog(@"username = [%@]", snapshot.value[@"username"]);
-                NSData *imageData = [[NSData alloc] initWithBase64EncodedString:snapshot.value[@"image"] options:0];
-                UIImage *image = [[UIImage alloc] initWithData:imageData];
-                self.testImageView.image = image;
-            } withCancelBlock:^(NSError *error) {
-                NSLog(@"%@", error.description);
-            }];
-        }
-    }];
 }
 
--(void)showAlertWithMessage:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:true completion:nil];
+-(void)didLoginWithUser:(User *)user{
+    TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 @end

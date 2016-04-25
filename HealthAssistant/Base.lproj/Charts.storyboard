@@ -108,9 +108,9 @@
                                                                     <nil key="highlightedColor"/>
                                                                     <variation key="default">
                                                                         <mask key="constraints">
-                                                                            <exclude reference="r0f-nC-TlU"/>
-                                                                            <exclude reference="L1T-51-TOO"/>
                                                                             <exclude reference="IpN-oE-e2h"/>
+                                                                            <exclude reference="L1T-51-TOO"/>
+                                                                            <exclude reference="r0f-nC-TlU"/>
                                                                         </mask>
                                                                     </variation>
                                                                 </label>

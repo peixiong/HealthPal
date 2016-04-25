@@ -5,11 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Add-->
         <scene sceneID="ag0-6a-u5d">
             <objects>
                 <tabBarController id="Psg-MV-lwj" customClass="EntryNutritionTabBarController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cpo-h4-4fK"/>
+                    <tabBarItem key="tabBarItem" title="Add" image="icon_plus" id="cpo-h4-4fK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gR4-mJ-qRX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -99,9 +99,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qWv-rx-slX">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="HuU-tX-qna"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="HuU-tX-qna">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="bk9-lp-1Kq" id="ruX-hE-EJn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="wsA-vb-8QO" id="D5M-EF-dzw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crb-JT-Sd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,4 +163,7 @@
             <point key="canvasLocation" x="3036.5" y="-114.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_plus" width="30" height="30"/>
+    </resources>
 </document>

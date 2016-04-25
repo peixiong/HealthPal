@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "User.h"
 @interface EntryNutritionTabBarController : UITabBarController
+
+@property User *user;
 
 @end

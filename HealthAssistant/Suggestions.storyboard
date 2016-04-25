@@ -8,7 +8,7 @@
         <!--Suggestion-->
         <scene sceneID="RBD-o2-mGQ">
             <objects>
-                <viewController id="vMk-d5-tna" customClass="ManualEntryViewController" sceneMemberID="viewController">
+                <viewController id="vMk-d5-tna" customClass="SuggestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q1f-16-sJ7"/>
                         <viewControllerLayoutGuide type="bottom" id="Fki-oB-vxm"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Suggestion" id="mgJ-tD-VdM"/>
+                    <tabBarItem key="tabBarItem" title="Suggestion" image="suggestions" id="mgJ-tD-VdM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
@@ -27,4 +27,7 @@
             <point key="canvasLocation" x="2462.5" y="1031.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="suggestions" width="30" height="30"/>
+    </resources>
 </document>

@@ -9,18 +9,32 @@
 #import "TabbarViewController.h"
 #import "EntryNutritionTabBarController.h"
 #import "PopUPButton.h"
-@interface TabbarViewController () <UITabBarControllerDelegate, PopUPButtonDelegate>
+#import "ChartsViewController.h"
+#import "GroupViewController.h"
+#import "SuggestionViewController.h"
+#import "UserProfileViewController.h"
 
+@interface TabbarViewController () <UITabBarControllerDelegate, PopUPButtonDelegate>
 @property NSMutableArray<UIButton *> *buttonsArray;
 @property UIView *backgroundView;
-
 @end
 
 @implementation TabbarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    ChartsViewController *cvc = [self.viewControllers objectAtIndex:0];
+    GroupViewController *gvc = [self.viewControllers objectAtIndex:1];
+    SuggestionViewController *svc = [self.viewControllers objectAtIndex:3];
+    UserProfileViewController *uvc = [self.viewControllers objectAtIndex:4];
+    EntryNutritionTabBarController *entbvc = [self.viewControllers objectAtIndex:2];
+    cvc.user = self.user;
+    gvc.user = self.user;
+    svc.user = self.user;
+    uvc.user = self.user;
+    entbvc.user = self.user;
+    
     self.buttonsArray = [NSMutableArray new];
     self.delegate = self;
 }
@@ -34,6 +48,7 @@
         return YES;
     }
 }
+
 
 -(void)generateBackgroundViewWithTapGestureRecognizer {
     self.backgroundView = [[UIView alloc]initWithFrame:self.view.frame];

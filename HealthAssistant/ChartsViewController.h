@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "User.h"
 @interface ChartsViewController : UIViewController
-
+@property User *user;
 @end
