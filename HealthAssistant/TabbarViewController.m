@@ -27,12 +27,12 @@
     ChartsViewController *cvc = [self.viewControllers objectAtIndex:0];
     GroupViewController *gvc = [self.viewControllers objectAtIndex:1];
     SuggestionViewController *svc = [self.viewControllers objectAtIndex:3];
-    UserProfileViewController *uvc = [self.viewControllers objectAtIndex:4];
+//    UserProfileViewController *uvc = [self.viewControllers objectAtIndex:4];
     EntryNutritionTabBarController *entbvc = [self.viewControllers objectAtIndex:2];
     cvc.user = self.user;
     gvc.user = self.user;
     svc.user = self.user;
-    uvc.user = self.user;
+ //   uvc.user = self.user;
     entbvc.user = self.user;
     
     self.buttonsArray = [NSMutableArray new];

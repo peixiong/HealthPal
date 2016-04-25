@@ -87,7 +87,7 @@
         NSData *imageData = [[NSData alloc] initWithBase64EncodedString:user.imageStr options:0];
         user.image = [[UIImage alloc] initWithData:imageData];
         user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
-        user.time_Food = snapshot.value[@"time_food"];
+//        user.time_Food = snapshot.value[@"time_food"];
         user.weight = snapshot.value[@"weight"];
         user.height = snapshot.value[@"height"];
         user.gender = snapshot.value[@"gender"];
