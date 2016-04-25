@@ -10,6 +10,7 @@
 		1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */; };
 		1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */; };
 		1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */; };
+		19CD61A01CCCACC900026151 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD619F1CCCACC900026151 /* HealthKit.framework */; };
 		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
 		CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B161CC3F78E00CDB417 /* LoginViewController.m */; };
 		CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B191CC3F7C900CDB417 /* RegisterViewController.m */; };
@@ -55,6 +56,8 @@
 		1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterTableViewCell.m; sourceTree = "<group>"; };
 		1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesTableViewCell.h; sourceTree = "<group>"; };
 		1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesTableViewCell.m; sourceTree = "<group>"; };
+		19CD619F1CCCACC900026151 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		19CD61A11CCCACC900026151 /* HealthAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthAssistant.entitlements; sourceTree = "<group>"; };
 		5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB033B151CC3F78E00CDB417 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */,
+				19CD61A01CCCACC900026151 /* HealthKit.framework in Frameworks */,
 				CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */,
 				CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -137,6 +141,7 @@
 		90B7AA4E6898D756683B8359 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19CD619F1CCCACC900026151 /* HealthKit.framework */,
 				CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */,
 				CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */,
 				C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */,
@@ -183,7 +188,11 @@
 		CBE791DD1CC34450001E9FDE /* HealthAssistant */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				CBDEDF771CC89845007335BE /* Service */,
+=======
+				19CD61A11CCCACC900026151 /* HealthAssistant.entitlements */,
+>>>>>>> david
 				CBE792021CC348B1001E9FDE /* Model */,
 				CBE792031CC348B5001E9FDE /* View */,
 				CBE792041CC348BB001E9FDE /* Controller */,
@@ -315,7 +324,12 @@
 				TargetAttributes = {
 					CBE791DA1CC34450001E9FDE = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = NC3T486549;
+						DevelopmentTeam = PN5D3T49DB;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -574,6 +588,7 @@
 			baseConfigurationReference = F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthAssistant/HealthAssistant.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -594,6 +609,7 @@
 			baseConfigurationReference = 5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthAssistant/HealthAssistant.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

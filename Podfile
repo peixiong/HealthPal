@@ -7,5 +7,6 @@ target 'HealthAssistant' do
 
 pod 'Firebase', '>= 2.5.1'
 pod 'NCICharts'
+pod 'BEMSimpleLineGraph'
 
 end
