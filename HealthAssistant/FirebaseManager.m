@@ -37,7 +37,7 @@
 }
 
 
-//MARK........save data
+//MARK........save food to foods database
 -(void)saveToFoodsWithFood:(Food *)food{
     NSMutableArray *foodInfo = [NSMutableArray new];
     for (FoodProperty *foodProperty in food.foodProperties) {
@@ -52,9 +52,26 @@
     [foodRef setValue:foodInfo];
 }
 
-//add the food to user's path, and create a new food in database
--(void)addNewFood{
-}
+////add the food to user's path, and create a new food in database
+//-(void)saveFoodtoTimeFoodOfUser:(User *)user forDay:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food{
+//    Firebase *dayStrRef = [self.usersRef childByAppendingPath:dayStr];
+//    [dayStrRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        
+//    }];
+//    
+//}
+
+
+////check if the data exist
+//-(BOOL)checkingforNSNullforRef:(Firebase *)ref {
+//    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        if (snapshot.value == [NSNull null]) {
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }];
+//}
 
 //MARK........user login
 -(void)loginUserEmail:(NSString *)emailAdress password:(NSString *)password {
