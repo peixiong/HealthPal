@@ -384,8 +384,8 @@
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="5Lx-0V-IIX"/>
-                                                                    <exclude reference="vKC-S6-3q8"/>
                                                                     <exclude reference="W0e-ja-qoI"/>
+                                                                    <exclude reference="vKC-S6-3q8"/>
                                                                 </mask>
                                                             </variation>
                                                         </label>
@@ -406,8 +406,8 @@
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
-                                                                    <exclude reference="wcd-eA-w3f"/>
                                                                     <exclude reference="B6N-v9-eoD"/>
+                                                                    <exclude reference="wcd-eA-w3f"/>
                                                                 </mask>
                                                             </variation>
                                                             <connections>
