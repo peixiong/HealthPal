@@ -52,26 +52,12 @@
     [foodRef setValue:foodInfo];
 }
 
-////add the food to user's path, and create a new food in database
-//-(void)saveFoodtoTimeFoodOfUser:(User *)user forDay:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food{
-//    Firebase *dayStrRef = [self.usersRef childByAppendingPath:dayStr];
-//    [dayStrRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        
-//    }];
-//    
-//}
-
-
-////check if the data exist
-//-(BOOL)checkingforNSNullforRef:(Firebase *)ref {
-//    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        if (snapshot.value == [NSNull null]) {
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }];
-//}
+//add the food to user's path, and create a new food in database
+-(void)saveFoodtoUserTimeFoodForDay:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food{
+    Firebase *whichMealRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@/%@",dayStr, whichMeal]];
+    Firebase *theMealFoodRef = [whichMealRef childByAutoId];
+    [theMealFoodRef setValue:food.foodId];
+}
 
 //MARK........user login
 -(void)loginUserEmail:(NSString *)emailAdress password:(NSString *)password {
