@@ -74,6 +74,7 @@
     }
     [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
     
+    [self ]
     
 //    self.user.timeFood addObject:@{time:food};
 }
