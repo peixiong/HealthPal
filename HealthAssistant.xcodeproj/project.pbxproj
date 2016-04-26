@@ -191,11 +191,7 @@
 		CBE791DD1CC34450001E9FDE /* HealthAssistant */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				CBDEDF771CC89845007335BE /* Service */,
-=======
-				19CD61A11CCCACC900026151 /* HealthAssistant.entitlements */,
->>>>>>> david
 				CBE792021CC348B1001E9FDE /* Model */,
 				CBE792031CC348B5001E9FDE /* View */,
 				CBE792041CC348BB001E9FDE /* Controller */,
