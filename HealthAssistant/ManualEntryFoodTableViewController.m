@@ -12,7 +12,7 @@
 #import "food.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
-@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate>
+@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
 @property NSArray<NSString *> *headers;
@@ -22,7 +22,8 @@
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
 @property NSString *meal;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property UIImage *foodImage;
+@property LunchImageTableViewCell *cell;
 
 @end
 
@@ -33,9 +34,9 @@
     [FirebaseManager sharedInstance].delegate = self;
     self.navigationItem.title = @"Creat Your Food";
     self.food = [Food new];
-
-    //test date for user.selectedFoodProperties
-    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @7, @9];
+    self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
+    //test data for user.selectedFoodProperties
+    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @7, @9, @10, @11];
     self.selected = [NSMutableArray new];
     for (int i =0; i< self.food.foodProperties.count; i++) {
         if ([self.user ifSelected:self.food.foodProperties[i].fpId]) {
@@ -60,7 +61,6 @@
     self.placeHolders = @[basicInfoPlaceHolders,nutritionInfoPlaceHolders];
 }
 
-
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
     // Manually fire textFieldDidEndEditing events for all textfields visable:
     for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
@@ -70,11 +70,10 @@
         }
     }
     
-    UIImage *foodImage = self.imageView.image;
     //compress image size
     CGSize newSize = CGSizeMake(200, 200);
     UIGraphicsBeginImageContext(newSize);
-    [foodImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    [self.foodImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     NSData *imageData = UIImageJPEGRepresentation(newImage, 0.5);
@@ -150,7 +149,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        LunchImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
+        LunchImageTableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
+        cell.foodImageView.image = self.foodImage;
+        cell.delegate = self;
         return cell;
     } else {
         ManualEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
@@ -187,5 +188,41 @@
         return 40.0;
     }
 }
+
+-(void)imageDidChangedWithCell:(LunchImageTableViewCell *)cell andSegmentControl:(UISegmentedControl *)segmentControl{
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = true;
+    if (segmentControl.selectedSegmentIndex == 0) {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        //[self presentViewController:imagePicker animated:true completion:nil];
+    } else {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+    }
+    [self presentViewController:imagePicker animated:true completion:nil];
+    [segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    self.cell = cell;
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    //compress image size
+    CGSize newSize = CGSizeMake(200, 200);
+    UIGraphicsBeginImageContext(newSize);
+    [editedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.foodImage = newImage;
+    self.cell.foodImageView.image = newImage;
+ 
+    [self dismissViewControllerAnimated:picker completion:nil];
+}
+
 
 @end
