@@ -31,7 +31,7 @@
         self.foodProperties[8].name = @"Total Fat (g)";
         self.foodProperties[9].name = @"Sugar (g)";
         self.foodProperties[10].name = @"Total Fiber (g)";
-        self.foodProperties[11].name = @"Sodium (g)";
+        self.foodProperties[11].name = @"Sodium (mg)";
         self.foodProperties[12].name = @"Calcium (%)";
         self.foodProperties[13].name = @"Iron (%)";
         self.foodProperties[14].name = @"Vitamin A (%)";
