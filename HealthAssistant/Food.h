@@ -12,4 +12,5 @@
 @interface Food : NSObject
 @property NSMutableArray<FoodProperty *> *foodProperties;
 @property NSString *foodId;
+
 @end

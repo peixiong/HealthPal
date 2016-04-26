@@ -219,8 +219,6 @@
 		CBE792021CC348B1001E9FDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB4D07021CCDF3A90099CF6A /* LunchImageTableViewCell.h */,
-				CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */,
 				CB0812621CCB3FAC008C985C /* Food.h */,
 				CB0812631CCB3FAC008C985C /* Food.m */,
 				CB0812651CCB3FEA008C985C /* FoodProperty.h */,
@@ -247,6 +245,8 @@
 				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
 				CB282E4F1CC6F5D00054A47B /* PopUPButton.h */,
 				CB282E501CC6F5D00054A47B /* PopUPButton.m */,
+				CB4D07021CCDF3A90099CF6A /* LunchImageTableViewCell.h */,
+				CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */,
 				CBDEDF741CC8395B007335BE /* ManualEntryTableViewCell.h */,
 				CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */,
 				CB24EE6C1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.h */,

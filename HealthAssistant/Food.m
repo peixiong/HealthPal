@@ -20,21 +20,23 @@
             [self.foodProperties addObject:property];
         }
         
-        self.foodProperties[0].name = @"Description";
-        self.foodProperties[1].name = @"Restrant/Homemade";
-        self.foodProperties[2].name = @"Serving Size";
-        self.foodProperties[3].name = @"Servings per Container";
-        self.foodProperties[4].name = @"Calories (cal)";
-        self.foodProperties[5].name = @"Total Carbohydrates (g)";
-        self.foodProperties[6].name = @"Protein (g)";
-        self.foodProperties[7].name = @"Total Fat (g)";
-        self.foodProperties[8].name = @"Sugar (g)";
-        self.foodProperties[9].name = @"Total Fiber (g)";
-        self.foodProperties[10].name = @"Sodium (g)";
-        self.foodProperties[11].name = @"Calcium (%)";
-        self.foodProperties[12].name = @"Iron (%)";
-        self.foodProperties[13].name = @"Vitamin A (%)";
-        self.foodProperties[14].name = @"Vitamin C (%)";
+        self.foodProperties[0].name = @"foodImageStr";
+        self.foodProperties[1].name = @"Description";
+        self.foodProperties[2].name = @"Restrant/Homemade";
+        self.foodProperties[3].name = @"Serving Size";
+        self.foodProperties[4].name = @"Servings per Container";
+        self.foodProperties[5].name = @"Calories (cal)";
+        self.foodProperties[6].name = @"Total Carbohydrates (g)";
+        self.foodProperties[7].name = @"Protein (g)";
+        self.foodProperties[8].name = @"Total Fat (g)";
+        self.foodProperties[9].name = @"Sugar (g)";
+        self.foodProperties[10].name = @"Total Fiber (g)";
+        self.foodProperties[11].name = @"Sodium (g)";
+        self.foodProperties[12].name = @"Calcium (%)";
+        self.foodProperties[13].name = @"Iron (%)";
+        self.foodProperties[14].name = @"Vitamin A (%)";
+        self.foodProperties[15].name = @"Vitamin C (%)";
+
         
         self.foodProperties[FoodPropertyDescription].placeHolder = @"Required";
         self.foodProperties[FoodPropertyServingSize].placeHolder = @"Required";

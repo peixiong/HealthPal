@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class LunchImageTableViewCell;
+
+@protocol LunchImageTableViewCellDelegate
+@optional
+-(void)imageDidChangedWithCell:(LunchImageTableViewCell *)cell andSegmentControl:(UISegmentedControl *)segmentControl;
+
+@end
+
 
 @interface LunchImageTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *foodImageView;
+@property id<LunchImageTableViewCellDelegate> delegate;
+- (IBAction)onSelectPhotoButtonPressed:(UISegmentedControl *)sender;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
