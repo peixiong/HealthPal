@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self.segmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
 
@@ -21,4 +22,9 @@
     // Configure the view for the selected state
 }
 
+
+
+- (IBAction)onSelectPhotoButtonPressed:(UISegmentedControl *)sender{
+    [self.delegate imageDidChangedWithCell:self andSegmentControl:sender];
+}
 @end
