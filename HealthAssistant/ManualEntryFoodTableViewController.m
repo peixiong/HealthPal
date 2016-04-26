@@ -70,15 +70,6 @@
         }
     }
     
-    //compress image size
-    CGSize newSize = CGSizeMake(200, 200);
-    UIGraphicsBeginImageContext(newSize);
-    [self.foodImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    NSData *imageData = UIImageJPEGRepresentation(newImage, 0.5);
-    NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
-    self.selected[0].value = imageStr;
     
     Food *food = [Food new];
     
@@ -94,7 +85,7 @@
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160419" meal:self.meal andFood:food];
     
 //    if (self.user.timeFood[dayStr] == nil) {
 //        [self.user.timeFood addObject:@{dayStr:[food]}];
@@ -211,12 +202,16 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     
+    
     //compress image size
-    CGSize newSize = CGSizeMake(200, 200);
+    CGSize newSize = CGSizeMake(250, 250);
     UIGraphicsBeginImageContext(newSize);
     [editedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    NSData *imageData = UIImageJPEGRepresentation(newImage, 1);
+    NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
+    self.selected[0].value = imageStr;
     
     self.foodImage = newImage;
     self.cell.foodImageView.image = newImage;
