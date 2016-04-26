@@ -108,9 +108,9 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 
     if (indexPath.section == 1) {
-        self.selected[indexPath.row].value = cell.textField.text;
+        self.selected[indexPath.row+1].value = cell.textField.text;
     } else if (indexPath.section == 2){
-        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]].value = cell.textField.text;
+        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
     };
     NSLog(@"indexPath.row = %li", (long)indexPath.row);
     NSLog(@"indexPath.section = %li", (long)indexPath.section);
