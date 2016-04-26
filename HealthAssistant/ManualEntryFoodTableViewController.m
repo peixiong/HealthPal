@@ -87,11 +87,7 @@
     
     [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160419" meal:self.meal andFood:food];
     
-//    if (self.user.timeFood[dayStr] == nil) {
-//        [self.user.timeFood addObject:@{dayStr:[food]}];
-//    } else {
-//        [self.user.timeFood[dayStr] addObject:food];
-//    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
