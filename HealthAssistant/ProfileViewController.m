@@ -7,9 +7,11 @@
 //
 
 #import "ProfileViewController.h"
+#import "GoalTableViewCell.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *personalInfoTableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -18,8 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    [self.view endEditing:YES];
+    
+    
+    self.goalNames = @[@"Carbohydrate",@"Protein", @"Calcium",@"Iron", @"Vitamin A",@"Vitamin C"];
+    
+    self.suggestedValueFemale19to50Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    
+    self.suggestedValueMale1930Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueMale3150Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
 
 }
+
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -55,11 +69,22 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Gender"];
             return cell;
         }
+
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.textLabel.text = @"Put goals over here";
-        return cell;
-    }
+        GoalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"goal"];
+        
+        cell.goalLabel.text = self.goalNames[indexPath.row];
+        cell.suggestedValueLabel.text = self.suggestedValueFemale19to50Age[indexPath.row];
+        if (indexPath.row %2 == 0) {
+            cell.backgroundColor = [UIColor lightGrayColor];
+        }
+        else{
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+            return cell;
+        }
+    
+    
 }
 
 
@@ -68,7 +93,7 @@
         if (section == 0){
             return 5;
         }else{
-            return 1;
+            return self.goalNames.count;
         }
 }
 
@@ -97,6 +122,23 @@
     }
     return sectionName;
 }
+
+
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    switch (indexPath.section)
+    
+    {
+        case 0:
+            return 40.0f;
+        case 1:
+            return 110.0f;
+    }
+    return 0.0f;
+}
+
 
 
 

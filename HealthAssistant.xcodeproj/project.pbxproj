@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */; };
+		195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */; };
 		1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */; };
 		1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */; };
 		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionsTableViewCell.h; sourceTree = "<group>"; };
 		1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionsTableViewCell.m; sourceTree = "<group>"; };
+		195EF7701CCEFCC300FFA179 /* GoalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalTableViewCell.h; sourceTree = "<group>"; };
+		195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalTableViewCell.m; sourceTree = "<group>"; };
 		1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterTableViewCell.h; sourceTree = "<group>"; };
 		1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterTableViewCell.m; sourceTree = "<group>"; };
 		1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesTableViewCell.h; sourceTree = "<group>"; };
@@ -242,12 +245,6 @@
 				CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */,
 				CB24EE6C1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.h */,
 				CB24EE6D1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m */,
-				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
-				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
-				1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */,
-				1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */,
-				1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */,
-				1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */,
 				CBE791ED1CC34450001E9FDE /* Assets.xcassets */,
 			);
 			name = View;
@@ -268,6 +265,12 @@
 				CB282E531CC6F5E90054A47B /* TabbarViewController.m */,
 				CB98FC431CC568DC0051C177 /* ChartsViewController.h */,
 				CB98FC441CC568DC0051C177 /* ChartsViewController.m */,
+				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
+				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
+				1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */,
+				1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */,
+				1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */,
+				1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */,
 				CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */,
 				CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */,
 				CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */,
@@ -282,6 +285,8 @@
 				CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
 				CB98FC4B1CC569940051C177 /* ProfileViewController.m */,
+				195EF7701CCEFCC300FFA179 /* GoalTableViewCell.h */,
+				195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,7 +325,7 @@
 				TargetAttributes = {
 					CBE791DA1CC34450001E9FDE = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = NC3T486549;
+						DevelopmentTeam = PN5D3T49DB;
 					};
 				};
 			};
@@ -431,6 +436,7 @@
 				CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
+				195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */,
 				CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */,
 				CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */,
 				CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */,
