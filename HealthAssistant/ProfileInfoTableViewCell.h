@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *profileInfoLabel;
 @property (weak, nonatomic) IBOutlet UITextField *profileInfoTextField;
 
+
 @end
