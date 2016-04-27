@@ -36,7 +36,7 @@
     self.food = [Food new];
     self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
     //test data for user.selectedFoodProperties
-    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @7, @9, @10, @11];
+    self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @7, @9, @10, @11, @12, @13, @14, @15];
     self.selected = [NSMutableArray new];
     for (int i =0; i< self.food.foodProperties.count; i++) {
         if ([self.user ifSelected:self.food.foodProperties[i].fpId]) {
@@ -85,7 +85,7 @@
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160419" meal:self.meal andFood:food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160420" meal:self.meal andFood:food];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
