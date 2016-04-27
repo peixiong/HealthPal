@@ -8,7 +8,7 @@
 
 #import "ChartsViewController.h"
 #import "NutritionsTableViewCell.h"
-
+#import "FirebaseManager.h"
 
 
 @interface ChartsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -22,7 +22,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    NSLog(@"ChartsVC, this is the user being passed: %@",self.user);
+    
+    
+    // Get a reference to our posts
+//    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://blinding-heat-8730.firebaseio.com/"];
+//    // Attach a block to read the data at our posts reference
+//    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        NSLog(@"%@", snapshot.value[@"email"]);
+//    } withCancelBlock:^(NSError *error) {
+//        NSLog(@"%@", error.description);
+//    }];
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -32,8 +44,6 @@
     if(indexPath.row == 0)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nutritions"];
-        //cell.userInteractionEnabled = true;
-
         return cell;
         
     }if (indexPath.row == 1){
