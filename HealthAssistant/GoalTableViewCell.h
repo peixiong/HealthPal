@@ -11,7 +11,6 @@
 @interface GoalTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
-@property (weak, nonatomic) IBOutlet UIButton *goalIsSelected;
 @property (weak, nonatomic) IBOutlet UISlider *valueSlider;
 @property (weak, nonatomic) IBOutlet UILabel *actualValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *suggestedValueLabel;

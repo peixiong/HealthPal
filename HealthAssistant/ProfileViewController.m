@@ -8,9 +8,13 @@
 
 #import "ProfileViewController.h"
 #import "GoalTableViewCell.h"
+#import "ProfileInfoTableViewCell.h"
+#import "FirebaseManager.h"
+
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 
 @end
@@ -19,17 +23,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    NSLog(@"ProfileVC, this is the user being passed: %@",self.user);
+    
+    //Firebase *ref = [[Firebase alloc] initWithUrl: @"https://docs-examples.firebaseio.com/web/saving-data/fireblog/posts"];
+    //NSString * uid = @"";
+    
+    
     
     [self.view endEditing:YES];
     
     
-    self.goalNames = @[@"Carbohydrate",@"Protein", @"Calcium",@"Iron", @"Vitamin A",@"Vitamin C"];
+    self.goalNames = @[@"Calories", @"Carbohydrate",@"Protein", @"Calcium",
+                       @"Iron", @"Vitamin A",@"Vitamin C", @"Sugar",
+                       @"Total Fiber", @"Sodium", @"Water", @"Steps" ];
     
-    self.suggestedValueFemale19to50Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueFemale19to50Age = @[@"avg 2000", @"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d", @"30 g", @"26 g/d", @"<500mg", @">2 Liters", @"10,000"];
     
-    self.suggestedValueMale1930Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
-    self.suggestedValueMale3150Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueMale1930Age = @[@"",@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueMale3150Age = @[@"",@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
 
 }
 
@@ -40,33 +52,35 @@
     
     if (indexPath.section == 0){
         
-    
         if(indexPath.row == 0){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Name"];
-        return cell;
-        }
-        
-        
-        if (indexPath.row == 1){
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Date of Birth"];
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"Name";
+            cell.profileInfoTextField.placeholder = @"i.e. David Applseed";
             return cell;
-        }
-        
-        
-        if (indexPath.row == 2){
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Height"];
+        }if(indexPath.row == 1){
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"Date of Birth";
+            cell.profileInfoTextField.placeholder = @"i.e 01/01/2001";
             return cell;
-        }
-        
-        
-        if (indexPath.row == 3){
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Weight"];
+        }if(indexPath.row == 2){
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"Height";
+            cell.profileInfoTextField.placeholder = @"i.e. 5\" 5'";
             return cell;
-        }
-        
-        
-        else {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Gender"];
+        }if(indexPath.row == 3){
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"Weight";
+            cell.profileInfoTextField.placeholder = @"i.e. 150 lb";
+            return cell;
+        }if(indexPath.row == 4){
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"Gender";
+            cell.profileInfoTextField.placeholder = @"i.e. Male";
+            return cell;
+        }else{
+            ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.profileInfoLabel.text = @"";
+            cell.profileInfoTextField.text = @"";
             return cell;
         }
 
@@ -77,14 +91,14 @@
         cell.suggestedValueLabel.text = self.suggestedValueFemale19to50Age[indexPath.row];
         if (indexPath.row %2 == 0) {
             cell.backgroundColor = [UIColor lightGrayColor];
+            return cell;
         }
         else{
             cell.backgroundColor = [UIColor whiteColor];
-        }
             return cell;
         }
-    
-    
+        
+        }
 }
 
 
@@ -134,12 +148,20 @@
         case 0:
             return 40.0f;
         case 1:
-            return 110.0f;
+            return 80.0f;
     }
     return 0.0f;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Goal has been selected" message:@"Alert message" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 
 @end
