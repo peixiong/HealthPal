@@ -210,5 +210,8 @@
     [self dismissViewControllerAnimated:picker completion:nil];
 }
 
+-(void)didLoginWithUser:(User *)user{
+    self.user = user;
+}
 
 @end

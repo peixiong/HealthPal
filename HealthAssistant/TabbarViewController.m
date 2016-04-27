@@ -12,7 +12,6 @@
 #import "ChartsViewController.h"
 #import "GroupViewController.h"
 #import "SuggestionViewController.h"
-#import "UserProfileViewController.h"
 #import "FirebaseManager.h"
 #import "ProfileViewController.h"
 

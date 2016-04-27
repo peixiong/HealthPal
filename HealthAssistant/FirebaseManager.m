@@ -78,7 +78,7 @@
 -(void)retrieveUserDataWithUid:(NSString *)uid{
     self.user =[[User alloc] init];
     Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@",uid]];
-    [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [readRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         self.user.uid = uid;
         self.user.username = snapshot.value[@"username"];
         self.user.email = snapshot.value[@"email"];
@@ -86,7 +86,7 @@
         NSData *imageData = [[NSData alloc] initWithBase64EncodedString:self.user.imageStr options:0];
         self.user.image = [[UIImage alloc] initWithData:imageData];
         self.user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
-//        user.time_Food = snapshot.value[@"time_food"];
+        self.user.timeFood = snapshot.value[@"time_food"];
         self.user.weight = snapshot.value[@"weight"];
         self.user.height = snapshot.value[@"height"];
         self.user.gender = snapshot.value[@"gender"];
