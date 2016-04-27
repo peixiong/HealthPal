@@ -155,7 +155,7 @@
                         } else {
                             //user already exist
                             [self retrieveUserDataWithUid:authData.uid];
-                            [self.delegate didLoginWithUser:self.user];
+                            self.user.uid = authData.uid;
                         }
                     }];
                 }

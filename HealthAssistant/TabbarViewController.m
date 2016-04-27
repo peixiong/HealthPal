@@ -12,9 +12,11 @@
 #import "ChartsViewController.h"
 #import "GroupViewController.h"
 #import "SuggestionViewController.h"
+#import "UserProfileViewController.h"
+#import "FirebaseManager.h"
 #import "ProfileViewController.h"
 
-@interface TabbarViewController () <UITabBarControllerDelegate, PopUPButtonDelegate>
+@interface TabbarViewController () <UITabBarControllerDelegate, PopUPButtonDelegate, FirebaseManagerDelegate>
 @property NSMutableArray<UIButton *> *buttonsArray;
 @property UIView *backgroundView;
 @end
@@ -23,7 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //[FirebaseManager sharedInstance].delegate = self;
+    self.buttonsArray = [NSMutableArray new];
+    self.delegate = self;
     ChartsViewController *cvc = [self.viewControllers objectAtIndex:0];
     GroupViewController *gvc = [self.viewControllers objectAtIndex:1];
     SuggestionViewController *svc = [self.viewControllers objectAtIndex:3];
@@ -34,9 +38,10 @@
     svc.user = self.user;
     uvc.user = self.user;
     entbvc.user = self.user;
-    
-    self.buttonsArray = [NSMutableArray new];
-    self.delegate = self;
+}
+
+-(void)didLoginWithUser:(User *)user{
+
 }
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
