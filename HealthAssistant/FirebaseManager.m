@@ -17,7 +17,7 @@
 @property Firebase *rootRef;
 @property Firebase *foodsRef;
 @property Firebase *usersRef;
-
+@property User *user;
 @end
 
 
@@ -67,38 +67,38 @@
             [self showAlertWithMessage:@"Email or password are incorrect."];
         } else {
             NSLog(@"We are now logged in with userId = %@", authData.uid);
-            User *user = [self retrieveUserDataWithUid:authData.uid];
+            [self retrieveUserDataWithUid:authData.uid];
             
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
-                [self.delegate didLoginWithUser:user];
-            } else {
-                NSLog(@"Self.delegate = nil or delegate does not have the (userDidLoginWithUid) method");
-            }
         }
     }];
 }
 
 
 //MARK.......retrieve data from firebase using user id
--(User *)retrieveUserDataWithUid:(NSString *)uid{
-    User *user =[User new];
+-(void)retrieveUserDataWithUid:(NSString *)uid{
+    self.user =[[User alloc] init];
     Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@",uid]];
     [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        user.uid = uid;
-        user.username = snapshot.value[@"username"];
-        user.email = snapshot.value[@"email"];
-        user.imageStr = snapshot.value[@"imageStr"];
-        NSData *imageData = [[NSData alloc] initWithBase64EncodedString:user.imageStr options:0];
-        user.image = [[UIImage alloc] initWithData:imageData];
-        user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
+        self.user.uid = uid;
+        self.user.username = snapshot.value[@"username"];
+        self.user.email = snapshot.value[@"email"];
+        self.user.imageStr = snapshot.value[@"imageStr"];
+        NSData *imageData = [[NSData alloc] initWithBase64EncodedString:self.user.imageStr options:0];
+        self.user.image = [[UIImage alloc] initWithData:imageData];
+        self.user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
 //        user.time_Food = snapshot.value[@"time_food"];
-        user.weight = snapshot.value[@"weight"];
-        user.height = snapshot.value[@"height"];
-        user.gender = snapshot.value[@"gender"];
+        self.user.weight = snapshot.value[@"weight"];
+        self.user.height = snapshot.value[@"height"];
+        self.user.gender = snapshot.value[@"gender"];
+        
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
+            [self.delegate didLoginWithUser:self.user];
+        } else {
+            NSLog(@"Self.delegate = nil or delegate does not have the (userDidLoginWithUid) method");
+        }
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
-    return user;
 };
 
 
@@ -154,8 +154,8 @@
                             [self.delegate didLoginWithUser:user];
                         } else {
                             //user already exist
-                            User *user = [self retrieveUserDataWithUid:authData.uid];
-                            [self.delegate didLoginWithUser:user];
+                            [self retrieveUserDataWithUid:authData.uid];
+                            [self.delegate didLoginWithUser:self.user];
                         }
                     }];
                 }

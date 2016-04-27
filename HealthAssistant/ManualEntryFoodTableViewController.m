@@ -23,7 +23,6 @@
 @property NSMutableArray<FoodProperty *> *selected;
 @property NSString *meal;
 @property UIImage *foodImage;
-@property LunchImageTableViewCell *cell;
 
 @end
 
@@ -85,7 +84,7 @@
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160420" meal:self.meal andFood:food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:food];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -101,6 +100,7 @@
     } else if (sender.tag == 3) {
         self.meal = @"Snack";
     }
+    sender.backgroundColor = [UIColor grayColor];
 }
 
 
@@ -112,11 +112,6 @@
     } else if (indexPath.section == 2){
         self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
     };
-    NSLog(@"indexPath.row = %li", (long)indexPath.row);
-    NSLog(@"indexPath.section = %li", (long)indexPath.section);
-    NSLog(@"string = %@", cell.textField.text);
-    NSLog(@"%lu", (unsigned long)self.selected.count);
-    //infirebase, set the key value to be "string"
 }
 
 #pragma mark - Table view data source
@@ -184,7 +179,6 @@
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
-        //[self presentViewController:imagePicker animated:true completion:nil];
     } else {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -192,7 +186,6 @@
     }
     [self presentViewController:imagePicker animated:true completion:nil];
     [segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    self.cell = cell;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -210,7 +203,9 @@
     self.selected[0].value = imageStr;
     
     self.foodImage = newImage;
-    self.cell.foodImageView.image = newImage;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    LunchImageTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.foodImageView.image = newImage;
  
     [self dismissViewControllerAnimated:picker completion:nil];
 }
