@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface ProfileViewController : UIViewController
 
@@ -17,5 +18,8 @@
 
 @property NSArray *suggestedValueMale1930Age;
 @property NSArray *suggestedValueMale3150Age;
+
+@property User *user;
+
 
 @end

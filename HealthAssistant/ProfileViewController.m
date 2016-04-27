@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"ProfileVC, this is the user being passed: %@",self.user);
+    
     //Firebase *ref = [[Firebase alloc] initWithUrl: @"https://docs-examples.firebaseio.com/web/saving-data/fireblog/posts"];
     //NSString * uid = @"";
     
@@ -32,12 +34,14 @@
     [self.view endEditing:YES];
     
     
-    self.goalNames = @[@"Carbohydrate",@"Protein", @"Calcium",@"Iron", @"Vitamin A",@"Vitamin C"];
+    self.goalNames = @[@"Calories", @"Carbohydrate",@"Protein", @"Calcium",
+                       @"Iron", @"Vitamin A",@"Vitamin C", @"Sugar",
+                       @"Total Fiber", @"Sodium", @"Water", @"Steps" ];
     
-    self.suggestedValueFemale19to50Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueFemale19to50Age = @[@"avg 2000", @"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d", @"30 g", @"26 g/d", @"<500mg", @">2 Liters", @"10,000"];
     
-    self.suggestedValueMale1930Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
-    self.suggestedValueMale3150Age = @[@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueMale1930Age = @[@"",@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
+    self.suggestedValueMale3150Age = @[@"",@"100 g/d", @"0.66 g/kg/d", @"800 mg/d", @"8.1 mg/d", @"500 (μg/d)a", @"60 mg/d"];
 
 }
 
@@ -144,12 +148,20 @@
         case 0:
             return 40.0f;
         case 1:
-            return 110.0f;
+            return 80.0f;
     }
     return 0.0f;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Goal has been selected" message:@"Alert message" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 
 @end

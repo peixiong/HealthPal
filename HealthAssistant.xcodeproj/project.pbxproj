@@ -20,7 +20,6 @@
 		CB0812641CCB3FAC008C985C /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812631CCB3FAC008C985C /* Food.m */; };
 		CB0812671CCB3FEA008C985C /* FoodProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812661CCB3FEA008C985C /* FoodProperty.m */; };
 		CB08126A1CCB4013008C985C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812691CCB4013008C985C /* User.m */; };
-		CB24EE6B1CCC040800AF24CB /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE6A1CCC040800AF24CB /* UserProfileViewController.m */; };
 		CB24EE6E1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE6D1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m */; };
 		CB24EE711CCC689000AF24CB /* SelectedNutritionTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE701CCC689000AF24CB /* SelectedNutritionTarget.m */; };
 		CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E501CC6F5D00054A47B /* PopUPButton.m */; };
@@ -76,8 +75,6 @@
 		CB0812661CCB3FEA008C985C /* FoodProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodProperty.m; sourceTree = "<group>"; };
 		CB0812681CCB4013008C985C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CB0812691CCB4013008C985C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		CB24EE691CCC040800AF24CB /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
-		CB24EE6A1CCC040800AF24CB /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		CB24EE6C1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedFoodPropertyCell.h; sourceTree = "<group>"; };
 		CB24EE6D1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedFoodPropertyCell.m; sourceTree = "<group>"; };
 		CB24EE6F1CCC689000AF24CB /* SelectedNutritionTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedNutritionTarget.h; sourceTree = "<group>"; };
@@ -256,8 +253,6 @@
 		CBE792041CC348BB001E9FDE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB24EE691CCC040800AF24CB /* UserProfileViewController.h */,
-				CB24EE6A1CCC040800AF24CB /* UserProfileViewController.m */,
 				CBE791E41CC34450001E9FDE /* ViewController.h */,
 				CBE791E51CC34450001E9FDE /* ViewController.m */,
 				CB033B151CC3F78E00CDB417 /* LoginViewController.h */,
@@ -451,7 +446,6 @@
 				CBE791E01CC34450001E9FDE /* main.m in Sources */,
 				1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */,
 				CB24EE711CCC689000AF24CB /* SelectedNutritionTarget.m in Sources */,
-				CB24EE6B1CCC040800AF24CB /* UserProfileViewController.m in Sources */,
 				CBDEDF731CC82093007335BE /* ManualEntryFoodTableViewController.m in Sources */,
 				CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */,
 			);
