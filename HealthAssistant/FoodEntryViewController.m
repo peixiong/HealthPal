@@ -9,11 +9,11 @@
 #import "FoodEntryViewController.h"
 #import "ManualEntryFoodTableViewController.h"
 #import "Food.h"
+
 @interface FoodEntryViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @property NSArray<NSDictionary *> *foodInfoFromJason;
 @property NSMutableArray<Food *> *foodsResults;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;

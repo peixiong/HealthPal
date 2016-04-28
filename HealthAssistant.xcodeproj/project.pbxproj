@@ -30,7 +30,6 @@
 		CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC441CC568DC0051C177 /* ChartsViewController.m */; };
 		CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC4B1CC569940051C177 /* ProfileViewController.m */; };
 		CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */; };
-		CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */; };
 		CBA00F7D1CC6E819003CEE69 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */; };
 		CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */; };
 		CBA00F831CC6E990003CEE69 /* Charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F811CC6E990003CEE69 /* Charts.storyboard */; };
@@ -38,6 +37,8 @@
 		CBA00F881CC6EA05003CEE69 /* ManualEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */; };
 		CBA00F8A1CC6EA21003CEE69 /* Suggestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */; };
 		CBA00F8D1CC6EA43003CEE69 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */; };
+		CBACE3B01CD1D97B00DC421A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBACE3AF1CD1D97B00DC421A /* AVFoundation.framework */; };
+		CBACE3B31CD1E0FC00DC421A /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBACE3B21CD1E0FC00DC421A /* ScanViewController.m */; };
 		CBDEDF731CC82093007335BE /* ManualEntryFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */; };
 		CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */; };
 		CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEDF791CC8987D007335BE /* FirebaseManager.m */; };
@@ -96,8 +97,6 @@
 		CB98FC4B1CC569940051C177 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodEntryViewController.h; sourceTree = "<group>"; };
 		CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodEntryViewController.m; sourceTree = "<group>"; };
-		CBA00F781CC6E7CB003CEE69 /* WaterEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterEntryViewController.h; sourceTree = "<group>"; };
-		CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterEntryViewController.m; sourceTree = "<group>"; };
 		CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
 		CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
@@ -107,6 +106,9 @@
 		CBA00F871CC6EA05003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ManualEntry.storyboard; sourceTree = "<group>"; };
 		CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Suggestions.storyboard; sourceTree = "<group>"; };
 		CBA00F8C1CC6EA43003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		CBACE3AF1CD1D97B00DC421A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CBACE3B11CD1E0FC00DC421A /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		CBACE3B21CD1E0FC00DC421A /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		CBDEDF711CC82093007335BE /* ManualEntryFoodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryFoodTableViewController.h; sourceTree = "<group>"; };
 		CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryFoodTableViewController.m; sourceTree = "<group>"; };
 		CBDEDF741CC8395B007335BE /* ManualEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryTableViewCell.h; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBACE3B01CD1D97B00DC421A /* AVFoundation.framework in Frameworks */,
 				7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */,
 				CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */,
 				CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */,
@@ -146,6 +149,7 @@
 		90B7AA4E6898D756683B8359 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBACE3AF1CD1D97B00DC421A /* AVFoundation.framework */,
 				CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */,
 				CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */,
 				C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */,
@@ -248,6 +252,18 @@
 				CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */,
 				CB24EE6C1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.h */,
 				CB24EE6D1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m */,
+				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
+				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
+				1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */,
+				1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */,
+				1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */,
+				1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */,
+				195EF7791CD04C3400FFA179 /* ProfileInfoTableViewCell.h */,
+				195EF77A1CD04C3400FFA179 /* ProfileInfoTableViewCell.m */,
+				195EF7701CCEFCC300FFA179 /* GoalTableViewCell.h */,
+				195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */,
+				195EF77C1CD1954900FFA179 /* LogOutTableViewCell.h */,
+				195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */,
 				CBE791ED1CC34450001E9FDE /* Assets.xcassets */,
 			);
 			name = View;
@@ -266,32 +282,20 @@
 				CB282E531CC6F5E90054A47B /* TabbarViewController.m */,
 				CB98FC431CC568DC0051C177 /* ChartsViewController.h */,
 				CB98FC441CC568DC0051C177 /* ChartsViewController.m */,
-				1938FEE61CC5D80A00884AE8 /* NutritionsTableViewCell.h */,
-				1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */,
-				1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */,
-				1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */,
-				1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */,
-				1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */,
 				CBA00F7B1CC6E819003CEE69 /* GroupViewController.h */,
 				CBA00F7C1CC6E819003CEE69 /* GroupViewController.m */,
 				CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */,
 				CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */,
 				CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */,
 				CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */,
+				CBACE3B11CD1E0FC00DC421A /* ScanViewController.h */,
+				CBACE3B21CD1E0FC00DC421A /* ScanViewController.m */,
 				CBDEDF711CC82093007335BE /* ManualEntryFoodTableViewController.h */,
 				CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */,
-				CBA00F781CC6E7CB003CEE69 /* WaterEntryViewController.h */,
-				CBA00F791CC6E7CB003CEE69 /* WaterEntryViewController.m */,
 				CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */,
 				CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
 				CB98FC4B1CC569940051C177 /* ProfileViewController.m */,
-				195EF7791CD04C3400FFA179 /* ProfileInfoTableViewCell.h */,
-				195EF77A1CD04C3400FFA179 /* ProfileInfoTableViewCell.m */,
-				195EF7701CCEFCC300FFA179 /* GoalTableViewCell.h */,
-				195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */,
-				195EF77C1CD1954900FFA179 /* LogOutTableViewCell.h */,
-				195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -442,10 +446,10 @@
 				CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
+				CBACE3B31CD1E0FC00DC421A /* ScanViewController.m in Sources */,
 				195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */,
 				CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */,
 				CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */,
-				CBA00F7A1CC6E7CB003CEE69 /* WaterEntryViewController.m in Sources */,
 				CB282E541CC6F5E90054A47B /* TabbarViewController.m in Sources */,
 				CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */,
 				195EF77B1CD04C3400FFA179 /* ProfileInfoTableViewCell.m in Sources */,

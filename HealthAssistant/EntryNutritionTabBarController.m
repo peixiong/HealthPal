@@ -8,8 +8,10 @@
 
 #import "EntryNutritionTabBarController.h"
 #import "FoodEntryViewController.h"
-
+#import "ScanViewController.h"
 @interface EntryNutritionTabBarController ()
+
+@property float tabbarHeight;
 
 @end
 
@@ -20,6 +22,8 @@
     UINavigationController *nav = [self.viewControllers objectAtIndex:0];
     FoodEntryViewController *fevc = [nav.viewControllers objectAtIndex:0];
     fevc.user = self.user;
+    ScanViewController *svc = [self.viewControllers objectAtIndex:1];
+    svc.tabbarHeight = self.tabBar.frame.size.height;
 }
 
 @end

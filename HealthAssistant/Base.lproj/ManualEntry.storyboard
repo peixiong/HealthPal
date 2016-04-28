@@ -219,7 +219,7 @@
         <!--Item-->
         <scene sceneID="bMF-ty-zq2">
             <objects>
-                <viewController id="jg7-jX-U0A" customClass="WaterEntryViewController" sceneMemberID="viewController">
+                <viewController id="jg7-jX-U0A" customClass="ScanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jnW-CI-6Ha"/>
                         <viewControllerLayoutGuide type="bottom" id="whh-HA-V5e"/>

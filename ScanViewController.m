@@ -1,18 +1,18 @@
 //
-//  WaterEntryViewController.m
-//  HealthAssistant
+//  ScanViewController.m
+//  
 //
-//  Created by Pei Xiong on 4/19/16.
-//  Copyright © 2016 Pei Xiong. All rights reserved.
+//  Created by Pei Xiong on 4/27/16.
+//
 //
 
-#import "WaterEntryViewController.h"
+#import "ScanViewController.h"
 
-@interface WaterEntryViewController ()
+@interface ScanViewController ()
 
 @end
 
-@implementation WaterEntryViewController
+@implementation ScanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
