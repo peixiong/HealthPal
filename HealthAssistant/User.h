@@ -22,7 +22,6 @@
 @property NSString *gender;
 @property NSMutableArray<NSDictionary *> *timeFood;
 @property NSArray<NSNumber *> *selectedFoodProperties;
-//@property NSMutableArray<FoodProperty *> *selectedFoodProperties;
 
 -(BOOL)ifSelected:(int)fpId;
 
