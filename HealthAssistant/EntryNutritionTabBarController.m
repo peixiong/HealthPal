@@ -24,6 +24,7 @@
     fevc.user = self.user;
     ScanViewController *svc = [self.viewControllers objectAtIndex:1];
     svc.tabbarHeight = self.tabBar.frame.size.height;
+    svc.user = self.user;
 }
 
 @end

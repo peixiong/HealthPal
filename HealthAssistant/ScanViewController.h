@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "User.h"
 @interface ScanViewController : UIViewController
 
 @property float tabbarHeight;
-
+@property User *user;
 @end

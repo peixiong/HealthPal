@@ -45,22 +45,32 @@
     NSMutableArray *nutritionInfoPlaceHolders = [NSMutableArray new];
     for (int i = 1; i<5; i++) {
         NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
+        if (self.food == nil) {
+            self.food = [Food new];
+        }
         FoodProperty *foodProperty = self.food.foodProperties[index];
         [basicInfo addObject:foodProperty.name];
         [basicInfoPlaceHolders addObject:foodProperty.placeHolder];
-        [basicValues addObject:foodProperty.value];
+        
+        if (self.food.foodProperties[1].value) {
+            [basicValues addObject:foodProperty.value];
+        }
     }
     for (int i = 5; i<self.user.selectedFoodProperties.count; i++) {
         NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
         FoodProperty *foodProperty = self.food.foodProperties[index];
         [nutritionInfo addObject:foodProperty.name];
         [nutritionInfoPlaceHolders addObject:foodProperty.placeHolder];
+        if (self.food.foodProperties[1].value) {
         [nutritionValues addObject:foodProperty.value];
+        }
     }
     self.infoTypes = @[basicInfo, nutritionInfo];
     self.headers = @[@"Food Information", @"Food Nutritions"];
     self.placeHolders = @[basicInfoPlaceHolders,nutritionInfoPlaceHolders];
+    if (self.food.foodProperties[1].value) {
     self.textFieldValues = @[basicValues, nutritionValues];
+    }
 }
 
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {

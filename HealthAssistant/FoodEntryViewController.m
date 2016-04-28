@@ -32,7 +32,7 @@
     NSLog(@"%@",self.searchBar.text);
     self.foodsResults = [NSMutableArray new];
     NSString *modifiedSearchText = [self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    NSString *searchStr = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/search/%@?results=0:1&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams,image_front_full_url&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", modifiedSearchText];
+    NSString *searchStr = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/search/%@?results=0:1&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", modifiedSearchText];
     [self loadJasonWithString:searchStr];
 }
 
