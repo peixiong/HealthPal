@@ -10,10 +10,12 @@
 #import "GoalTableViewCell.h"
 #import "ProfileInfoTableViewCell.h"
 #import "FirebaseManager.h"
+#import "LogOutTableViewCell.h"
 
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, FirebaseManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 
 
 
@@ -24,7 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"ProfileVC, this is the user being passed: %@",self.user);
+    self.profileImage.layer.cornerRadius = 12;
+    self.profileImage.layer.masksToBounds = YES;
+    
+    [FirebaseManager sharedInstance].delegate = self;
+    self.profileImage.image = self.user.image;
+    NSLog(@"ChartsVC, this is the user being passed: %@",self.user.uid);
+    NSLog(@"ChartsVC, this is the user's food: %@",self.user.timeFood);
     
     //Firebase *ref = [[Firebase alloc] initWithUrl: @"https://docs-examples.firebaseio.com/web/saving-data/fireblog/posts"];
     //NSString * uid = @"";
@@ -55,6 +63,7 @@
         if(indexPath.row == 0){
             ProfileInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.profileInfoLabel.text = @"Name";
+            cell.profileInfoTextField.text = self.user.username;
             cell.profileInfoTextField.placeholder = @"i.e. David Applseed";
             return cell;
         }if(indexPath.row == 1){
@@ -84,7 +93,8 @@
             return cell;
         }
 
-    }else{
+    }
+    if (indexPath.section == 1){
         GoalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"goal"];
         
         cell.goalLabel.text = self.goalNames[indexPath.row];
@@ -97,8 +107,14 @@
             cell.backgroundColor = [UIColor whiteColor];
             return cell;
         }
+    }
+    else{
+        LogOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"logout"];
         
+        return cell;
         }
+
+    return nil;
 }
 
 
@@ -106,15 +122,18 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
         if (section == 0){
             return 5;
-        }else{
+        }if (section == 1){
             return self.goalNames.count;
+        }if (section == 2){
+            return 1;
+        }else{
+            return 0;
         }
 }
 
-// 1st section for Profile
-// 2nd section for Goals
+// Profile, Goals & Logout
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 
@@ -129,6 +148,9 @@
             break;
         case 1:
             sectionName = NSLocalizedString(@"Goals", @"Goals");
+            break;
+        case 2:
+            sectionName = NSLocalizedString(@"Logout", @"Logout");
             break;
         default:
             sectionName = @"";
@@ -148,6 +170,8 @@
         case 0:
             return 40.0f;
         case 1:
+            return 80.0f;
+        case 2:
             return 80.0f;
     }
     return 0.0f;
