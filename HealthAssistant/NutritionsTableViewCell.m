@@ -7,6 +7,8 @@
 //
 
 #import "NutritionsTableViewCell.h"
+#import "NutritionCategory.h"
+
 
 @implementation NutritionsTableViewCell
 
@@ -17,11 +19,20 @@
     self.nutritionsButtonView.delegate = self;
     self.nutritionsButtonView.dataSource = self;
     
-    self.nutritionsArray = [NSArray arrayWithObjects:@"Calories",@"Carbs",@"Protein",@"Fat",@"Sugar",@"Total Fiber", @"Sodium",@"Calcium",@"Iron", @"Vitamin A",@"Vitamin C", nil];
+
+    NutritionCategory *calories = [[NutritionCategory alloc]init];
+    calories.title = @"Calories";
+    calories.date = [NSDate date];
+    calories.points = @[@34.1f,@25.1f,@38.1f,@24.1f,@42.f, @25.1f,@38.1f,@24.1f,@42.f];
+    
+    self.nutritionsArray = [NSArray arrayWithObjects:calories,nil];
+                            
+                            //@"Calories",@"Carbs",@"Protein",@"Fat",@"Sugar",@"Total Fiber", @"Sodium",@"Calcium",@"Iron", @"Vitamin A",@"Vitamin C", nil];
+    
+    self.points = calories.points;
     
     
-    self.points = @[@34.1f,@25.1f,@38.1f,@24.1f,@42.f, @25.1f,@38.1f,@24.1f,@42.f];
-    self.dates = @[@"2016-01-01 03:34:42 +0000", @"2016-01-02 03:34:42 +0000", @"2016-01-03 03:34:42 +0000", @"2016-01-04 03:34:42 +0000", @"2016-01-05 03:34:42 +0000", @"2016-01-06 03:34:42 +0000", @"2016-01-07 03:34:42 +0000", @"2016-01-08 03:34:42 +0000", @"2016-01-09 03:34:42 +0000"];
+    //self.dates = @[@"2016-01-01 03:34:42 +0000", @"2016-01-02 03:34:42 +0000", @"2016-01-03 03:34:42 +0000", @"2016-01-04 03:34:42 +0000", @"2016-01-05 03:34:42 +0000", @"2016-01-06 03:34:42 +0000", @"2016-01-07 03:34:42 +0000", @"2016-01-08 03:34:42 +0000", @"2016-01-09 03:34:42 +0000"];
     
     
     [self cellTitle];
@@ -57,16 +68,16 @@
     // Initing a label for each cell
     int cellX = cell.frame.origin.x;
     int cellY = cell.frame.origin.y;
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 25)];
-    label.text = [self.nutritionsArray objectAtIndex:indexPath.row];
-    label.clipsToBounds = YES;
-    label.layer.masksToBounds = YES;
-    label.layer.cornerRadius = 8.0;
-    label.layer.borderWidth = 1;
-    label.layer.borderColor = [UIColor greenColor].CGColor;
-    label.textColor = [UIColor greenColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self.nutritionsButtonView addSubview:label];
+    self.buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 25)];
+    self.buttonLabel.text = [[self.nutritionsArray objectAtIndex:indexPath.row]title];
+    self.buttonLabel.clipsToBounds = YES;
+    self.buttonLabel.layer.masksToBounds = YES;
+    self.buttonLabel.layer.cornerRadius = 8.0;
+    self.buttonLabel.layer.borderWidth = 1;
+    self.buttonLabel.layer.borderColor = [UIColor greenColor].CGColor;
+    self.buttonLabel.textColor = [UIColor greenColor];
+    self.buttonLabel.textAlignment = NSTextAlignmentCenter;
+    [self.nutritionsButtonView addSubview:self.buttonLabel];
 
     return cell;
 }
@@ -81,9 +92,27 @@
 // Action on cell pressed
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    //BUG!!
+    //self.buttonLabel.backgroundColor = [UIColor colorWithRed:0/255 green:0/255 blue:100/255 alpha:0.2];
+    
+    
+    
+    NutritionCategory *nc = self.nutritionsArray[indexPath.row];
+    
+    NSLog(@"%@",nc);
+    [nc getDataFromFireBase];
     NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
+    
 }
 
+
+
+
+
+
+
+#pragma mark - Graph Methods
 
 // Create & apply a gradient to apply to the bottom portion of the graph
 -(void)gradientForGraphLine{
@@ -95,6 +124,7 @@
         1.0, 1.0, 1.0, 0.0};
     self.myGraph.gradientBottom = CGGradientCreateWithColorComponents(colorspace, components, locations, num_locations);
 }
+
 
 // Setup the cell title
 - (void) cellTitle{
@@ -122,9 +152,6 @@
 //Creating a graph
 -(void)createGraph{
     self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 70, self.frame.size.width-40, self.frame.size.height/2.5)];
-    
-    //[self.myGraph sizeToFit];
-    //self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
     
     self.myGraph.dataSource = self;
@@ -242,7 +269,7 @@
         [self.myGraph reloadGraph];
     } else if (self.graphObjectIncrement.value < self.previousStepperValue) {
         // Remove point
-        NSLog(@" + pressed");
+        NSLog(@" - pressed");
         [self.arrayOfValues removeObjectAtIndex:0];
         [self.arrayOfDates removeObjectAtIndex:0];
         [self.myGraph reloadGraph];

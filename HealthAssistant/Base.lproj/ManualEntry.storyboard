@@ -106,10 +106,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-cg-PW1">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-cg-PW1">
                                             <rect key="frame" x="25" y="8" width="123" height="159"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-lr-vRD">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-lr-vRD">
                                                     <rect key="frame" x="0.0" y="0.0" width="123" height="28"/>
                                                     <segments>
                                                         <segment title="Photos"/>
@@ -119,28 +119,28 @@
                                                         <action selector="onSelectPhotoButtonPressed:" destination="ihF-to-tgM" eventType="valueChanged" id="O50-JE-SME"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-NH-c5A">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-NH-c5A">
                                                     <rect key="frame" x="29" y="30" width="65" height="30"/>
                                                     <state key="normal" title="Breakfast"/>
                                                     <connections>
                                                         <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="qnI-CY-AIG"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Lj-1E3">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Lj-1E3">
                                                     <rect key="frame" x="40" y="63" width="43" height="30"/>
                                                     <state key="normal" title="Lunch"/>
                                                     <connections>
                                                         <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="TnQ-yH-EhD"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyp-ac-euM">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyp-ac-euM">
                                                     <rect key="frame" x="39" y="96" width="45" height="30"/>
                                                     <state key="normal" title="Dinner"/>
                                                     <connections>
                                                         <action selector="onMealButtonPressed:" destination="bk9-lp-1Kq" eventType="touchUpInside" id="ilC-Q8-IKI"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-jI-IEI">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-jI-IEI">
                                                     <rect key="frame" x="41" y="129" width="42" height="30"/>
                                                     <state key="normal" title="Snack"/>
                                                     <connections>

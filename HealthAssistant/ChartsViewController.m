@@ -24,28 +24,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    //Retriving data
     [FirebaseManager sharedInstance].delegate = self;
-    
-    NSDictionary *dict;
-    [dict allKeys];
-    
     NSLog(@"ChartsVC, this is the user being passed: %@",self.user.uid);
-    NSLog(@"ChartsVC, this is the user's food: %@",self.user.timeFood );
 
     for (NSString *key in self.user.timeFood.allKeys) {
-        NSLog(@"%@", key);
         NSDictionary *food = self.user.timeFood[key];
-//        for (NSString *foodKey in food.allKeys) {
-//            NSLog(@"%@", food[foodKey]);
-//        }
-//        NSLog(@"%@", food[@"Breakfast"]);
-//        NSLog(@"%@", food[@"Lunch"]);
-        NSDictionary *breakfast = food[@"Breakfast"];
-        NSLog(@"food value: %@", breakfast.allValues);
-//        NSLog(@"breakfast food key: %@", breakfast.allKeys);
+        
+        NSArray * foodValues = food.allValues;
+        //NSLog(@"This is self.foodIDs: %@",self.foodIDs);
+        
+        for (NSArray *singleEntry in foodValues){
+            
+            for (NSString *singleID in singleEntry){
+                NSLog(@"This is ID: %@",singleID);
+                
+                [self.foodIDs addObject:singleID];
+                NSLog(@"This is Array of IDs: %@",self.foodIDs);
+
+            }
+        }
+        
     }
-    
-    
+    //NSLog(@"This is Array of IDs: %@",self.foodIDs);
+
     
 }
 

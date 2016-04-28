@@ -30,7 +30,7 @@
 @property NSArray *points;
 @property NSArray *dates;
 
-
+@property UILabel *buttonLabel;
 
 // Collection View (buttons)
 

@@ -215,10 +215,10 @@
                                     <outlet property="delegate" destination="uzc-cp-8a9" id="wGa-Zz-u9F"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jI5-Kt-QSl">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="141"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jI5-Kt-QSl">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="159"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePW-zg-Mf2">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePW-zg-Mf2">
                                         <rect key="frame" x="141" y="33" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="hlE-vr-U1e"/>
@@ -226,12 +226,12 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.43137254899999999" green="0.70588235290000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36491876840591431" green="0.64511245489120483" blue="0.84846925735473633" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerX" secondItem="jI5-Kt-QSl" secondAttribute="centerX" id="A9q-Ds-hE6"/>
                                     <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerY" secondItem="jI5-Kt-QSl" secondAttribute="centerY" id="COP-D5-dLG"/>
-                                    <constraint firstAttribute="height" constant="150" id="InF-CX-TUy"/>
-                                    <constraint firstAttribute="bottom" secondItem="ePW-zg-Mf2" secondAttribute="bottom" constant="8" id="Njk-Bz-Srm"/>
+                                    <constraint firstAttribute="height" constant="159" id="InF-CX-TUy"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePW-zg-Mf2" secondAttribute="bottom" constant="26" id="Njk-Bz-Srm"/>
                                     <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerX" secondItem="jI5-Kt-QSl" secondAttribute="centerX" id="f1C-4w-gWu"/>
                                     <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerY" secondItem="jI5-Kt-QSl" secondAttribute="centerY" id="f7D-8v-MhW"/>
                                 </constraints>
@@ -254,7 +254,7 @@
                             <constraint firstItem="jI5-Kt-QSl" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="LIO-xA-iBs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wNv-2G-Sev" secondAttribute="trailing" constant="-24" id="bgF-wD-qsJ"/>
                             <constraint firstItem="jI5-Kt-QSl" firstAttribute="top" secondItem="MUd-0E-8tE" secondAttribute="topMargin" id="gCd-Be-Nr8"/>
-                            <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="jI5-Kt-QSl" secondAttribute="bottom" constant="-16" id="iZx-XI-kRc"/>
+                            <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="jI5-Kt-QSl" secondAttribute="bottom" constant="-25" id="iZx-XI-kRc"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-24" id="m25-Ts-tqT"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="rto-j9-psi"/>
                         </constraints>
