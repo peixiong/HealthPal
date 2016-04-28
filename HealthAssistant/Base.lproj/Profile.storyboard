@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-2G-Sev">
-                                <rect key="frame" x="-4" y="20" width="383" height="598"/>
+                                <rect key="frame" x="-4" y="134" width="383" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="598" id="2wN-3H-VJ9"/>
+                                    <constraint firstAttribute="height" constant="493" id="2wN-3H-VJ9"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="3xO-GO-iTg" customClass="ProfileInfoTableViewCell">
@@ -41,7 +41,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-iF-IXg">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-iF-IXg">
                                                     <rect key="frame" x="128" y="8" width="237" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -177,25 +177,91 @@
                                             <outlet property="valueSlider" destination="gsD-MV-YPQ" id="yyy-Hp-UVl"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logout" id="Lyu-kn-X44" customClass="LogOutTableViewCell">
+                                        <rect key="frame" x="0.0" y="147" width="383" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyu-kn-X44" id="O3B-6r-A0y">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJp-Ox-alK">
+                                                    <rect key="frame" x="158" y="3" width="66" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <state key="normal" title="Logout">
+                                                        <color key="titleColor" red="0.9037648439" green="0.0" blue="0.023042535409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="logout:" destination="Lyu-kn-X44" eventType="touchUpInside" id="A54-wp-bMe"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cJp-Ox-alK" firstAttribute="centerX" secondItem="O3B-6r-A0y" secondAttribute="centerX" id="BT4-rY-0NS"/>
+                                                <constraint firstItem="cJp-Ox-alK" firstAttribute="centerY" secondItem="O3B-6r-A0y" secondAttribute="centerY" id="cJw-5X-ICu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="LogoutButton" destination="cJp-Ox-alK" id="Mcd-Wk-D37"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2wN-3H-VJ9"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="uzc-cp-8a9" id="yas-G1-XZL"/>
                                     <outlet property="delegate" destination="uzc-cp-8a9" id="wGa-Zz-u9F"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jI5-Kt-QSl">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="141"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePW-zg-Mf2">
+                                        <rect key="frame" x="141" y="33" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="hlE-vr-U1e"/>
+                                            <constraint firstAttribute="height" constant="100" id="xEu-gj-6ju"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.43137254899999999" green="0.70588235290000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerX" secondItem="jI5-Kt-QSl" secondAttribute="centerX" id="A9q-Ds-hE6"/>
+                                    <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerY" secondItem="jI5-Kt-QSl" secondAttribute="centerY" id="COP-D5-dLG"/>
+                                    <constraint firstAttribute="height" constant="150" id="InF-CX-TUy"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePW-zg-Mf2" secondAttribute="bottom" constant="8" id="Njk-Bz-Srm"/>
+                                    <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerX" secondItem="jI5-Kt-QSl" secondAttribute="centerX" id="f1C-4w-gWu"/>
+                                    <constraint firstItem="ePW-zg-Mf2" firstAttribute="centerY" secondItem="jI5-Kt-QSl" secondAttribute="centerY" id="f7D-8v-MhW"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="COP-D5-dLG"/>
+                                        <exclude reference="f1C-4w-gWu"/>
+                                        <exclude reference="f7D-8v-MhW"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="MUd-0E-8tE" secondAttribute="topMargin" id="6Gt-z6-urb"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="2ex-nD-5pT" secondAttribute="bottom" id="DmG-MY-aKN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jI5-Kt-QSl" secondAttribute="trailing" constant="-20" id="F5y-RD-Ur0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wNv-2G-Sev" secondAttribute="trailing" constant="-20" id="Gs7-m2-eIe"/>
+                            <constraint firstItem="Fvq-0i-1OL" firstAttribute="top" secondItem="wNv-2G-Sev" secondAttribute="bottom" id="J1H-Em-w5n"/>
+                            <constraint firstItem="jI5-Kt-QSl" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="LIO-xA-iBs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wNv-2G-Sev" secondAttribute="trailing" constant="-24" id="bgF-wD-qsJ"/>
+                            <constraint firstItem="jI5-Kt-QSl" firstAttribute="top" secondItem="MUd-0E-8tE" secondAttribute="topMargin" id="gCd-Be-Nr8"/>
+                            <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="jI5-Kt-QSl" secondAttribute="bottom" constant="-16" id="iZx-XI-kRc"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-24" id="m25-Ts-tqT"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="rto-j9-psi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="6Gt-z6-urb"/>
+                                <exclude reference="DmG-MY-aKN"/>
                                 <exclude reference="bgF-wD-qsJ"/>
                                 <exclude reference="m25-Ts-tqT"/>
                             </mask>
@@ -205,6 +271,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="profileImage" destination="ePW-zg-Mf2" id="NCD-Ub-kMp"/>
                         <outlet property="tableView" destination="wNv-2G-Sev" id="AVq-Ex-t71"/>
                     </connections>
                 </viewController>

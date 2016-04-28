@@ -89,7 +89,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-onDoneButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

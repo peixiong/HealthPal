@@ -10,6 +10,7 @@
 		1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938FEE71CC5D80A00884AE8 /* NutritionsTableViewCell.m */; };
 		195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */; };
 		195EF77B1CD04C3400FFA179 /* ProfileInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195EF77A1CD04C3400FFA179 /* ProfileInfoTableViewCell.m */; };
+		195EF77E1CD1954A00FFA179 /* LogOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */; };
 		1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */; };
 		1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */; };
 		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
@@ -57,6 +58,8 @@
 		195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalTableViewCell.m; sourceTree = "<group>"; };
 		195EF7791CD04C3400FFA179 /* ProfileInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfoTableViewCell.h; sourceTree = "<group>"; };
 		195EF77A1CD04C3400FFA179 /* ProfileInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoTableViewCell.m; sourceTree = "<group>"; };
+		195EF77C1CD1954900FFA179 /* LogOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogOutTableViewCell.h; sourceTree = "<group>"; };
+		195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutTableViewCell.m; sourceTree = "<group>"; };
 		1978CDB11CC701FF002EC7D8 /* WaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterTableViewCell.h; sourceTree = "<group>"; };
 		1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterTableViewCell.m; sourceTree = "<group>"; };
 		1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesTableViewCell.h; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 				195EF77A1CD04C3400FFA179 /* ProfileInfoTableViewCell.m */,
 				195EF7701CCEFCC300FFA179 /* GoalTableViewCell.h */,
 				195EF7711CCEFCC300FFA179 /* GoalTableViewCell.m */,
+				195EF77C1CD1954900FFA179 /* LogOutTableViewCell.h */,
+				195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 				CB08126A1CCB4013008C985C /* User.m in Sources */,
 				CB0812641CCB3FAC008C985C /* Food.m in Sources */,
 				CBA00F7D1CC6E819003CEE69 /* GroupViewController.m in Sources */,
+				195EF77E1CD1954A00FFA179 /* LogOutTableViewCell.m in Sources */,
 				CBE791EC1CC34450001E9FDE /* HealthAssistant.xcdatamodeld in Sources */,
 				1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */,
 				CB24EE6E1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m in Sources */,

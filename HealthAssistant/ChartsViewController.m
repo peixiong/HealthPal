@@ -9,12 +9,14 @@
 #import "ChartsViewController.h"
 #import "NutritionsTableViewCell.h"
 #import "FirebaseManager.h"
+#import "Food.h"
 
 
-@interface ChartsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ChartsViewController () <UITableViewDelegate, UITableViewDataSource, FirebaseManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property Food *food;
 
 @end
 
@@ -22,18 +24,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [FirebaseManager sharedInstance].delegate = self;
     
-    NSLog(@"ChartsVC, this is the user being passed: %@",self.user);
+    NSDictionary *dict;
+    [dict allKeys];
+    
+    NSLog(@"ChartsVC, this is the user being passed: %@",self.user.uid);
+    NSLog(@"ChartsVC, this is the user's food: %@",self.user.timeFood );
+
+    for (NSString *key in self.user.timeFood.allKeys) {
+        NSLog(@"%@", key);
+        NSDictionary *food = self.user.timeFood[key];
+//        for (NSString *foodKey in food.allKeys) {
+//            NSLog(@"%@", food[foodKey]);
+//        }
+//        NSLog(@"%@", food[@"Breakfast"]);
+//        NSLog(@"%@", food[@"Lunch"]);
+        NSDictionary *breakfast = food[@"Breakfast"];
+        NSLog(@"food value: %@", breakfast.allValues);
+//        NSLog(@"breakfast food key: %@", breakfast.allKeys);
+    }
     
     
-    // Get a reference to our posts
-//    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://blinding-heat-8730.firebaseio.com/"];
-//    // Attach a block to read the data at our posts reference
-//    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSLog(@"%@", snapshot.value[@"email"]);
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"%@", error.description);
-//    }];
     
 }
 
