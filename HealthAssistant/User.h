@@ -20,7 +20,7 @@
 @property NSString *weight;
 @property NSString *height;
 @property NSString *gender;
-@property NSMutableArray<NSDictionary *> *timeFood;
+@property NSDictionary *timeFood;
 @property NSArray<NSNumber *> *selectedFoodProperties;
 //@property NSMutableArray<FoodProperty *> *selectedFoodProperties;
 

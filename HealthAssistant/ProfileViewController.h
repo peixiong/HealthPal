@@ -18,7 +18,6 @@
 @property NSArray *suggestedValueMale1930Age;
 @property NSArray *suggestedValueMale3150Age;
 
-@property User *user;
 
 
 @end
