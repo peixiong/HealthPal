@@ -22,7 +22,8 @@
     UINavigationController *nav = [self.viewControllers objectAtIndex:0];
     FoodEntryViewController *fevc = [nav.viewControllers objectAtIndex:0];
     fevc.user = self.user;
-    ScanViewController *svc = [self.viewControllers objectAtIndex:1];
+    UINavigationController *snav = [self.viewControllers objectAtIndex:1];
+    ScanViewController *svc = [snav.viewControllers objectAtIndex:0];
     svc.tabbarHeight = self.tabBar.frame.size.height;
     svc.user = self.user;
 }

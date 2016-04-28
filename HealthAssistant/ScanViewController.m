@@ -27,7 +27,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
+    CGRect highlightViewRect = CGRectZero;
+    AVMetadataMachineReadableCodeObject *barCodeObject;
+    NSString *detectionString = nil;
+    NSArray *barCodeTypes = @[AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeUPCECode];
     
+    for (AVMetadataObject *metadata in metadataObjects) {
+        for (NSString *type in barCodeTypes) {
+            if ([metadata.type isEqualToString:type])
+            {
+                barCodeObject = (AVMetadataMachineReadableCodeObject *)[self.prevLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject *)metadata];
+                highlightViewRect = barCodeObject.bounds;
+                detectionString = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
+                break;
+            }
+        }
+        
+        if (detectionString != nil)
+        {
+            self.label.text = detectionString;
+            [self.session stopRunning];
+            [self loadJsonWithUPC:detectionString];
+            break;
+        }
+        else
+            self.label.text = @"Detecting barcode ...";
+    }
+    
+    self.highlightView.frame = highlightViewRect;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     self.highlightView = [[UIView alloc] init];
     self.highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
     self.highlightView.layer.borderColor = [UIColor greenColor].CGColor;
@@ -71,38 +107,6 @@
     [self.view bringSubviewToFront:self.label];
 }
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
-{
-    CGRect highlightViewRect = CGRectZero;
-    AVMetadataMachineReadableCodeObject *barCodeObject;
-    NSString *detectionString = nil;
-    NSArray *barCodeTypes = @[AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeUPCECode];
-    
-    for (AVMetadataObject *metadata in metadataObjects) {
-        for (NSString *type in barCodeTypes) {
-            if ([metadata.type isEqualToString:type])
-            {
-                barCodeObject = (AVMetadataMachineReadableCodeObject *)[self.prevLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject *)metadata];
-                highlightViewRect = barCodeObject.bounds;
-                detectionString = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
-                break;
-            }
-        }
-        
-        if (detectionString != nil)
-        {
-            self.label.text = detectionString;
-            [self.session stopRunning];
-            [self loadJsonWithUPC:detectionString];
-            break;
-        }
-        else
-            self.label.text = @"Detecting barcode ...";
-    }
-    
-    self.highlightView.frame = highlightViewRect;
-}
-
 -(void)loadJsonWithUPC:(NSString *)str{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/item?upc=%@&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", str]];
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -131,7 +135,15 @@
         self.food.foodProperties[13].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_iron_dv"]];
         self.food.foodProperties[14].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_a_dv"]];
         self.food.foodProperties[15].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_c_dv"]];
-
+        if ([self.food.foodProperties[2].value isEqualToString:@"Nutritionix"]) {
+            self.food.foodProperties[2].value = @"";
+        }
+        for (int i = 5; i<self.food.foodProperties.count; i++) {
+            if ([self.food.foodProperties[i].value isEqualToString:@"<null>"]) {
+                self.food.foodProperties[i].value = @"";
+            }
+            self.food.foodProperties[i].value = [NSString stringWithFormat:@"%li", (long)[self.food.foodProperties[i].value integerValue]];
+        }
         dispatch_sync(dispatch_get_main_queue(), ^{
             ManualEntryFoodTableViewController *vc = [[UIStoryboard storyboardWithName:@"ManualEntry" bundle:nil] instantiateViewControllerWithIdentifier:@"manualEntry"];
             vc.food = self.food;

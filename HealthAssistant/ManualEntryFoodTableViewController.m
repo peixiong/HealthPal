@@ -11,7 +11,7 @@
 #import "FirebaseManager.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
-@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate>
+@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
 @property NSArray<NSString *> *headers;
@@ -73,6 +73,9 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController popViewControllerAnimated:false];
+}
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
     // Manually fire textFieldDidEndEditing events for all textfields visable:
     for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
@@ -82,26 +85,26 @@
         }
     }
     
-    
-    Food *food = [Food new];
-    
-    for (FoodProperty *foodProperty in self.selected) {
-        if (foodProperty.value != nil) {
-            food.foodProperties[foodProperty.fpId].value = foodProperty.value;
-        }
-    }
-    [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
+    [[FirebaseManager sharedInstance] saveToFoodsWithFood:self.food];
     
     NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
     [DateFormatter setDateFormat:@"yyyyMMdd"];
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:self.food];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
+        if (indexPath.section != 0) {
+            ManualEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            [cell.textField resignFirstResponder];
+        }
+    }
+}
 
 - (IBAction)onMealButtonPressed:(UIButton *)sender {
     if (sender.tag == 0) {
@@ -121,9 +124,9 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 
     if (indexPath.section == 1) {
-        self.selected[indexPath.row+1].value = cell.textField.text;
+        self.food.foodProperties[indexPath.row+1].value = cell.textField.text;
     } else if (indexPath.section == 2){
-        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
+        self.food.foodProperties[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
     };
 }
 
@@ -214,7 +217,7 @@
     UIGraphicsEndImageContext();
     NSData *imageData = UIImageJPEGRepresentation(newImage, 1);
     NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
-    self.selected[0].value = imageStr;
+    self.food.foodProperties[0].value = imageStr;
     
     self.foodImage = newImage;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
