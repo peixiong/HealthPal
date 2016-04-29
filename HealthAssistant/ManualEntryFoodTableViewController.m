@@ -9,7 +9,6 @@
 #import "ManualEntryFoodTableViewController.h"
 #import "ManualEntryTableViewCell.h"
 #import "FirebaseManager.h"
-#import "food.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
 @interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate>
@@ -17,8 +16,8 @@
 @property NSArray<NSArray *> *infoTypes;
 @property NSArray<NSString *> *headers;
 @property NSArray<NSArray *> *placeHolders;
+@property NSArray<NSArray *> *textFieldValues;
 @property NSMutableArray<NSString *> *foodValues;
-@property Food *food;
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
 @property NSString *meal;
@@ -32,32 +31,36 @@
     [super viewDidLoad];
     [FirebaseManager sharedInstance].delegate = self;
     self.navigationItem.title = @"Creat Your Food";
-    self.food = [Food new];
+    //self.food = [Food new];
     self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
     //test data for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15];
-    self.selected = [NSMutableArray new];
-    for (int i =0; i< self.food.foodProperties.count; i++) {
-        if ([self.user ifSelected:self.food.foodProperties[i].fpId]) {
-            [self.selected addObject:self.food.foodProperties[i]];
-        }
-    }
+
     
     NSMutableArray *basicInfo = [NSMutableArray new];
     NSMutableArray *nutritionInfo = [NSMutableArray new];
+    NSMutableArray *basicValues = [NSMutableArray new];
+    NSMutableArray *nutritionValues = [NSMutableArray new];
     NSMutableArray *basicInfoPlaceHolders = [NSMutableArray new];
     NSMutableArray *nutritionInfoPlaceHolders = [NSMutableArray new];
     for (int i = 1; i<5; i++) {
-        [basicInfo addObject:self.selected[i].name];
-        [basicInfoPlaceHolders addObject:self.selected[i].placeHolder];
+        NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
+        FoodProperty *foodProperty = self.food.foodProperties[index];
+        [basicInfo addObject:foodProperty.name];
+        [basicInfoPlaceHolders addObject:foodProperty.placeHolder];
+        [basicValues addObject:foodProperty.value];
     }
-    for (int i = 5; i<self.selected.count; i++) {
-        [nutritionInfo addObject:self.selected[i].name];
-        [nutritionInfoPlaceHolders addObject:self.selected[i].placeHolder];
+    for (int i = 5; i<self.user.selectedFoodProperties.count; i++) {
+        NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
+        FoodProperty *foodProperty = self.food.foodProperties[index];
+        [nutritionInfo addObject:foodProperty.name];
+        [nutritionInfoPlaceHolders addObject:foodProperty.placeHolder];
+        [nutritionValues addObject:foodProperty.value];
     }
     self.infoTypes = @[basicInfo, nutritionInfo];
     self.headers = @[@"Food Information", @"Food Nutritions"];
     self.placeHolders = @[basicInfoPlaceHolders,nutritionInfoPlaceHolders];
+    self.textFieldValues = @[basicValues, nutritionValues];
 }
 
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
@@ -140,6 +143,7 @@
         cell.delegate = self;
         cell.typeLabel.text = self.infoTypes[indexPath.section-1][indexPath.row];
         cell.textField.placeholder = self.placeHolders[indexPath.section-1][indexPath.row];
+        cell.textField.text = self.textFieldValues[indexPath.section-1][indexPath.row];
         return cell;
     }
 }
@@ -210,5 +214,8 @@
     [self dismissViewControllerAnimated:picker completion:nil];
 }
 
+-(void)didLoginWithUser:(User *)user{
+    self.user = user;
+}
 
 @end
