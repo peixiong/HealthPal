@@ -12,12 +12,16 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "User.h"
+#import "Food.h"
+
 @interface FirebaseManager ()
 
 @property Firebase *rootRef;
 @property Firebase *foodsRef;
 @property Firebase *usersRef;
 @property User *user;
+@property Food *food;
+
 @end
 
 
@@ -69,6 +73,7 @@
             NSLog(@"We are now logged in with userId = %@", authData.uid);
             [self retrieveUserDataWithUid:authData.uid];
             
+            
         }
     }];
 }
@@ -100,6 +105,41 @@
         NSLog(@"%@", error.description);
     }];
 };
+
+
+
+
+//-(void)retrieveUserFoodWithUid:(NSString *)foodID{
+//    self.food =[[Food alloc] init];
+//    Firebase *readRef = [self.foodsRef childByAppendingPath:[NSString stringWithFormat:@"%@",foodID]];
+//
+//    [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        
+////        self.user.uid = uid;
+////        self.user.username = snapshot.value[@"username"];
+////        self.user.email = snapshot.value[@"email"];
+////        self.user.imageStr = snapshot.value[@"imageStr"];
+////        NSData *imageData = [[NSData alloc] initWithBase64EncodedString:self.user.imageStr options:0];
+////        self.user.image = [[UIImage alloc] initWithData:imageData];
+////        self.user.selectedFoodProperties = snapshot.value[@"selectedFoodProperties"];
+////        self.user.timeFood = snapshot.value[@"timeFood"];
+////        self.user.weight = snapshot.value[@"weight"];
+////        self.user.height = snapshot.value[@"height"];
+////        self.user.gender = snapshot.value[@"gender"];
+//        
+//        //self.food.foodProperties[5].value = snapshot.value[@"Calories (cal)"];
+//        NSLog(@"This is a calorie value: %@", snapshot.value);
+//        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
+//            [self.delegate didLoginWithUser:self.user];
+//        } else {
+//            NSLog(@"Self.delegate = nil or delegate does not have the (userDidLoginWithUid) method");
+//        }
+//    } withCancelBlock:^(NSError *error) {
+//        NSLog(@"%@", error.description);
+//    }];
+//};
+
+
 
 
 //MARK.....facebook login
@@ -156,6 +196,8 @@
                             //user already exist
                             [self retrieveUserDataWithUid:authData.uid];
                             self.user.uid = authData.uid;
+                            
+                            
                         }
                     }];
                 }

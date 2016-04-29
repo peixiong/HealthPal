@@ -10,6 +10,7 @@
 #import "NutritionsTableViewCell.h"
 #import "FirebaseManager.h"
 #import "Food.h"
+#import "OneDayData.h"
 
 
 @interface ChartsViewController () <UITableViewDelegate, UITableViewDataSource, FirebaseManagerDelegate>
@@ -25,33 +26,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    //Retriving data
     [FirebaseManager sharedInstance].delegate = self;
-    NSLog(@"ChartsVC, this is the user being passed: %@",self.user.uid);
+    
+    [self retriveLifetimeUserLoggedFoodIDs];
 
-    for (NSString *key in self.user.timeFood.allKeys) {
-        NSDictionary *food = self.user.timeFood[key];
-        
-        NSArray * foodValues = food.allValues;
-        //NSLog(@"This is self.foodIDs: %@",self.foodIDs);
-        
-        for (NSArray *singleEntry in foodValues){
-            
-            for (NSString *singleID in singleEntry){
-                NSLog(@"This is ID: %@",singleID);
-                
-                [self.foodIDs addObject:singleID];
-                NSLog(@"This is Array of IDs: %@",self.foodIDs);
+}
 
+
+-(void)retriveLifetimeUserLoggedFoodIDs{
+    
+    self.dataForAllDays = [[NSMutableArray alloc]init];
+    for (NSString *dateString in self.user.timeFood.allKeys) {
+        OneDayData *oneDay = [[OneDayData alloc]init];
+        oneDay.date = dateString;
+        NSDictionary *food = self.user.timeFood[dateString];
+        NSArray * foodValues = food.allValues;        
+        for (NSDictionary *singleEntry in foodValues){
+            for (NSString *singleID in singleEntry.allValues){
+                [self retriveTotalNutritionsToEachDay:singleID];
             }
         }
-        
+        [self.dataForAllDays addObject:oneDay];
     }
-    //NSLog(@"This is Array of IDs: %@",self.foodIDs);
+}
 
+
+-(void)retriveTotalNutritionsToEachDay:(NSString *)fid{
+    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://blinding-heat-8730.firebaseio.com/"];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *dict = snapshot.value[@"foods"];
+
+        for (NSString *key in dict.allKeys) {
+            if ([key isEqualToString:fid]) {
+                NSLog(@"yes, found a match");
+                
+                //CODE GOES HERE
+            }
+        }
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
     
 }
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     

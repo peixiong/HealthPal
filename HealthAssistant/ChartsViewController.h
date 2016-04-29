@@ -11,6 +11,7 @@
 
 @interface ChartsViewController : UIViewController
 @property User *user;
-@property NSMutableArray *foodIDs;
 
+@property NSMutableArray *foodIDs;
+@property NSMutableArray *dataForAllDays;
 @end

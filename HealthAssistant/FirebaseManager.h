@@ -27,5 +27,6 @@
 -(void)createNewUserWithUsername:(NSString *)username emailAddress:(NSString *)emailAddress password:(NSString *)password ConfirmedPassword:(NSString *)confirmedPassword andImageStr:(NSString *)imageStr;
 -(void)saveToFoodsWithFood:(Food *)food;
 -(void)saveFoodtoUserTimeFoodForUser:(User *)user day:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food;
+//-(void)retrieveUserFoodWithUid:(NSString *)foodID;
 
 @end
