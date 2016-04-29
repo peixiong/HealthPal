@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Food.h"
 @interface ManualEntryFoodTableViewController : UITableViewController
 @property User *user;
+@property Food *food;
 @end

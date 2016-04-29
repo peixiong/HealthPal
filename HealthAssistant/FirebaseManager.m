@@ -78,7 +78,7 @@
 -(void)retrieveUserDataWithUid:(NSString *)uid{
     self.user =[[User alloc] init];
     Firebase *readRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@",uid]];
-    [readRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [readRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         self.user.uid = uid;
         self.user.username = snapshot.value[@"username"];
         self.user.email = snapshot.value[@"email"];
