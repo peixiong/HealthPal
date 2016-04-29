@@ -33,13 +33,5 @@
     }
 }
 
-//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-//    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(textFieldDidChangedWith:andCell:)]) {
-//        [self.delegate textFieldDidChangedWith:string andCell:self];
-//    } else {
-//        NSLog(@"Self.delegate = nil or delegate does not have the (textFieldDidChangedWith) method");
-//    }
-//    return YES;
-//}
 
 @end

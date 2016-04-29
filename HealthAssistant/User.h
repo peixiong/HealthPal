@@ -20,7 +20,7 @@
 @property NSString *weight;
 @property NSString *height;
 @property NSString *gender;
-@property NSDictionary *timeFood;
+@property NSArray *timeFood;
 @property NSArray<NSNumber *> *selectedFoodProperties;
 
 -(BOOL)ifSelected:(int)fpId;

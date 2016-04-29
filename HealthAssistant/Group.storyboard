@@ -8,7 +8,7 @@
         <!--Water-->
         <scene sceneID="ylc-V6-9D9">
             <objects>
-                <viewController id="tgM-ue-liE" customClass="GroupViewController" sceneMemberID="viewController">
+                <viewController id="tgM-ue-liE" customClass="AddWaterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y0w-ij-n9i"/>
                         <viewControllerLayoutGuide type="bottom" id="TmY-2i-pFP"/>
@@ -17,12 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0K-s9-Nc5">
-                                <rect key="frame" x="178" y="158" width="10" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="FtU-sA-hjm">
+                                <rect key="frame" x="50" y="424" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="mzd-hU-zfG">
+                                <rect key="frame" x="37" y="537" width="94" height="29"/>
+                            </stepper>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="piggy-bank-4" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-2O-Hcs">
+                                <rect key="frame" x="-34" y="187" width="456" height="342"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -36,6 +41,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="0" width="960" height="640"/>
         <image name="group" width="30" height="30"/>
+        <image name="piggy-bank-4" width="2000" height="1500"/>
     </resources>
 </document>

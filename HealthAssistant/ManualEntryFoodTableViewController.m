@@ -11,7 +11,7 @@
 #import "FirebaseManager.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
-@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate>
+@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
 @property NSArray<NSString *> *headers;
@@ -22,6 +22,8 @@
 @property NSMutableArray<FoodProperty *> *selected;
 @property NSString *meal;
 @property UIImage *foodImage;
+@property NSArray *colorArray;
+@property NSString *whichMeal;
 
 @end
 
@@ -35,7 +37,8 @@
     self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
     //test data for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15];
-
+    self.colorArray  = [[NSArray alloc] initWithObjects:@"Breakfast",@"Lunch",@"Dinner",@"Snack", nil];
+    
     
     NSMutableArray *basicInfo = [NSMutableArray new];
     NSMutableArray *nutritionInfo = [NSMutableArray new];
@@ -97,7 +100,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
         if (indexPath.section != 0) {
             ManualEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -105,20 +108,6 @@
         }
     }
 }
-
-- (IBAction)onMealButtonPressed:(UIButton *)sender {
-    if (sender.tag == 0) {
-        self.meal = @"Breakfast";
-    } else if (sender.tag == 1) {
-        self.meal = @"Lunch";
-    } else if (sender.tag == 2) {
-        self.meal = @"Dinner";
-    } else if (sender.tag == 3) {
-        self.meal = @"Snack";
-    }
-    sender.backgroundColor = [UIColor grayColor];
-}
-
 
 -(void)textFieldDidChangedWithCell:(ManualEntryTableViewCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -201,7 +190,10 @@
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
     }
-    [self presentViewController:imagePicker animated:true completion:nil];
+    //to keep the tabbar
+    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self.navigationController presentViewController:imagePicker animated:NO completion:nil];
     [segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
@@ -224,11 +216,45 @@
     LunchImageTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.foodImageView.image = newImage;
  
-    [self dismissViewControllerAnimated:picker completion:nil];
+    [picker dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)didLoginWithUser:(User *)user{
     self.user = user;
+}
+
+
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 4;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow: (NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.colorArray objectAtIndex:row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"Selected Row %ld", (long)row);
+    switch(row)
+    {
+            
+        case 0:
+            self.whichMeal = @"Breakfast";
+            break;
+        case 1:
+            self.whichMeal = @"Lunch";
+            break;
+        case 2:
+            self.whichMeal = @"Dinner";
+            break;
+        case 3:
+            self.whichMeal = @"Snack";
+            break;
+    }
 }
 
 @end
