@@ -11,6 +11,7 @@
 #import "FirebaseManager.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
+#import "TabbarViewController.h"
 @interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
@@ -76,9 +77,7 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController popViewControllerAnimated:false];
-}
+
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
     // Manually fire textFieldDidEndEditing events for all textfields visable:
     for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
@@ -191,10 +190,11 @@
         }
     }
     //to keep the tabbar
-    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
+//    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentViewController:imagePicker animated:NO completion:nil];
     [segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = true;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -215,7 +215,15 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     LunchImageTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.foodImageView.image = newImage;
- 
+    
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = false;
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = false;
     [picker dismissViewControllerAnimated:NO completion:nil];
 }
 

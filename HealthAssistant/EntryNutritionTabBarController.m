@@ -26,6 +26,7 @@
     ScanViewController *svc = [snav.viewControllers objectAtIndex:0];
     svc.tabbarHeight = self.tabBar.frame.size.height;
     svc.user = self.user;
+    self.tabBar.hidden = true;
 }
 
 @end
