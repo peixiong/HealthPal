@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "WaterContainer.h"
 @interface AddWaterViewController : UIViewController
 
 @property User *user;

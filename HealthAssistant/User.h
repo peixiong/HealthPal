@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FoodProperty.h"
 #import <UIKit/UIKit.h>
+#import "WaterContainer.h"
 @interface User : NSObject
 
 @property NSString *uid;
@@ -22,7 +23,8 @@
 @property NSString *gender;
 @property NSArray *timeFood;
 @property NSArray<NSNumber *> *selectedFoodProperties;
-
+@property NSArray<WaterContainer *> *waterContainers;
+@property NSArray<NSDictionary *> *timeWater;
 -(BOOL)ifSelected:(int)fpId;
 
 @end

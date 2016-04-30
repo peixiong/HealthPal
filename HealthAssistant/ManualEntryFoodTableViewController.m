@@ -249,7 +249,6 @@
     NSLog(@"Selected Row %ld", (long)row);
     switch(row)
     {
-            
         case 0:
             self.whichMeal = @"Breakfast";
             break;
