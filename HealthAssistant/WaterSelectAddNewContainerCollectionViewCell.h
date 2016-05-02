@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WaterSelectAddNewContainerCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UILabel *addNewContainerCellLabel;
 
 @end

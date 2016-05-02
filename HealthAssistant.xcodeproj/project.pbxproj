@@ -21,7 +21,6 @@
 		CB0812641CCB3FAC008C985C /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812631CCB3FAC008C985C /* Food.m */; };
 		CB0812671CCB3FEA008C985C /* FoodProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812661CCB3FEA008C985C /* FoodProperty.m */; };
 		CB08126A1CCB4013008C985C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0812691CCB4013008C985C /* User.m */; };
-		CB180E591CD2E3A700D92285 /* AddWaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB180E581CD2E3A700D92285 /* AddWaterViewController.m */; };
 		CB1DDCE01CD3FE6100288FF7 /* WaterSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1DDCDF1CD3FE6100288FF7 /* WaterSelectionCollectionViewCell.m */; };
 		CB1DDCE31CD405F200288FF7 /* WaterSelectAddNewContainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1DDCE21CD405F200288FF7 /* WaterSelectAddNewContainerCollectionViewCell.m */; };
 		CB1DDCEB1CD41AAA00288FF7 /* WaterContainer+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1DDCE81CD41AAA00288FF7 /* WaterContainer+CoreDataProperties.m */; };
@@ -29,7 +28,6 @@
 		CB24EE6E1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE6D1CCC5D9F00AF24CB /* SelectedFoodPropertyCell.m */; };
 		CB24EE711CCC689000AF24CB /* SelectedNutritionTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE701CCC689000AF24CB /* SelectedNutritionTarget.m */; };
 		CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E501CC6F5D00054A47B /* PopUPButton.m */; };
-		CB282E541CC6F5E90054A47B /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E531CC6F5E90054A47B /* TabbarViewController.m */; };
 		CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */; };
 		CB4D07041CCDF3A90099CF6A /* LunchImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */; };
 		CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC441CC568DC0051C177 /* ChartsViewController.m */; };
@@ -54,6 +52,8 @@
 		CBE791EE1CC34450001E9FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE791ED1CC34450001E9FDE /* Assets.xcassets */; };
 		CBE791F11CC34450001E9FDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */; };
 		CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */; };
+		CBE9FB2C1CD587DF0067A355 /* AddWaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB180E581CD2E3A700D92285 /* AddWaterViewController.m */; };
+		CBE9FB2D1CD588750067A355 /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E531CC6F5E90054A47B /* TabbarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,9 +253,8 @@
 			children = (
 				CBE791E71CC34450001E9FDE /* Main.storyboard */,
 				CBA00F811CC6E990003CEE69 /* Charts.storyboard */,
-				CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */,
-				CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */,
 				CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */,
+				CBA00F841CC6E9CF003CEE69 /* Group.storyboard */,
 				CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */,
 				CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */,
 				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
@@ -303,15 +302,16 @@
 				CB98FC441CC568DC0051C177 /* ChartsViewController.m */,
 				CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */,
 				CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */,
-				CBA00F841CC6E9CF003CEE69 /* Group.storyboard */,
 				CB180E571CD2E3A700D92285 /* AddWaterViewController.h */,
 				CB180E581CD2E3A700D92285 /* AddWaterViewController.m */,
+				CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */,
 				CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */,
 				CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */,
 				CBACE3B11CD1E0FC00DC421A /* ScanViewController.h */,
 				CBACE3B21CD1E0FC00DC421A /* ScanViewController.m */,
 				CBDEDF711CC82093007335BE /* ManualEntryFoodTableViewController.h */,
 				CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */,
+				CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */,
 				CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */,
 				CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
@@ -447,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE9FB2C1CD587DF0067A355 /* AddWaterViewController.m in Sources */,
 				CB08126A1CCB4013008C985C /* User.m in Sources */,
 				CB1DDCE01CD3FE6100288FF7 /* WaterSelectionCollectionViewCell.m in Sources */,
 				CB0812641CCB3FAC008C985C /* Food.m in Sources */,
@@ -471,16 +472,15 @@
 				CB1DDCE31CD405F200288FF7 /* WaterSelectAddNewContainerCollectionViewCell.m in Sources */,
 				195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */,
 				CB1DDCEC1CD41AAA00288FF7 /* WaterContainer.m in Sources */,
+				CBE9FB2D1CD588750067A355 /* TabbarViewController.m in Sources */,
 				CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */,
 				CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */,
-				CB282E541CC6F5E90054A47B /* TabbarViewController.m in Sources */,
 				CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */,
 				195EF77B1CD04C3400FFA179 /* ProfileInfoTableViewCell.m in Sources */,
 				CBE791E01CC34450001E9FDE /* main.m in Sources */,
 				1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */,
 				CB24EE711CCC689000AF24CB /* SelectedNutritionTarget.m in Sources */,
 				CBDEDF731CC82093007335BE /* ManualEntryFoodTableViewController.m in Sources */,
-				CB180E591CD2E3A700D92285 /* AddWaterViewController.m in Sources */,
 				CBE792011CC348A9001E9FDE /* WelcomeCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
 #import "TabbarViewController.h"
+#import "FoodEntryViewController.h"
 @interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
@@ -21,7 +22,6 @@
 @property NSMutableArray<NSString *> *foodValues;
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
-@property NSString *meal;
 @property UIImage *foodImage;
 @property NSArray *colorArray;
 @property NSString *whichMeal;
@@ -39,7 +39,7 @@
     //test data for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15];
     self.colorArray  = [[NSArray alloc] initWithObjects:@"Breakfast",@"Lunch",@"Dinner",@"Snack", nil];
-    
+    self.whichMeal = @"Dinner";
     
     NSMutableArray *basicInfo = [NSMutableArray new];
     NSMutableArray *nutritionInfo = [NSMutableArray new];
@@ -86,6 +86,13 @@
             [cell.textField resignFirstResponder];
         }
     }
+    FoodProperty *fp1 = self.food.foodProperties[1];
+    FoodProperty *fp3 = self.food.foodProperties[3];
+    FoodProperty *fp5 = self.food.foodProperties[5];
+    if (fp1.value == nil || fp3.value == nil || fp5.value == nil) {
+        [self showAlertWithMessage:@"Pls fill all the required fields."];
+        return;
+    }
     
     [[FirebaseManager sharedInstance] saveToFoodsWithFood:self.food];
     
@@ -94,9 +101,18 @@
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:self.food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.whichMeal andFood:self.food];
     
     [self.navigationController popViewControllerAnimated:YES];
+//    FoodEntryViewController *fevc = [[UIStoryboard storyboardWithName:@"ManualEntry" bundle:nil] instantiateViewControllerWithIdentifier:@"searchFood"];
+//    [self.navigationController pushViewController:fevc animated:true];
+}
+
+-(void)showAlertWithMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
@@ -230,8 +246,6 @@
 -(void)didLoginWithUser:(User *)user{
     self.user = user;
 }
-
-
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return 4;

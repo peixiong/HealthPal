@@ -22,6 +22,7 @@
 @property NSString *height;
 @property NSString *gender;
 @property NSArray *timeFood;
+@property NSString *waterGoal;
 @property NSArray<NSNumber *> *selectedFoodProperties;
 @property NSArray<WaterContainer *> *waterContainers;
 @property NSArray<NSDictionary *> *timeWater;

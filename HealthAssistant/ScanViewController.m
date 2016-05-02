@@ -118,40 +118,44 @@
         }
         NSLog(@"there are %lu objected loaded from json",(unsigned long)foodInfoFromJason.count);
         NSLog(@"%@",foodInfoFromJason.description);
-        
-        self.food = [Food new];
-        self.food.foodProperties[1].value = foodInfoFromJason[@"item_name"];
-        self.food.foodProperties[2].value = [NSString stringWithString:foodInfoFromJason[@"brand_name"]];
-        self.food.foodProperties[3].value = [NSString stringWithFormat:@"%@ %@", foodInfoFromJason[@"nf_serving_size_qty"], foodInfoFromJason[@"nf_serving_size_unit"]];
-        self.food.foodProperties[4].value = @"1";
-        self.food.foodProperties[5].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_calories"]];
-        self.food.foodProperties[6].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_total_carbohydrate"]];
-        self.food.foodProperties[7].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_protein"]];
-        self.food.foodProperties[8].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_total_fat"]];
-        self.food.foodProperties[9].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_sugars"]];
-        self.food.foodProperties[10].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_dietary_fiber"]];
-        self.food.foodProperties[11].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_sodium"]];
-        self.food.foodProperties[12].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_calcium_dv"]];
-        self.food.foodProperties[13].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_iron_dv"]];
-        self.food.foodProperties[14].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_a_dv"]];
-        self.food.foodProperties[15].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_c_dv"]];
-        if ([self.food.foodProperties[2].value isEqualToString:@"Nutritionix"]) {
-            self.food.foodProperties[2].value = @"";
-        }
-        for (int i = 5; i<self.food.foodProperties.count; i++) {
-            if ([self.food.foodProperties[i].value isEqualToString:@"<null>"]) {
-                self.food.foodProperties[i].value = @"";
+        if (![foodInfoFromJason objectForKey:@"error_code"])  { // No error:
+            self.food = [Food new];
+            self.food.foodProperties[1].value = foodInfoFromJason[@"item_name"];
+            self.food.foodProperties[2].value = [NSString stringWithString:foodInfoFromJason[@"brand_name"]];
+            self.food.foodProperties[3].value = [NSString stringWithFormat:@"%@ %@", foodInfoFromJason[@"nf_serving_size_qty"], foodInfoFromJason[@"nf_serving_size_unit"]];
+            self.food.foodProperties[4].value = @"1";
+            self.food.foodProperties[5].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_calories"]];
+            self.food.foodProperties[6].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_total_carbohydrate"]];
+            self.food.foodProperties[7].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_protein"]];
+            self.food.foodProperties[8].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_total_fat"]];
+            self.food.foodProperties[9].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_sugars"]];
+            self.food.foodProperties[10].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_dietary_fiber"]];
+            self.food.foodProperties[11].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_sodium"]];
+            self.food.foodProperties[12].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_calcium_dv"]];
+            self.food.foodProperties[13].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_iron_dv"]];
+            self.food.foodProperties[14].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_a_dv"]];
+            self.food.foodProperties[15].value = [NSString stringWithFormat:@"%@", foodInfoFromJason[@"nf_vitamin_c_dv"]];
+            if ([self.food.foodProperties[2].value isEqualToString:@"Nutritionix"]) {
+                self.food.foodProperties[2].value = @"";
             }
-            self.food.foodProperties[i].value = [NSString stringWithFormat:@"%li", (long)[self.food.foodProperties[i].value integerValue]];
+            for (int i = 5; i<self.food.foodProperties.count; i++) {
+                if ([self.food.foodProperties[i].value isEqualToString:@"<null>"]) {
+                    self.food.foodProperties[i].value = @"";
+                }
+                self.food.foodProperties[i].value = [NSString stringWithFormat:@"%li", (long)[self.food.foodProperties[i].value integerValue]];
+            }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                ManualEntryFoodTableViewController *vc = [[UIStoryboard storyboardWithName:@"ManualEntry" bundle:nil] instantiateViewControllerWithIdentifier:@"manualEntry"];
+                vc.food = self.food;
+                vc.user = self.user;
+                [self.navigationController pushViewController:vc animated:true];
+            });
+        } else {
+            //error scan;
         }
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            ManualEntryFoodTableViewController *vc = [[UIStoryboard storyboardWithName:@"ManualEntry" bundle:nil] instantiateViewControllerWithIdentifier:@"manualEntry"];
-            vc.food = self.food;
-            vc.user = self.user;
-            [self.navigationController pushViewController:vc animated:true];
-        });
     }];
     [task resume];
 }
+
 
 @end

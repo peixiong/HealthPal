@@ -40,9 +40,7 @@
         
         self.foodProperties[FoodPropertyDescription].placeHolder = @"Required";
         self.foodProperties[FoodPropertyServingSize].placeHolder = @"Required";
-        self.foodProperties[FoodPropertyServingsPerContainer].placeHolder = @"Required";
         self.foodProperties[FoodPropertyCalories].placeHolder = @"Required";
-        self.foodProperties[FoodPropertyTotalCarbohydrates].placeHolder = @"Required";
 
         return self;
     }

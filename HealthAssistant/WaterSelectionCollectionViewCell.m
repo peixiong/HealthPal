@@ -10,4 +10,8 @@
 
 @implementation WaterSelectionCollectionViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.deleteButton.hidden = true;
+}
 @end

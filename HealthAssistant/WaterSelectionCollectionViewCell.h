@@ -11,5 +11,6 @@
 @interface WaterSelectionCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *waterBottleImage;
 @property (strong, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
