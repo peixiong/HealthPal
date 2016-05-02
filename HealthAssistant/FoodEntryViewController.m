@@ -9,11 +9,11 @@
 #import "FoodEntryViewController.h"
 #import "ManualEntryFoodTableViewController.h"
 #import "Food.h"
-@interface FoodEntryViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@interface FoodEntryViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @property NSArray<NSDictionary *> *foodInfoFromJason;
 @property NSMutableArray<Food *> *foodsResults;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -25,16 +25,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar.delegate = self;
-    self.foodsResults = [NSMutableArray new];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSLog(@"%@",self.searchBar.text);
     self.foodsResults = [NSMutableArray new];
     NSString *modifiedSearchText = [self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    NSString *searchStr = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/search/%@?results=0:1&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams,image_front_full_url&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", modifiedSearchText];
+    NSString *searchStr = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/search/%@?results=0:20&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", modifiedSearchText];
     [self loadJasonWithString:searchStr];
+    [self.searchBar resignFirstResponder];
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.searchBar resignFirstResponder];
+}
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCellID"];
@@ -83,6 +88,15 @@
             food.foodProperties[13].value = [NSString stringWithFormat:@"%@", fieldsDict[@"nf_iron_dv"]];
             food.foodProperties[14].value = [NSString stringWithFormat:@"%@", fieldsDict[@"nf_vitamin_a_dv"]];
             food.foodProperties[15].value = [NSString stringWithFormat:@"%@", fieldsDict[@"nf_vitamin_c_dv"]];
+            if ([food.foodProperties[2].value isEqualToString:@"Nutritionix"]) {
+                food.foodProperties[2].value = @"";
+            }
+            for (int i = 5; i<food.foodProperties.count; i++) {
+                if ([food.foodProperties[i].value isEqualToString:@"<null>"]) {
+                    food.foodProperties[i].value = @"";
+                }
+                food.foodProperties[i].value = [NSString stringWithFormat:@"%li", (long)[food.foodProperties[i].value integerValue]];
+            }
             [self.foodsResults addObject:food];
         }
         dispatch_sync(dispatch_get_main_queue(), ^{
@@ -92,7 +106,9 @@
     [task resume];
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.searchBar resignFirstResponder];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ManualEntryFoodTableViewController *dvc = segue.destinationViewController;

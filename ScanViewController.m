@@ -1,18 +1,18 @@
 //
-//  GroupViewController.m
-//  HealthAssistant
+//  ScanViewController.m
+//  
 //
-//  Created by Pei Xiong on 4/19/16.
-//  Copyright © 2016 Pei Xiong. All rights reserved.
+//  Created by Pei Xiong on 4/27/16.
+//
 //
 
-#import "GroupViewController.h"
+#import "ScanViewController.h"
 
-@interface GroupViewController ()
+@interface ScanViewController ()
 
 @end
 
-@implementation GroupViewController
+@implementation ScanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

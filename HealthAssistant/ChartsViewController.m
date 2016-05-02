@@ -31,23 +31,22 @@
     
     NSLog(@"ChartsVC, this is the user being passed: %@",self.user.uid);
     NSLog(@"ChartsVC, this is the user's food: %@",self.user.timeFood );
-
-    for (NSString *key in self.user.timeFood.allKeys) {
-        NSLog(@"%@", key);
-        NSDictionary *food = self.user.timeFood[key];
-//        for (NSString *foodKey in food.allKeys) {
-//            NSLog(@"%@", food[foodKey]);
-//        }
-//        NSLog(@"%@", food[@"Breakfast"]);
-//        NSLog(@"%@", food[@"Lunch"]);
-        NSDictionary *breakfast = food[@"Breakfast"];
-        NSLog(@"food value: %@", breakfast.allValues);
-//        NSLog(@"breakfast food key: %@", breakfast.allKeys);
+//    for (NSString *key in self.user.timeFood.allKeys) {
+//        NSLog(@"%@", key);
+//        NSDictionary *food = self.user.timeFood[key];
+////        for (NSString *foodKey in food.allKeys) {
+////            NSLog(@"%@", food[foodKey]);
+////        }
+////        NSLog(@"%@", food[@"Breakfast"]);
+////        NSLog(@"%@", food[@"Lunch"]);
+//        NSDictionary *breakfast = food[@"Breakfast"];
+//        NSLog(@"food value: %@", breakfast.allValues);
+////        NSLog(@"breakfast food key: %@", breakfast.allKeys);
     }
     
     
     
-}
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     

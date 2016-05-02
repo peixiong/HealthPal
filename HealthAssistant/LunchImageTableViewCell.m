@@ -8,23 +8,18 @@
 
 #import "LunchImageTableViewCell.h"
 
-@implementation LunchImageTableViewCell
+@implementation LunchImageTableViewCell 
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.segmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [self.pickerView selectRow:2 inComponent:0 animated:YES];
 }
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
 
 - (IBAction)onSelectPhotoButtonPressed:(UISegmentedControl *)sender{
     [self.delegate imageDidChangedWithCell:self andSegmentControl:sender];
 }
+
+
+
 @end

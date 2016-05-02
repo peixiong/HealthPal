@@ -10,7 +10,7 @@
 #import "EntryNutritionTabBarController.h"
 #import "PopUPButton.h"
 #import "ChartsViewController.h"
-#import "GroupViewController.h"
+#import "AddWaterViewController.h"
 #import "SuggestionViewController.h"
 #import "FirebaseManager.h"
 #import "ProfileViewController.h"
@@ -28,12 +28,12 @@
     self.buttonsArray = [NSMutableArray new];
     self.delegate = self;
     ChartsViewController *cvc = [self.viewControllers objectAtIndex:0];
-    GroupViewController *gvc = [self.viewControllers objectAtIndex:1];
+    AddWaterViewController *avc = [self.viewControllers objectAtIndex:1];
     SuggestionViewController *svc = [self.viewControllers objectAtIndex:3];
     ProfileViewController *uvc = [self.viewControllers objectAtIndex:4];
     EntryNutritionTabBarController *entbvc = [self.viewControllers objectAtIndex:2];
     cvc.user = self.user;
-    gvc.user = self.user;
+    avc.user = self.user;
     svc.user = self.user;
     uvc.user = self.user;
     entbvc.user = self.user;
@@ -67,13 +67,15 @@
 -(void)generatePopUpButtons{
     [self generateBackgroundViewWithTapGestureRecognizer];
     float butonWidth = self.view.frame.size.width*0.45;
-    float butonHeight = 30.0;
+    float butonHeight = 50.0;
     float buttonOriginX = self.view.frame.size.width*0.3;
     float buttonOriginY = self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height;
     NSArray *buttonTitles = @[@"Scan to add food",@"Manually add food",@"Add water"];
-    
-    for (int i=0; i<3; i++) {
-        PopUPButton *button = [[PopUPButton alloc] initWithFrame:CGRectMake(buttonOriginX, buttonOriginY, butonWidth, butonHeight) title:buttonTitles[i] destinationFrame:CGRectMake(buttonOriginX, buttonOriginY - (3-i)*butonHeight, butonWidth, butonHeight) tag:i];
+    NSArray *buttonBackgroundColors = @[[UIColor colorWithRed:0.149 green:0.902 blue:0.675 alpha:1.0], [UIColor colorWithRed:0.196 green:0.592 blue:0.898 alpha:1.0]];
+    for (int i=0; i<2; i++) {
+        PopUPButton *button = [[PopUPButton alloc] initWithFrame:CGRectMake(buttonOriginX, buttonOriginY, butonWidth, butonHeight) title:buttonTitles[i] destinationFrame:CGRectMake(buttonOriginX, buttonOriginY - (2-i)*butonHeight, butonWidth, butonHeight) tag:i];
+        button.backgroundColor = buttonBackgroundColors[i];
+        button.layer.borderWidth = 0;
         [self.view addSubview:button];
         [self.buttonsArray addObject:button];
         button.delegate = self;
@@ -93,14 +95,12 @@
     EntryNutritionTabBarController *enTBVC = [self.viewControllers objectAtIndex:2];
     if (button.tag == 0) {
         //scan page pop up
+        [self setSelectedIndex:2];
+        [enTBVC setSelectedIndex:1];
     } else if (button.tag == 1) {
         //show viewcontroller 3
         [self setSelectedIndex:2];
         [enTBVC setSelectedIndex:0];
-    } else if (button.tag == 2) {
-        //show the water intake view controller
-        [self setSelectedIndex:2];
-        [enTBVC setSelectedIndex:1];
     }
 }
 

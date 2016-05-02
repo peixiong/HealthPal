@@ -11,7 +11,9 @@
 #import "FirebaseManager.h"
 #import "foodProperty.h"
 #import "LunchImageTableViewCell.h"
-@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate>
+#import "TabbarViewController.h"
+#import "FoodEntryViewController.h"
+@interface ManualEntryFoodTableViewController () <FirebaseManagerDelegate, ManualEntryTableViewCellDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, LunchImageTableViewCellDelegate, UIScrollViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property NSArray<NSArray *> *infoTypes;
 @property NSArray<NSString *> *headers;
@@ -20,8 +22,9 @@
 @property NSMutableArray<NSString *> *foodValues;
 @property FoodProperty *foodProperty;
 @property NSMutableArray<FoodProperty *> *selected;
-@property NSString *meal;
 @property UIImage *foodImage;
+@property NSArray *colorArray;
+@property NSString *whichMeal;
 
 @end
 
@@ -35,7 +38,8 @@
     self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
     //test data for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15];
-
+    self.colorArray  = [[NSArray alloc] initWithObjects:@"Breakfast",@"Lunch",@"Dinner",@"Snack", nil];
+    self.whichMeal = @"Dinner";
     
     NSMutableArray *basicInfo = [NSMutableArray new];
     NSMutableArray *nutritionInfo = [NSMutableArray new];
@@ -45,23 +49,34 @@
     NSMutableArray *nutritionInfoPlaceHolders = [NSMutableArray new];
     for (int i = 1; i<5; i++) {
         NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
+        if (self.food == nil) {
+            self.food = [Food new];
+        }
         FoodProperty *foodProperty = self.food.foodProperties[index];
         [basicInfo addObject:foodProperty.name];
         [basicInfoPlaceHolders addObject:foodProperty.placeHolder];
-        [basicValues addObject:foodProperty.value];
+        
+        if (self.food.foodProperties[1].value) {
+            [basicValues addObject:foodProperty.value];
+        }
     }
     for (int i = 5; i<self.user.selectedFoodProperties.count; i++) {
         NSInteger index = [self.user.selectedFoodProperties[i] integerValue];
         FoodProperty *foodProperty = self.food.foodProperties[index];
         [nutritionInfo addObject:foodProperty.name];
         [nutritionInfoPlaceHolders addObject:foodProperty.placeHolder];
+        if (self.food.foodProperties[1].value) {
         [nutritionValues addObject:foodProperty.value];
+        }
     }
     self.infoTypes = @[basicInfo, nutritionInfo];
     self.headers = @[@"Food Information", @"Food Nutritions"];
     self.placeHolders = @[basicInfoPlaceHolders,nutritionInfoPlaceHolders];
+    if (self.food.foodProperties[1].value) {
     self.textFieldValues = @[basicValues, nutritionValues];
+    }
 }
+
 
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender {
     // Manually fire textFieldDidEndEditing events for all textfields visable:
@@ -71,49 +86,51 @@
             [cell.textField resignFirstResponder];
         }
     }
-    
-    
-    Food *food = [Food new];
-    
-    for (FoodProperty *foodProperty in self.selected) {
-        if (foodProperty.value != nil) {
-            food.foodProperties[foodProperty.fpId].value = foodProperty.value;
-        }
+    FoodProperty *fp1 = self.food.foodProperties[1];
+    FoodProperty *fp3 = self.food.foodProperties[3];
+    FoodProperty *fp5 = self.food.foodProperties[5];
+    if (fp1.value == nil || fp3.value == nil || fp5.value == nil) {
+        [self showAlertWithMessage:@"Pls fill all the required fields."];
+        return;
     }
-    [[FirebaseManager sharedInstance] saveToFoodsWithFood:food];
+    
+    [[FirebaseManager sharedInstance] saveToFoodsWithFood:self.food];
     
     NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
     [DateFormatter setDateFormat:@"yyyyMMdd"];
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.meal andFood:food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.whichMeal andFood:self.food];
     
     [self.navigationController popViewControllerAnimated:YES];
+//    FoodEntryViewController *fevc = [[UIStoryboard storyboardWithName:@"ManualEntry" bundle:nil] instantiateViewControllerWithIdentifier:@"searchFood"];
+//    [self.navigationController pushViewController:fevc animated:true];
 }
 
+-(void)showAlertWithMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:true completion:nil];
+}
 
-- (IBAction)onMealButtonPressed:(UIButton *)sender {
-    if (sender.tag == 0) {
-        self.meal = @"Breakfast";
-    } else if (sender.tag == 1) {
-        self.meal = @"Lunch";
-    } else if (sender.tag == 2) {
-        self.meal = @"Dinner";
-    } else if (sender.tag == 3) {
-        self.meal = @"Snack";
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
+        if (indexPath.section != 0) {
+            ManualEntryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            [cell.textField resignFirstResponder];
+        }
     }
-    sender.backgroundColor = [UIColor grayColor];
 }
-
 
 -(void)textFieldDidChangedWithCell:(ManualEntryTableViewCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 
     if (indexPath.section == 1) {
-        self.selected[indexPath.row+1].value = cell.textField.text;
+        self.food.foodProperties[indexPath.row+1].value = cell.textField.text;
     } else if (indexPath.section == 2){
-        self.selected[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
+        self.food.foodProperties[indexPath.row + [self.tableView numberOfRowsInSection:1]+1].value = cell.textField.text;
     };
 }
 
@@ -188,8 +205,12 @@
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
     }
-    [self presentViewController:imagePicker animated:true completion:nil];
+    //to keep the tabbar
+//    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self.navigationController presentViewController:imagePicker animated:NO completion:nil];
     [segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = true;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -204,18 +225,57 @@
     UIGraphicsEndImageContext();
     NSData *imageData = UIImageJPEGRepresentation(newImage, 1);
     NSString *imageStr = [imageData base64EncodedStringWithOptions:0];
-    self.selected[0].value = imageStr;
+    self.food.foodProperties[0].value = imageStr;
     
     self.foodImage = newImage;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     LunchImageTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.foodImageView.image = newImage;
- 
-    [self dismissViewControllerAnimated:picker completion:nil];
+    
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = false;
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    TabbarViewController *tvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
+    tvc.tabBar.hidden = false;
+    [picker dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)didLoginWithUser:(User *)user{
     self.user = user;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 4;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow: (NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.colorArray objectAtIndex:row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"Selected Row %ld", (long)row);
+    switch(row)
+    {
+        case 0:
+            self.whichMeal = @"Breakfast";
+            break;
+        case 1:
+            self.whichMeal = @"Lunch";
+            break;
+        case 2:
+            self.whichMeal = @"Dinner";
+            break;
+        case 3:
+            self.whichMeal = @"Snack";
+            break;
+    }
 }
 
 @end

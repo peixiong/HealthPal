@@ -37,6 +37,16 @@
 }
 
 
+//MARK.......query food..........................................not finished
+-(NSArray<Food *> *)queryFoodWithHigher:(int)fpId{
+    //Firebase *recentRef = [self.foodsRef childByAppendingPath:[NSString stringWithFormat:@"%@/timeFood",self.user.uid]];
+    [[self.foodsRef queryOrderedByChild:[NSString stringWithFormat:@"%d/value", fpId]] observeSingleEventOfType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@", snapshot);
+    }];
+
+    return  nil;
+}
+
 //MARK........save food to foods database
 -(void)saveToFoodsWithFood:(Food *)food{
     NSMutableArray *foodInfo = [NSMutableArray new];
@@ -90,6 +100,7 @@
         self.user.weight = snapshot.value[@"weight"];
         self.user.height = snapshot.value[@"height"];
         self.user.gender = snapshot.value[@"gender"];
+        self.user.waterGoal = snapshot.value[@"waterGoal"];
         
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
             [self.delegate didLoginWithUser:self.user];
@@ -141,7 +152,8 @@
                             NSDictionary *firebaseUser = @{
                                                            @"username" : authData.providerData[@"displayName"],
                                                            @"email" : authData.providerData[@"email"],
-                                                           @"imageStr": imageStr
+                                                           @"imageStr": imageStr,
+                                                           @"waterGoal": @"64"
                                                            };
                             [readRef setValue:firebaseUser];
                             
@@ -193,6 +205,7 @@
             user.username = username;
             user.email = emailAddress;
             user.imageStr = imageStr;
+            user.waterGoal = @"64";
             NSData *imageData = [[NSData alloc] initWithBase64EncodedString:imageStr options:0];
             user.image = [[UIImage alloc] initWithData:imageData];
             [self.delegate didLoginWithUser:user];
@@ -200,7 +213,8 @@
             NSDictionary *firebaseUser = @{
                                    @"username" : username,
                                    @"email" : emailAddress,
-                                   @"imageStr": imageStr
+                                   @"imageStr": imageStr,
+                                   @"waterGoal": @"64"
                                    };
             NSString *path = [NSString stringWithFormat:@"users/%@", uid];
             Firebase *userRef = [self.rootRef childByAppendingPath: path];
@@ -208,7 +222,26 @@
         }
     }];
 }
-        
+
+-(void)saveTimeWaterforUser:(User *)user andSize:(NSString *)size{
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyyMMdd"];
+    [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
+    Firebase *timeRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@/timeWater/%@", user.uid, dayStr]];
+    [timeRef setValue:size];
+}
+
+-(void)updateWaterGoalWith:(NSString *)uid andGoal:(NSString *)goal{
+    NSString *path = [NSString stringWithFormat:@"%@/waterGoal", uid];
+    Firebase *waterGoalRef = [self.usersRef childByAppendingPath:path];
+    [waterGoalRef setValue:goal];
+}
+
+-(Firebase *)retrieveWaterRefForUser:(User *)user ForDate:(NSString *)dayStr {
+    Firebase *waterRef = [self.usersRef childByAppendingPath:[NSString stringWithFormat:@"%@/timeWater/%@",user.uid,dayStr]];
+    return waterRef;
+}
 
 -(void)showAlertWithMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];

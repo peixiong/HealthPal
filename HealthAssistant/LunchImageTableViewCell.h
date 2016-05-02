@@ -21,5 +21,6 @@
 @property id<LunchImageTableViewCellDelegate> delegate;
 - (IBAction)onSelectPhotoButtonPressed:(UISegmentedControl *)sender;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @end
