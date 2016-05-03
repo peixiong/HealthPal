@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1091E523EBEE1602CC63E46A'
+               BlueprintIdentifier = '38B42197E01B7041805097C3'
                BlueprintName = 'Pods-HealthAssistant'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-HealthAssistant.a'>
+               BuildableName = 'Pods_HealthAssistant.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

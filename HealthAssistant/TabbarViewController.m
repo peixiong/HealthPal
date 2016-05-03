@@ -11,9 +11,10 @@
 #import "PopUPButton.h"
 #import "ChartsViewController.h"
 #import "AddWaterViewController.h"
-#import "SuggestionViewController.h"
 #import "FirebaseManager.h"
 #import "ProfileViewController.h"
+#import "FoodDetailTableViewController.h"
+#import "HealthAssistant-Swift.h"
 
 @interface TabbarViewController () <UITabBarControllerDelegate, PopUPButtonDelegate, FirebaseManagerDelegate>
 @property NSMutableArray<UIButton *> *buttonsArray;
@@ -29,22 +30,21 @@
     self.delegate = self;
     ChartsViewController *cvc = [self.viewControllers objectAtIndex:0];
     AddWaterViewController *avc = [self.viewControllers objectAtIndex:1];
-    SuggestionViewController *svc = [self.viewControllers objectAtIndex:3];
     ProfileViewController *uvc = [self.viewControllers objectAtIndex:4];
     EntryNutritionTabBarController *entbvc = [self.viewControllers objectAtIndex:2];
     cvc.user = self.user;
     avc.user = self.user;
-    svc.user = self.user;
     uvc.user = self.user;
     entbvc.user = self.user;
+    
+    UINavigationController *nvc = [self.viewControllers objectAtIndex:3];
+    SuggestionBubbleViewController *sbvc = [nvc.viewControllers objectAtIndex:0];
+    sbvc.user = self.user;
+    
 }
 
--(void)didLoginWithUser:(User *)user{
-
-}
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-
     if (viewController == [tabBarController.viewControllers objectAtIndex:2]) {
         [self generatePopUpButtons];
         return NO;

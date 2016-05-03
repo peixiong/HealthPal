@@ -51,6 +51,12 @@
     TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:true];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [defaults objectForKey:@"userId"];
+    if (!userId) {
+        [defaults setObject:user.uid forKey:@"userId"];
+        [defaults synchronize];
+    }
 }
 
 //pick an image for user

@@ -53,6 +53,11 @@
 
 }
 
+- (IBAction)onLogoutButtonPressed:(UIButton *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"userId"];
+    [defaults synchronize];
+}
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

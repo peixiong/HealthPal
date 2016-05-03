@@ -31,4 +31,5 @@
 -(void)saveTimeWaterforUser:(User *)user andSize:(NSString *)size;
 -(Firebase *)retrieveWaterRefForUser:(User *)user ForDate:(NSString *)dayStr;
 -(NSArray<Food *> *)queryFoodWithHigher:(int)fpId;
+-(void)retrieveUserDataWithUid:(NSString *)uid;
 @end

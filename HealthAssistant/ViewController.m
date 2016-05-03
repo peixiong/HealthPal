@@ -28,6 +28,16 @@
     [super viewDidLoad];
     [self populateImagearrayAndIntroductionStr];
     [self addIndicatorsToSubview];
+    [FirebaseManager sharedInstance].delegate = self;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [defaults objectForKey:@"userId"];
+    if(userId){
+        // Mark as already launched before:
+        [[FirebaseManager sharedInstance] retrieveUserDataWithUid:userId];
+    } else {
+       //do nothing
+    }
 }
 
 -(void)populateImagearrayAndIntroductionStr{
@@ -53,7 +63,6 @@
 
 //facebook login
 - (IBAction)onFacebookLoginPressed:(UIButton *)sender {
-    [FirebaseManager sharedInstance].delegate = self;
     [[FirebaseManager sharedInstance] facebookLogin];
 }
 
@@ -61,6 +70,13 @@
     TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:true];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [defaults objectForKey:@"userId"];
+    if (!userId) {
+        [defaults setObject:user.uid forKey:@"userId"];
+        [defaults synchronize];
+    }
+
 }
 
 

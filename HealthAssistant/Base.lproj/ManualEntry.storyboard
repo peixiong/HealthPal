@@ -207,13 +207,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crb-JT-Sd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3950.5" y="-114.5"/>
+            <point key="canvasLocation" x="3935.5" y="-114.5"/>
         </scene>
         <!--Scan View Controller-->
         <scene sceneID="bMF-ty-zq2">
             <objects>
                 <viewController id="jg7-jX-U0A" customClass="ScanViewController" sceneMemberID="viewController">
-                    <imageView key="view" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ImP-dv-h2j">
+                    <imageView key="view" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8Dk-s4-ZLg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -227,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezi-Og-cmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3623.5" y="643.5"/>
+            <point key="canvasLocation" x="3464.5" y="643.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="S2C-sK-g2V">
@@ -238,7 +238,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Lf-SO-0gU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.33725490196078434" green="0.77254901960784317" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -258,6 +258,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="obf-nH-y2y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.33725490196078434" green="0.77254901960784317" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
