@@ -1,13 +1,16 @@
 //
-//  GroupViewController.h
+//  AddWaterViewController.h
 //  HealthAssistant
 //
-//  Created by Pei Xiong on 4/19/16.
+//  Created by Pei Xiong on 4/28/16.
 //  Copyright © 2016 Pei Xiong. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-@interface GroupViewController : UIViewController
+#import "WaterContainer.h"
+@interface AddWaterViewController : UIViewController
+
 @property User *user;
+
 @end

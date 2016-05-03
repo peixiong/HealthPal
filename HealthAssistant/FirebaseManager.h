@@ -27,6 +27,8 @@
 -(void)createNewUserWithUsername:(NSString *)username emailAddress:(NSString *)emailAddress password:(NSString *)password ConfirmedPassword:(NSString *)confirmedPassword andImageStr:(NSString *)imageStr;
 -(void)saveToFoodsWithFood:(Food *)food;
 -(void)saveFoodtoUserTimeFoodForUser:(User *)user day:(NSString *)dayStr meal:(NSString *)whichMeal andFood:(Food *)food;
-//-(void)retrieveUserFoodWithUid:(NSString *)foodID;
-
+-(void)updateWaterGoalWith:(NSString *)uid andGoal:(NSString *)goal;
+-(void)saveTimeWaterforUser:(User *)user andSize:(NSString *)size;
+-(Firebase *)retrieveWaterRefForUser:(User *)user ForDate:(NSString *)dayStr;
+-(NSArray<Food *> *)queryFoodWithHigher:(int)fpId;
 @end
