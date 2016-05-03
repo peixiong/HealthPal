@@ -11,7 +11,7 @@
 @interface NutritionCategory : NSObject
 @property NSString *title;
 @property NSDate *date;
-@property NSArray *points;
+@property NSMutableArray *points;
 
 -(void)getDataFromFireBase;
 

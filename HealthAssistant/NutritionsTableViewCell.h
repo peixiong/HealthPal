@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "BEMSimpleLineGraphView.h"
+#import "NutritionCategory.h"
+#import "FirebaseManager.h"
+#import "User.h"
 
 
-@interface NutritionsTableViewCell : UITableViewCell <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource>
+
+@interface NutritionsTableViewCell : UITableViewCell <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource, FirebaseManagerDelegate>
 
 // Title
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 // Chart
-@property (weak, nonatomic) IBOutlet UIView *graphView;
 @property (strong, nonatomic) NSMutableArray *arrayOfValues;
 @property (strong, nonatomic) NSMutableArray *arrayOfDates;
 @property (weak, nonatomic) IBOutlet UILabel *labelValues;
@@ -38,6 +41,32 @@
 @property NSArray *nutritionsArray;
 
 
+@property User *user;
+@property Food *food;
+
+
+
+
+@property NSMutableArray *foodIDs;
+@property NSMutableArray *dataForAllDays;
+
+
+@property NutritionCategory *calories;
+@property NutritionCategory *carbs;
+@property NutritionCategory *sodium;
+@property NutritionCategory *calcium;
+@property NutritionCategory *protien;
+@property NutritionCategory *fiber;
+@property NutritionCategory *fat;
+@property NutritionCategory *iron;
+@property NutritionCategory *sugar;
+@property NutritionCategory *vitA;
+@property NutritionCategory *vitC;
+
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style
+             reuseIdentifier:(NSString *)reuseIdentifier
+                        user:(User *)user;
 
 
 

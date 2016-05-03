@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-2G-Sev">
-                                <rect key="frame" x="-4" y="134" width="383" height="484"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-2G-Sev">
+                                <rect key="frame" x="-4" y="137" width="383" height="481"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="493" id="2wN-3H-VJ9"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="3xO-GO-iTg" customClass="ProfileInfoTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="40" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3xO-GO-iTg" id="8qS-bT-pnR">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
@@ -73,7 +73,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="goal" rowHeight="75" id="Dzs-1I-B3N" customClass="GoalTableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="383" height="75"/>
+                                        <rect key="frame" x="0.0" y="84" width="383" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dzs-1I-B3N" id="yoT-bY-esV">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="74"/>
@@ -178,7 +178,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logout" id="Lyu-kn-X44" customClass="LogOutTableViewCell">
-                                        <rect key="frame" x="0.0" y="147" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyu-kn-X44" id="O3B-6r-A0y">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
@@ -254,7 +254,7 @@
                             <constraint firstItem="jI5-Kt-QSl" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="LIO-xA-iBs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wNv-2G-Sev" secondAttribute="trailing" constant="-24" id="bgF-wD-qsJ"/>
                             <constraint firstItem="jI5-Kt-QSl" firstAttribute="top" secondItem="MUd-0E-8tE" secondAttribute="topMargin" id="gCd-Be-Nr8"/>
-                            <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="jI5-Kt-QSl" secondAttribute="bottom" constant="-25" id="iZx-XI-kRc"/>
+                            <constraint firstItem="wNv-2G-Sev" firstAttribute="top" secondItem="jI5-Kt-QSl" secondAttribute="bottom" constant="-22" id="iZx-XI-kRc"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-24" id="m25-Ts-tqT"/>
                             <constraint firstItem="wNv-2G-Sev" firstAttribute="leading" secondItem="MUd-0E-8tE" secondAttribute="leadingMargin" constant="-20" id="rto-j9-psi"/>
                         </constraints>
