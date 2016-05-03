@@ -113,6 +113,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ManualEntryFoodTableViewController *dvc = segue.destinationViewController;
     dvc.user = self.user;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
 }
 
 @end

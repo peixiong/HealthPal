@@ -224,6 +224,10 @@
     self.currentSize = self.currentSize + [self.containers[self.selectedRow].size integerValue];
     self.currentLabel.text = [NSString stringWithFormat:@"%li oz",self.currentSize];
     [[FirebaseManager sharedInstance] saveTimeWaterforUser:self.user andSize:[NSString stringWithFormat:@"%li",self.currentSize]];
+    [self adjustWaterLevel];
+}
+
+-(void)adjustWaterLevel{
     if (self.currentSize < self.goalSize) {
         float waterLevel = 0.2837*self.view.frame.size.height*self.currentSize/(float)self.goalSize;
         [UIView animateWithDuration:1 animations:^{
@@ -234,7 +238,6 @@
             self.waterImageView.center = CGPointMake(self.waterImageView.center.x, 1.0037*self.view.frame.size.height);
         } completion:nil];
     }
-
 }
 
 - (IBAction)handleTap:(UITapGestureRecognizer *)sender {
@@ -269,11 +272,13 @@
     self.goalSize = self.goalSize + 2;
     self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
     [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
+    [self adjustWaterLevel];
 }
 - (IBAction)onMinusGoalButtonPressed:(UIButton *)sender {
     self.goalSize = self.goalSize - 2;
     self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
     [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
+    [self adjustWaterLevel];
 }
 
 

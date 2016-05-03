@@ -56,6 +56,7 @@ class SuggestionBubbleViewController: UIViewController, PopUPButtonDelegate {
         dvc.sortWay = self.sortWay
         dvc.selectedFpId = self.selectedFpId
         dvc.user = self.user
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: nil)
     }
     
     func generateBackgroundViewWithTapGestureRecognizer(){
@@ -71,10 +72,10 @@ class SuggestionBubbleViewController: UIViewController, PopUPButtonDelegate {
     func generatePopUpButtons() {
         //self.generateBackgroundViewWithTapGestureRecognizer()
         let vW = self.view.frame.size.width
-        let buttonTitles = ["More", "Less"]
+        let buttonTitles = ["Want more?", "Want less?"]
         let buttonBackgroundColors = [UIColor.brownColor(), UIColor.purpleColor()]
         for i in 0...1 {
-            let button = PopUPButton(frame: CGRectMake(0.35*vW, 100+0.3*vW*CGFloat(i) + 10, 0.3*vW, 0.3*vW), title: buttonTitles[i], destinationFrame: CGRectMake(0.35*vW, 100+0.3*vW*CGFloat(i) + 10, 0.3*vW, 0.3*vW), tag: i) as PopUPButton
+            let button = PopUPButton(frame: CGRectMake(0.35*vW, 0.3*vW*CGFloat(i), 0.3*vW, 0.3*vW), title: buttonTitles[i], destinationFrame: CGRectMake(0.35*vW, 100+0.3*vW*CGFloat(i) + 30, 0.3*vW, 0.3*vW), tag: i) as PopUPButton
             button.backgroundColor = buttonBackgroundColors[i]
             button.tag = i
             button.layer.cornerRadius = 0.35*vW/5

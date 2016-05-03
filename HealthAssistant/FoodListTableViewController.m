@@ -11,19 +11,22 @@
 #import "FoodDetailTableViewController.h"
 @interface FoodListTableViewController ()
 @property NSMutableArray<Food *> *resultArray;
-
+@property int count;
 @end
 
 @implementation FoodListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        [self sendPOSTRequestWithConcern:self.concern andOrder:self.sortWay];
+    self.count = 0;
+    [self sendPOSTRequestWithConcern:self.concern andOrder:self.sortWay];
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
 
+- (IBAction)onMoreButtonPressed:(UIButton *)sender {
+    [self sendPOSTRequestWithConcern:self.concern andOrder:self.sortWay];
+    [self.tableView reloadData];
 }
 
 -(void)sendPOSTRequestWithConcern:(NSString *)concern andOrder:(NSString *)order {
@@ -42,11 +45,15 @@
                             @"nf_sodium":@{@"from":@1, @"to":@8000},
                             @"nf_total_carbohydrate":@{@"from":@1, @"to":@5000},
                             @"nf_sugars":@{@"from":@0, @"to":@20},
-                            @"nf_dietary_fiber":@{@"from":@0, @"to":@500},
+                            @"nf_protein":@{@"from":@0.1, @"to":@500},
+                            @"nf_vitamin_a_dv":@{@"from":@0.1, @"to":@200},
+                            @"nf_vitamin_c_dv":@{@"from":@0.1, @"to":@200},
+                            @"nf_calcium_dv":@{@"from":@0, @"to":@250}
                             };
-    
-    tmpJson[@"offset"] = @0;
+    tmpJson[@"offset"] = [NSNumber numberWithInt:self.count];
     tmpJson[@"limit"] = @20;
+    self.count += 20;
+
     
     NSMutableDictionary *sortDict = [NSMutableDictionary new];
     sortDict[@"field"] = concern;

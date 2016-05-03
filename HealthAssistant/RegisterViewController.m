@@ -28,12 +28,20 @@
     // Do any additional setup after loading the view.
     //self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2;
     [self.segmentControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.imageView.layer.masksToBounds = YES;
     self.imageView.layer.cornerRadius = self.imageView.frame.size.width*0.1;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)handleTap{
+    [self.view endEditing:true];
 }
 
 - (IBAction)onSignUpButtonPressed:(UIButton *)sender {
