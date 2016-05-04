@@ -18,7 +18,9 @@
 @property NSArray<NSString *> *introductionsStr;
 @property (weak, nonatomic) IBOutlet UILabel *introductionLabel;
 @property NSMutableArray<UIImageView *> *indicators;
-@property (weak, nonatomic) IBOutlet UIImageView *testImageView;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *facebookLoginButton;
 
 @end
 
@@ -28,6 +30,36 @@
     [super viewDidLoad];
     [self populateImagearrayAndIntroductionStr];
     [self addIndicatorsToSubview];
+    [FirebaseManager sharedInstance].delegate = self;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [defaults objectForKey:@"userId"];
+    if(userId){
+        // Mark as already launched before:
+        [[FirebaseManager sharedInstance] retrieveUserDataWithUid:userId];
+    } else {
+        //do nothing
+    }
+}
+
+//-(void)viewDidLayoutSubviews{
+//    [super viewDidLayoutSubviews];
+//    self.loginButton.center.y = self.loginButton.center.y - self.view.frame.size.height;
+//    
+//}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.loginButton.frame = CGRectMake(62, 513, 251, 35);
+        self.signUpButton.frame = CGRectMake(62, 556, 251, 35);
+        self.facebookLoginButton.frame = CGRectMake(62, 599, 251, 35);
+    }];
+//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        self.loginButton.frame = CGRectMake(62, 513, 251, 35);
+//        self.signUpButton.frame = CGRectMake(62, 556, 251, 35);
+//        self.facebookLoginButton.frame = CGRectMake(62, 599, 251, 35);
+//    } completion:nil];
+    
 }
 
 -(void)populateImagearrayAndIntroductionStr{
@@ -53,7 +85,6 @@
 
 //facebook login
 - (IBAction)onFacebookLoginPressed:(UIButton *)sender {
-    [FirebaseManager sharedInstance].delegate = self;
     [[FirebaseManager sharedInstance] facebookLogin];
 }
 
@@ -61,6 +92,13 @@
     TabbarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"mainTabbar"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:true];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [defaults objectForKey:@"userId"];
+    if (!userId) {
+        [defaults setObject:user.uid forKey:@"userId"];
+        [defaults synchronize];
+    }
+
 }
 
 

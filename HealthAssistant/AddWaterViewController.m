@@ -105,7 +105,7 @@
 -(void)generateWaterViewWithHeight:(float)height{
     //generate waterImageView
     self.waterImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, height, self.view.frame.size.width, self.view.frame.size.height)];
-    self.waterImageView.backgroundColor = [UIColor blueColor];
+    self.waterImageView.backgroundColor = [UIColor colorWithRed:0.043 green:0.647 blue:0.82 alpha:1];
     [self.view addSubview:self.waterImageView];
 }
 
@@ -118,6 +118,13 @@
         WaterSelectionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"waterBottle" forIndexPath:indexPath];
         cell.waterBottleImage.image = [UIImage imageWithData:self.containers[indexPath.row].containerImageDaTa];
         cell.sizeLabel.text = [NSString stringWithFormat:@"%@ oz", self.containers[indexPath.row].size];
+        
+        UILongPressGestureRecognizer* longPressRecognizer = [[UILongPressGestureRecognizer alloc] init];
+        longPressRecognizer.minimumPressDuration = 0.5;
+        longPressRecognizer.numberOfTouchesRequired = 1;
+        [longPressRecognizer addTarget:self action:@selector(handleLongPress:)];
+        [cell addGestureRecognizer:longPressRecognizer];
+        
         return cell;
     }
 }
@@ -217,6 +224,10 @@
     self.currentSize = self.currentSize + [self.containers[self.selectedRow].size integerValue];
     self.currentLabel.text = [NSString stringWithFormat:@"%li oz",self.currentSize];
     [[FirebaseManager sharedInstance] saveTimeWaterforUser:self.user andSize:[NSString stringWithFormat:@"%li",self.currentSize]];
+    [self adjustWaterLevel];
+}
+
+-(void)adjustWaterLevel{
     if (self.currentSize < self.goalSize) {
         float waterLevel = 0.2837*self.view.frame.size.height*self.currentSize/(float)self.goalSize;
         [UIView animateWithDuration:1 animations:^{
@@ -227,7 +238,6 @@
             self.waterImageView.center = CGPointMake(self.waterImageView.center.x, 1.0037*self.view.frame.size.height);
         } completion:nil];
     }
-
 }
 
 - (IBAction)handleTap:(UITapGestureRecognizer *)sender {
@@ -241,7 +251,12 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         self.longPressIndexPath = [self.collectionView indexPathForItemAtPoint:[sender locationInView:self.collectionView]];
         WaterSelectionCollectionViewCell *cell = (WaterSelectionCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.longPressIndexPath];
-        cell.deleteButton.hidden = false;
+        if (cell.deleteButton.hidden == true) {
+            cell.deleteButton.hidden = false;
+        } else {
+            cell.deleteButton.hidden = true;
+        }
+        
     }
 }
 
@@ -257,11 +272,13 @@
     self.goalSize = self.goalSize + 2;
     self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
     [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
+    [self adjustWaterLevel];
 }
 - (IBAction)onMinusGoalButtonPressed:(UIButton *)sender {
     self.goalSize = self.goalSize - 2;
     self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
     [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
+    [self adjustWaterLevel];
 }
 
 

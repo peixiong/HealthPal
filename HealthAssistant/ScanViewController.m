@@ -50,7 +50,7 @@
         
         if (detectionString != nil)
         {
-            self.label.text = detectionString;
+            //self.label.text = detectionString;
             [self.session stopRunning];
             [self loadJsonWithUPC:detectionString];
             break;
@@ -64,6 +64,10 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self startScan];
+}
+
+-(void)startScan{
     self.highlightView = [[UIView alloc] init];
     self.highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
     self.highlightView.layer.borderColor = [UIColor greenColor].CGColor;
@@ -74,6 +78,7 @@
     self.label.frame = CGRectMake(0, self.view.bounds.size.height - 100 - self.tabbarHeight, self.view.bounds.size.width, 100);
     self.label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
+    self.label.font = [UIFont systemFontOfSize:20];
     self.label.textColor = [UIColor whiteColor];
     self.label.textAlignment = NSTextAlignmentCenter;
     self.label.text = @"Detecting barcode ...";
@@ -151,11 +156,22 @@
                 [self.navigationController pushViewController:vc animated:true];
             });
         } else {
-            //error scan;
+            //self.label.text = @"Item not found or usage today reached maximum";
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showAlertWithMessage:@"Item not found or usage today reached maximum"];
+            });
         }
     }];
     [task resume];
 }
 
+-(void)showAlertWithMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self startScan];
+    }];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:true completion:nil];
+}
 
 @end

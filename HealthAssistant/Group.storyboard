@@ -107,7 +107,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="waterBottle" id="30X-h1-LTo" customClass="WaterSelectionCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="23" width="115" height="114"/>
+                                        <rect key="frame" x="0.0" y="22.5" width="115" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="114"/>
@@ -117,7 +117,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="114"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IW-Nw-h1X">
-                                                    <rect key="frame" x="91" y="95" width="24" height="19"/>
+                                                    <rect key="frame" x="78" y="82" width="37" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <state key="normal" title="❌"/>
                                                     <connections>
                                                         <action selector="onDeleteButtonPressed:" destination="tgM-ue-liE" eventType="touchUpInside" id="OFe-HL-0tM"/>
@@ -151,11 +152,10 @@
                                             <outlet property="deleteButton" destination="6IW-Nw-h1X" id="Afn-74-eiO"/>
                                             <outlet property="sizeLabel" destination="U25-zk-oYj" id="aRG-dq-Ruy"/>
                                             <outlet property="waterBottleImage" destination="OmK-uX-JvZ" id="HOB-SM-HRt"/>
-                                            <outletCollection property="gestureRecognizers" destination="8zy-9x-YM6" appends="YES" id="v45-de-tyX"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addNewContainer" id="13y-f9-LhE" customClass="WaterSelectAddNewContainerCollectionViewCell">
-                                        <rect key="frame" x="125" y="23" width="159" height="114"/>
+                                        <rect key="frame" x="125" y="22.5" width="159" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="159" height="114"/>
@@ -390,12 +390,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNR-F3-M9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="8zy-9x-YM6">
-                    <connections>
-                        <action selector="handleLongPress:" destination="tgM-ue-liE" id="xkE-Pk-Jlz"/>
-                        <outlet property="delegate" destination="tgM-ue-liE" id="EeF-pI-Zea"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="3Lt-XJ-5kZ">
                     <connections>
                         <action selector="handleTap:" destination="tgM-ue-liE" id="1F8-Up-yLh"/>

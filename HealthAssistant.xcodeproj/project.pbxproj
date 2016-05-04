@@ -13,7 +13,7 @@
 		195EF77E1CD1954A00FFA179 /* LogOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195EF77D1CD1954900FFA179 /* LogOutTableViewCell.m */; };
 		1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB21CC701FF002EC7D8 /* WaterTableViewCell.m */; };
 		1978CDB61CC7033B002EC7D8 /* ActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */; };
-		7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */; };
+		4A4A55543F8B4CF775D4AD3F /* Pods_HealthAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EE9B295D2233DDB5C57A2A /* Pods_HealthAssistant.framework */; };
 		CB033B171CC3F78E00CDB417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B161CC3F78E00CDB417 /* LoginViewController.m */; };
 		CB033B1A1CC3F7C900CDB417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB033B191CC3F7C900CDB417 /* RegisterViewController.m */; };
 		CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */; };
@@ -29,11 +29,13 @@
 		CB24EE711CCC689000AF24CB /* SelectedNutritionTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24EE701CCC689000AF24CB /* SelectedNutritionTarget.m */; };
 		CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E501CC6F5D00054A47B /* PopUPButton.m */; };
 		CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */; };
+		CB2C8E291CD7F61B001AF838 /* SuggestionBubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2C8E281CD7F61B001AF838 /* SuggestionBubbleViewController.swift */; };
+		CB2C8E321CD7F726001AF838 /* FoodListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C8E311CD7F726001AF838 /* FoodListTableViewController.m */; };
+		CB2C8E381CD7F787001AF838 /* FoodDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C8E371CD7F787001AF838 /* FoodDetailTableViewController.m */; };
 		CB4D07041CCDF3A90099CF6A /* LunchImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */; };
 		CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC441CC568DC0051C177 /* ChartsViewController.m */; };
 		CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB98FC4B1CC569940051C177 /* ProfileViewController.m */; };
 		CBA00F741CC6E772003CEE69 /* FoodEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */; };
-		CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */; };
 		CBA00F831CC6E990003CEE69 /* Charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F811CC6E990003CEE69 /* Charts.storyboard */; };
 		CBA00F851CC6E9CF003CEE69 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F841CC6E9CF003CEE69 /* Group.storyboard */; };
 		CBA00F881CC6EA05003CEE69 /* ManualEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */; };
@@ -70,7 +72,7 @@
 		1978CDB41CC7033B002EC7D8 /* ActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesTableViewCell.h; sourceTree = "<group>"; };
 		1978CDB51CC7033B002EC7D8 /* ActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesTableViewCell.m; sourceTree = "<group>"; };
 		5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthAssistant/Pods-HealthAssistant.release.xcconfig"; sourceTree = "<group>"; };
-		C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95EE9B295D2233DDB5C57A2A /* Pods_HealthAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB033B151CC3F78E00CDB417 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CB033B161CC3F78E00CDB417 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CB033B181CC3F7C900CDB417 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -103,6 +105,12 @@
 		CB282E531CC6F5E90054A47B /* TabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarViewController.m; sourceTree = "<group>"; };
 		CB282E551CC6F5FB0054A47B /* EntryNutritionTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryNutritionTabBarController.h; sourceTree = "<group>"; };
 		CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryNutritionTabBarController.m; sourceTree = "<group>"; };
+		CB2C8E271CD7F61B001AF838 /* HealthAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
+		CB2C8E281CD7F61B001AF838 /* SuggestionBubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionBubbleViewController.swift; sourceTree = "<group>"; };
+		CB2C8E301CD7F726001AF838 /* FoodListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListTableViewController.h; sourceTree = "<group>"; };
+		CB2C8E311CD7F726001AF838 /* FoodListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListTableViewController.m; sourceTree = "<group>"; };
+		CB2C8E361CD7F787001AF838 /* FoodDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailTableViewController.h; sourceTree = "<group>"; };
+		CB2C8E371CD7F787001AF838 /* FoodDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailTableViewController.m; sourceTree = "<group>"; };
 		CB4D07021CCDF3A90099CF6A /* LunchImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchImageTableViewCell.h; sourceTree = "<group>"; };
 		CB4D07031CCDF3A90099CF6A /* LunchImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchImageTableViewCell.m; sourceTree = "<group>"; };
 		CB98FC431CC568DC0051C177 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
@@ -111,8 +119,6 @@
 		CB98FC4B1CC569940051C177 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodEntryViewController.h; sourceTree = "<group>"; };
 		CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodEntryViewController.m; sourceTree = "<group>"; };
-		CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
-		CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		CBA00F821CC6E990003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Charts.storyboard; sourceTree = "<group>"; };
 		CBA00F841CC6E9CF003CEE69 /* Group.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		CBA00F871CC6EA05003CEE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ManualEntry.storyboard; sourceTree = "<group>"; };
@@ -127,7 +133,7 @@
 		CBDEDF751CC8395B007335BE /* ManualEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryTableViewCell.m; sourceTree = "<group>"; };
 		CBDEDF781CC8987D007335BE /* FirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseManager.h; sourceTree = "<group>"; };
 		CBDEDF791CC8987D007335BE /* FirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseManager.m; sourceTree = "<group>"; };
-		CBE791DB1CC34450001E9FDE /* HealthAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE791DB1CC34450001E9FDE /* HealthPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE791DF1CC34450001E9FDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBE791E11CC34450001E9FDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CBE791E21CC34450001E9FDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,9 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBACE3B01CD1D97B00DC421A /* AVFoundation.framework in Frameworks */,
-				7F75F7DDBBF1134D5D922828 /* libPods-HealthAssistant.a in Frameworks */,
 				CB033B1C1CC4712F00CDB417 /* FBSDKCoreKit.framework in Frameworks */,
 				CB033B1E1CC4722400CDB417 /* FBSDKLoginKit.framework in Frameworks */,
+				4A4A55543F8B4CF775D4AD3F /* Pods_HealthAssistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +170,7 @@
 				CBACE3AF1CD1D97B00DC421A /* AVFoundation.framework */,
 				CB033B1B1CC4712F00CDB417 /* FBSDKCoreKit.framework */,
 				CB033B1D1CC4722400CDB417 /* FBSDKLoginKit.framework */,
-				C8837E6553576771DD2FE96C /* libPods-HealthAssistant.a */,
+				95EE9B295D2233DDB5C57A2A /* Pods_HealthAssistant.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,7 +206,7 @@
 		CBE791DC1CC34450001E9FDE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CBE791DB1CC34450001E9FDE /* HealthAssistant.app */,
+				CBE791DB1CC34450001E9FDE /* HealthPal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,8 +259,10 @@
 			children = (
 				CBE791E71CC34450001E9FDE /* Main.storyboard */,
 				CBA00F811CC6E990003CEE69 /* Charts.storyboard */,
-				CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */,
 				CBA00F841CC6E9CF003CEE69 /* Group.storyboard */,
+				CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */,
+				CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */,
+				CBA00F8B1CC6EA43003CEE69 /* Profile.storyboard */,
 				CBE791EF1CC34450001E9FDE /* LaunchScreen.storyboard */,
 				CBE791FF1CC348A9001E9FDE /* WelcomeCollectionViewCell.h */,
 				CBE792001CC348A9001E9FDE /* WelcomeCollectionViewCell.m */,
@@ -304,18 +312,20 @@
 				CB282E561CC6F5FB0054A47B /* EntryNutritionTabBarController.m */,
 				CB180E571CD2E3A700D92285 /* AddWaterViewController.h */,
 				CB180E581CD2E3A700D92285 /* AddWaterViewController.m */,
-				CBA00F861CC6EA05003CEE69 /* ManualEntry.storyboard */,
 				CBA00F721CC6E772003CEE69 /* FoodEntryViewController.h */,
 				CBA00F731CC6E772003CEE69 /* FoodEntryViewController.m */,
 				CBACE3B11CD1E0FC00DC421A /* ScanViewController.h */,
 				CBACE3B21CD1E0FC00DC421A /* ScanViewController.m */,
 				CBDEDF711CC82093007335BE /* ManualEntryFoodTableViewController.h */,
 				CBDEDF721CC82093007335BE /* ManualEntryFoodTableViewController.m */,
-				CBA00F891CC6EA21003CEE69 /* Suggestions.storyboard */,
-				CBA00F7E1CC6E865003CEE69 /* SuggestionViewController.h */,
-				CBA00F7F1CC6E865003CEE69 /* SuggestionViewController.m */,
+				CB2C8E281CD7F61B001AF838 /* SuggestionBubbleViewController.swift */,
+				CB2C8E301CD7F726001AF838 /* FoodListTableViewController.h */,
+				CB2C8E311CD7F726001AF838 /* FoodListTableViewController.m */,
+				CB2C8E361CD7F787001AF838 /* FoodDetailTableViewController.h */,
+				CB2C8E371CD7F787001AF838 /* FoodDetailTableViewController.m */,
 				CB98FC4A1CC569940051C177 /* ProfileViewController.h */,
 				CB98FC4B1CC569940051C177 /* ProfileViewController.m */,
+				CB2C8E271CD7F61B001AF838 /* HealthAssistant-Bridging-Header.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -340,7 +350,7 @@
 			);
 			name = HealthAssistant;
 			productName = HealthAssistant;
-			productReference = CBE791DB1CC34450001E9FDE /* HealthAssistant.app */;
+			productReference = CBE791DB1CC34450001E9FDE /* HealthPal.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -448,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE9FB2C1CD587DF0067A355 /* AddWaterViewController.m in Sources */,
+				CB2C8E321CD7F726001AF838 /* FoodListTableViewController.m in Sources */,
 				CB08126A1CCB4013008C985C /* User.m in Sources */,
 				CB1DDCE01CD3FE6100288FF7 /* WaterSelectionCollectionViewCell.m in Sources */,
 				CB0812641CCB3FAC008C985C /* Food.m in Sources */,
@@ -465,17 +476,18 @@
 				1978CDB31CC701FF002EC7D8 /* WaterTableViewCell.m in Sources */,
 				CB4D07041CCDF3A90099CF6A /* LunchImageTableViewCell.m in Sources */,
 				CB282E511CC6F5D00054A47B /* PopUPButton.m in Sources */,
+				CB2C8E291CD7F61B001AF838 /* SuggestionBubbleViewController.swift in Sources */,
 				CBDEDF761CC8395B007335BE /* ManualEntryTableViewCell.m in Sources */,
 				CB98FC451CC568DC0051C177 /* ChartsViewController.m in Sources */,
 				CB98FC4E1CC569940051C177 /* ProfileViewController.m in Sources */,
 				CBACE3B31CD1E0FC00DC421A /* ScanViewController.m in Sources */,
 				CB1DDCE31CD405F200288FF7 /* WaterSelectAddNewContainerCollectionViewCell.m in Sources */,
 				195EF7721CCEFCC300FFA179 /* GoalTableViewCell.m in Sources */,
+				CB2C8E381CD7F787001AF838 /* FoodDetailTableViewController.m in Sources */,
 				CB1DDCEC1CD41AAA00288FF7 /* WaterContainer.m in Sources */,
 				CBE9FB2D1CD588750067A355 /* TabbarViewController.m in Sources */,
 				CB282E571CC6F5FB0054A47B /* EntryNutritionTabBarController.m in Sources */,
 				CBDEDF7A1CC8987D007335BE /* FirebaseManager.m in Sources */,
-				CBA00F801CC6E865003CEE69 /* SuggestionViewController.m in Sources */,
 				195EF77B1CD04C3400FFA179 /* ProfileInfoTableViewCell.m in Sources */,
 				CBE791E01CC34450001E9FDE /* main.m in Sources */,
 				1938FEE81CC5D80A00884AE8 /* NutritionsTableViewCell.m in Sources */,
@@ -620,6 +632,7 @@
 			baseConfigurationReference = F2FA00C4744BD3031AF899F4 /* Pods-HealthAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -630,8 +643,11 @@
 				INFOPLIST_FILE = HealthAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGETNAME)";
+				PRODUCT_NAME = HealthPal;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthAssistant/HealthAssistant-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -640,6 +656,7 @@
 			baseConfigurationReference = 5367DA7753EF4DC3CA61B26F /* Pods-HealthAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -650,8 +667,10 @@
 				INFOPLIST_FILE = HealthAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Amber.HealthAssistant;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGETNAME)";
+				PRODUCT_NAME = HealthPal;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthAssistant/HealthAssistant-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vMk-d5-tna">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="htm-Aj-vjn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Suggestion-->
+        <!--Select Your Concern-->
         <scene sceneID="RBD-o2-mGQ">
             <objects>
-                <viewController id="vMk-d5-tna" customClass="SuggestionViewController" sceneMemberID="viewController">
+                <viewController id="vMk-d5-tna" customClass="SuggestionBubbleViewController" customModule="HealthAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q1f-16-sJ7"/>
                         <viewControllerLayoutGuide type="bottom" id="Fki-oB-vxm"/>
@@ -16,15 +17,337 @@
                     <view key="view" contentMode="scaleToFill" id="YWa-IM-Ba9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGN-wd-2vC" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="16" y="97" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="f2s-Gh-PbQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="lcj-SC-Fbe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Calory">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="XSs-LK-BxD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szW-6q-KRh" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="102" y="97" width="140" height="140"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="hZC-lU-Zik"/>
+                                    <constraint firstAttribute="height" constant="140" id="l67-FY-688"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Calcium">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="BaL-F1-aYA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUZ-Ul-nUT" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="233" y="181" width="119" height="119"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="119" id="nxL-yz-i6Q"/>
+                                    <constraint firstAttribute="width" constant="119" id="o0r-qM-iWh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Sugar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="HR0-2R-ug7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-9g-1xa" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="16" y="215" width="110" height="110"/>
+                                <color key="backgroundColor" red="0.20371236334289988" green="1" blue="0.66963963682252936" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="aaJ-7a-RwF"/>
+                                    <constraint firstAttribute="height" constant="110" id="fUt-Z5-tZ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Iron">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="736-jn-1Rb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBG-JQ-b0e" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="147" y="245" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="cID-fO-Wv1"/>
+                                    <constraint firstAttribute="height" constant="80" id="tkA-3o-h2X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Fat">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="bqj-7W-C25"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csE-sG-y0s" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="57" y="317" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.18742546355966183" green="0.74951607882259297" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7qq-4V-Djg"/>
+                                    <constraint firstAttribute="width" constant="150" id="O9A-xt-RLf"/>
+                                </constraints>
+                                <state key="normal" title="Total Carbohydrates">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="V9w-Yg-uGD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vj-9f-TwZ" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="5" y="468" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.2875997201703554" green="0.63698547272865058" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="bMN-hX-RAd"/>
+                                    <constraint firstAttribute="width" constant="150" id="w08-5d-dqO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Vitamin A">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="Dnp-2Q-4qm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8T-W2-gPs" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="167" y="442" width="107" height="107"/>
+                                <color key="backgroundColor" red="0.55028028993207978" green="1" blue="0.55266830636396613" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="KFr-f0-n6W"/>
+                                    <constraint firstAttribute="width" constant="107" id="bYN-Ox-AK9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Sodium">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="J20-Nw-xsH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzR-qh-XLT" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="272" y="511" width="99" height="99"/>
+                                <color key="backgroundColor" red="0.35593401416766546" green="0.44059900466419089" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="7ER-mS-Pcj"/>
+                                    <constraint firstAttribute="height" constant="99" id="C7h-em-2N0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Vitamin C">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="03V-lm-mZK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhr-G7-o1m" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="229" y="302" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.21100760475636238" green="0.85773793651679164" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Gnh-2v-al2"/>
+                                    <constraint firstAttribute="height" constant="150" id="fLM-UF-FMF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Total Fiber">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="FAK-Ye-oWZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1g-SV-cPZ" customClass="WobbleBubbleButton" customModule="WobbleBubbleButton">
+                                <rect key="frame" x="265" y="72" width="94" height="94"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="HOB-sn-B9v"/>
+                                    <constraint firstAttribute="height" constant="94" id="eyk-Zr-YfO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Protein">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConcernButtonPressed:" destination="vMk-d5-tna" eventType="touchUpInside" id="3Rb-7A-uKa"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="szW-6q-KRh" firstAttribute="leading" secondItem="QGN-wd-2vC" secondAttribute="trailing" constant="6" id="0jh-le-7Gz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lUZ-Ul-nUT" secondAttribute="trailing" constant="7" id="8B6-vx-wYy"/>
+                            <constraint firstItem="Fki-oB-vxm" firstAttribute="top" secondItem="xzR-qh-XLT" secondAttribute="bottom" constant="8" id="BaG-0O-5t5"/>
+                            <constraint firstItem="k8T-W2-gPs" firstAttribute="leading" secondItem="1Vj-9f-TwZ" secondAttribute="trailing" constant="12" id="DNe-RW-wdR"/>
+                            <constraint firstItem="Fki-oB-vxm" firstAttribute="top" secondItem="1Vj-9f-TwZ" secondAttribute="bottom" id="Dgj-6v-dov"/>
+                            <constraint firstItem="OBG-JQ-b0e" firstAttribute="leading" secondItem="0ZC-9g-1xa" secondAttribute="trailing" constant="21" id="HX7-A1-Vdf"/>
+                            <constraint firstItem="1Vj-9f-TwZ" firstAttribute="leading" secondItem="YWa-IM-Ba9" secondAttribute="leadingMargin" constant="-11" id="Ign-9U-AOT"/>
+                            <constraint firstItem="csE-sG-y0s" firstAttribute="top" secondItem="szW-6q-KRh" secondAttribute="bottom" constant="80" id="Jm2-fy-7VA"/>
+                            <constraint firstItem="k8T-W2-gPs" firstAttribute="top" secondItem="OBG-JQ-b0e" secondAttribute="bottom" constant="117" id="KlW-QN-3lw"/>
+                            <constraint firstItem="QGN-wd-2vC" firstAttribute="leading" secondItem="YWa-IM-Ba9" secondAttribute="leadingMargin" id="MHg-my-86U"/>
+                            <constraint firstItem="QGN-wd-2vC" firstAttribute="top" secondItem="Q1f-16-sJ7" secondAttribute="bottom" constant="33" id="OBa-lz-kyf"/>
+                            <constraint firstItem="szW-6q-KRh" firstAttribute="top" secondItem="Q1f-16-sJ7" secondAttribute="bottom" constant="33" id="PNc-Ya-xLn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qhr-G7-o1m" secondAttribute="trailing" constant="-20" id="QeU-e8-4Ku"/>
+                            <constraint firstItem="Qhr-G7-o1m" firstAttribute="top" secondItem="lUZ-Ul-nUT" secondAttribute="bottom" constant="2" id="RFH-45-2d2"/>
+                            <constraint firstItem="OBG-JQ-b0e" firstAttribute="top" secondItem="szW-6q-KRh" secondAttribute="bottom" constant="8" id="bMM-Su-QqM"/>
+                            <constraint firstItem="csE-sG-y0s" firstAttribute="leading" secondItem="YWa-IM-Ba9" secondAttribute="leadingMargin" constant="41" id="hh0-ul-Jcs"/>
+                            <constraint firstItem="q1g-SV-cPZ" firstAttribute="trailing" secondItem="YWa-IM-Ba9" secondAttribute="trailingMargin" id="knA-ih-miT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xzR-qh-XLT" secondAttribute="trailing" constant="-12" id="mBP-MK-W4R"/>
+                            <constraint firstItem="lUZ-Ul-nUT" firstAttribute="top" secondItem="q1g-SV-cPZ" secondAttribute="bottom" constant="15" id="mLJ-xd-iCX"/>
+                            <constraint firstItem="0ZC-9g-1xa" firstAttribute="leading" secondItem="YWa-IM-Ba9" secondAttribute="leadingMargin" id="s9E-jg-N2g"/>
+                            <constraint firstItem="0ZC-9g-1xa" firstAttribute="top" secondItem="QGN-wd-2vC" secondAttribute="bottom" constant="38" id="viT-0X-bN0"/>
+                            <constraint firstItem="q1g-SV-cPZ" firstAttribute="top" secondItem="Q1f-16-sJ7" secondAttribute="bottom" constant="8" id="z7N-w9-fgd"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Suggestion" image="suggestions" id="mgJ-tD-VdM"/>
+                    <navigationItem key="navigationItem" title="Select Your Concern" id="GGc-14-hC0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="Cs1-YV-MUn" kind="show" identifier="suggestion" id="Wqu-LY-DFh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ug7-3r-DQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462.5" y="1031.5"/>
+            <point key="canvasLocation" x="2696.5" y="1038.5"/>
+        </scene>
+        <!--Suggestions-->
+        <scene sceneID="Z0G-HI-Z88">
+            <objects>
+                <tableViewController id="Cs1-YV-MUn" customClass="FoodListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="y86-fQ-yUU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestedFoodCell" textLabel="Bw3-hx-igi" detailTextLabel="54l-JQ-vd9" style="IBUITableViewCellStyleSubtitle" id="edT-tX-zXk">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edT-tX-zXk" id="eIE-Ab-XAo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bw3-hx-igi">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="54l-JQ-vd9">
+                                            <rect key="frame" x="15" y="25.5" width="30.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="U9M-Ib-JHX" kind="show" id="B72-K2-29Z"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cs1-YV-MUn" id="zAO-dF-DQr"/>
+                            <outlet property="delegate" destination="Cs1-YV-MUn" id="QXK-a8-ECi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Suggestions" id="2Dm-Xz-iup">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lGc-YZ-rtN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EgP-ms-WMr">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Load More"/>
+                                <connections>
+                                    <action selector="onMoreButtonPressed:" destination="Cs1-YV-MUn" eventType="touchUpInside" id="8Yd-DK-VPL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ab-b6-HOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3141.5" y="1038.5"/>
+        </scene>
+        <!--Nutritions-->
+        <scene sceneID="GlG-mN-Qat">
+            <objects>
+                <tableViewController storyboardIdentifier="detailNutritions" id="U9M-Ib-JHX" customClass="FoodDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1fX-it-YNB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="foodDetail" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail" textLabel="Cdo-6J-ddG" detailTextLabel="hGk-la-P1F" style="IBUITableViewCellStyleValue1" id="IUD-b1-mVp">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IUD-b1-mVp" id="mCn-RU-U8a">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cdo-6J-ddG">
+                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGk-la-P1F">
+                                            <rect key="frame" x="304" y="12" width="56" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="U9M-Ib-JHX" id="Sdl-7A-ZTA"/>
+                            <outlet property="delegate" destination="U9M-Ib-JHX" id="3i3-7R-D7n"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Nutritions" id="UNC-d7-9jE"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhu-fE-nQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3603.5" y="1038.5"/>
+        </scene>
+        <!--Suggestion-->
+        <scene sceneID="pai-kl-FuR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="htm-Aj-vjn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Suggestion" image="suggestions" id="mgJ-tD-VdM"/>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BiO-zb-mYf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vMk-d5-tna" kind="relationship" relationship="rootViewController" id="z80-fR-kLG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gob-6a-dOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="1034"/>
         </scene>
     </scenes>
     <resources>
