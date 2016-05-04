@@ -1,6 +1,0 @@
-framework module NCICharts {
-  umbrella header "NCICharts-umbrella.h"
-
-  export *
-  module * { export * }
-}

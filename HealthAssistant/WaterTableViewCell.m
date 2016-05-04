@@ -66,20 +66,20 @@
 
 //Creating a graph
 -(void)createGraph{
-    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 60, self.frame.size.width-40, self.frame.size.height/2.5)];
+    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 60, self.frame.size.width-40, self.frame.size.height*0.6)];
     
     //[self.myGraph sizeToFit];
     //self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 
-    
+    self.myGraph.enableBezierCurve = YES;
     self.myGraph.dataSource = self;
     self.myGraph.delegate = self;
     self.myGraph.enablePopUpReport = YES;
     self.myGraph.layer.masksToBounds = YES;
     self.myGraph.layer.cornerRadius = 8.0;
-    self.myGraph.backgroundColor = [UIColor blueColor];
-    self.myGraph.colorTop = [UIColor blueColor];
-    self.myGraph.colorBottom = [UIColor blueColor];
+    self.myGraph.backgroundColor = [UIColor colorWithRed:51/255 green:51/255 blue:255/255 alpha:1.0];
+    self.myGraph.colorTop = [UIColor colorWithRed:51/255 green:51/255 blue:255/255 alpha:1.0];
+    self.myGraph.colorBottom = [UIColor colorWithRed:51/255 green:51/255 blue:255/255 alpha:1.0];
 }
 
 
