@@ -86,12 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-HealthAssistant/BEMSimpleLineGraph.framework"
   install_framework "Pods-HealthAssistant/Firebase.framework"
-  install_framework "Pods-HealthAssistant/NCICharts.framework"
   install_framework "Pods-HealthAssistant/WobbleBubbleButton.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-HealthAssistant/BEMSimpleLineGraph.framework"
   install_framework "Pods-HealthAssistant/Firebase.framework"
-  install_framework "Pods-HealthAssistant/NCICharts.framework"
   install_framework "Pods-HealthAssistant/WobbleBubbleButton.framework"
 fi

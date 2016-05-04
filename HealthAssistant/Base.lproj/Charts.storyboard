@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="206" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MEC-9B-5w1">
+                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="400" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MEC-9B-5w1">
                                 <rect key="frame" x="-4" y="20" width="383" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Nutritions" rowHeight="223" id="MNM-C7-bvQ" customClass="NutritionsTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="383" height="223"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Nutritions" rowHeight="400" id="MNM-C7-bvQ" customClass="NutritionsTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="383" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MNM-C7-bvQ" id="fSs-cX-lh7">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="222"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgb-da-aJO">
@@ -49,10 +49,10 @@
                                                     </variation>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t9e-3Y-Yx5">
-                                                    <rect key="frame" x="18" y="38" width="347" height="40"/>
+                                                    <rect key="frame" x="18" y="38" width="347" height="100"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="JBg-3E-htr"/>
+                                                        <constraint firstAttribute="height" constant="100" id="JBg-3E-htr"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g87-sK-qJn">
                                                         <size key="itemSize" width="50" height="40"/>
@@ -73,7 +73,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNY-uK-4bT">
-                                                    <rect key="frame" x="8" y="180" width="367" height="34"/>
+                                                    <rect key="frame" x="8" y="357" width="367" height="34"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eA4-Pf-dN2">
                                                             <rect key="frame" x="0.0" y="0.0" width="36" height="34"/>
@@ -159,10 +159,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Water" id="bOg-Wg-6Bg" customClass="WaterTableViewCell">
-                                        <rect key="frame" x="0.0" y="251" width="383" height="206"/>
+                                        <rect key="frame" x="0.0" y="428" width="383" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bOg-Wg-6Bg" id="9r7-uM-tM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="205"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3t-qr-emm">
@@ -186,7 +186,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAg-rZ-sRE">
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAg-rZ-sRE">
                                                     <rect key="frame" x="8" y="163" width="367" height="34"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BaM-SD-GEg">
@@ -258,10 +258,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Activities" id="fsa-0j-XZI" customClass="ActivitiesTableViewCell">
-                                        <rect key="frame" x="0.0" y="457" width="383" height="206"/>
+                                        <rect key="frame" x="0.0" y="828" width="383" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fsa-0j-XZI" id="iEI-fR-CjM">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="205"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CNg-f9-cX9">
@@ -309,7 +309,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-Cv-fOU">
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-Cv-fOU">
                                                     <rect key="frame" x="8" y="163" width="367" height="34"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="voT-Wo-cM8">
