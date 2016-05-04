@@ -178,7 +178,7 @@
             // Protien
             if ([fpID intValue] == 7)
             {
-                NSDictionary *protienDict = [foodItemArray objectAtIndex:i];
+                NSDictionary *protienDict = [foodItemArray ogitbjectAtIndex:i];
                 NSNumber *protienValue = [protienDict objectForKey:@"value"] ;
                 [self.protien.points addObject:protienValue];
                 NSLog(@"protien total: %@", self.protien.points);
