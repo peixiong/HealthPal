@@ -28,6 +28,7 @@
     self.searchBar.delegate = self;
     self.recentFoodButton.layer.borderWidth = 10;
     self.recentFoodButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor whiteColor]);
+    [self loadJasonWithString: @"chicken noodle"];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{

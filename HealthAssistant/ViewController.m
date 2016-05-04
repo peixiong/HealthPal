@@ -49,7 +49,7 @@
     for (int i = 1; i<5; i++) {
         [self.imagearray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%i",i]]];
     }
-    self.introductionsStr = @[@"Record your daily nutritions intakes, and put them on chart for your better reference.", @"Based on your personal infomation, calculate the USDA suggested average nutrition requirement a day for you.", @"Give numourous suggestions for your next meal or shopping plan based on your concern.", @"Record your daily water intakes and try to feed your health-piggy bank each day:)"];
+    self.introductionsStr = @[@"Record your daily nutritions intakes, and put them on chart for your better reference.", @"Based on your personal infomation, calculate the USDA suggested average nutrition requirement.", @"Give numourous suggestions for your next meal or shopping plan based on your concern.", @"Record your daily water intakes and try to feed your health-piggy bank each day:)"];
 }
 
 -(void)addIndicatorsToSubview{
