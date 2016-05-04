@@ -11,7 +11,7 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        self.timeFood = [NSMutableArray new];
+        self.timeFood = [NSDictionary new];
         return self;
     }
     return nil;

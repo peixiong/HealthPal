@@ -1,19 +1,16 @@
 PODS:
   - BEMSimpleLineGraph (4.1)
   - Firebase (2.5.1)
-  - NCICharts (2.0.1)
   - WobbleBubbleButton (0.0.5)
 
 DEPENDENCIES:
   - BEMSimpleLineGraph
   - Firebase (>= 2.5.1)
-  - NCICharts
   - WobbleBubbleButton (~> 0.0)
 
 SPEC CHECKSUMS:
   BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
-  NCICharts: 14a333dafaa3aec48f678ef76d2f3ffd88c1dd46
   WobbleBubbleButton: 039c1c4d268dbed94abdba854530e0a9c2414486
 
 COCOAPODS: 0.39.0
