@@ -30,8 +30,8 @@
 - (IBAction)addOrRemovePointFromGraph:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *labelDates;
 
-@property NSArray *points;
-@property NSArray *dates;
+@property NSMutableArray *points;
+@property NSMutableArray *dates;
 
 @property UILabel *buttonLabel;
 
@@ -49,6 +49,8 @@
 
 @property NSMutableArray *foodIDs;
 @property NSMutableArray *dataForAllDays;
+@property NSArray * foodIDsOneDay;
+@property NSMutableArray *allDaysData;
 
 
 @property NutritionCategory *calories;

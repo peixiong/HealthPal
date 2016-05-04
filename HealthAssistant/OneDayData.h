@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface OneDayData : NSObject
-@property NSString *date;
-@property (nonatomic)NSMutableArray *keyIDs;
+@property NSDate *date;
+@property (nonatomic)NSArray *keyIDs;
 
 @end

@@ -17,18 +17,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    //self.points = @[@34.1f,@25.1f,@38.1f,@24.1f,@42.f, @25.1f,@38.1f,@24.1f,@42.f];
-    self.dates = @[@"2016-01-01 03:34:42 +0000", @"2016-01-02 03:34:42 +0000", @"2016-01-03 03:34:42 +0000", @"2016-01-04 03:34:42 +0000", @"2016-01-05 03:34:42 +0000", @"2016-01-06 03:34:42 +0000", @"2016-01-07 03:34:42 +0000", @"2016-01-08 03:34:42 +0000", @"2016-01-09 03:34:42 +0000"];
-
-    
 }
 
 
-- (void)getPointsWithCompletionHandler:(void (^)(void))completionBlock
-{
-    
-    
+- (void)getPointsWithCompletionHandler:(void (^)(void))completionBlock{
     NSLog(@"Expecting calories to be non zero");
     if (self.calories.points.count > 0)
     {
@@ -40,20 +32,17 @@
 
 -(void)loadCell{
     
-    NSLog(@"Getting points...");
-    [FirebaseManager sharedInstance].delegate = self;
-    //    NSLog(@"user @ Nutrition cell %@", self.user);
-    [self retriveLifetimeUserLoggedFoodIDs];
+    self.dates = [NSMutableArray new];
+    self.allDaysData = [NSMutableArray new];
     
+    //Setting Delegates
     [FirebaseManager sharedInstance].delegate = self;
-    //Pulling the user Info.
-    //NSLog(@"user @ Nutrition cell %@", self.user);
-    //[self retriveLifetimeUserLoggedFoodIDs];
-
-    
-    //Setting up delegates for collection view
     self.nutritionsButtonView.delegate = self;
     self.nutritionsButtonView.dataSource = self;
+    
+    NSLog(@"Getting points...");
+    [self retriveLifetimeUserLoggedFoodIDs];
+
     
     self.calories = [NutritionCategory new];
     self.calories.title = @"Calories";
@@ -118,36 +107,56 @@
 
 
 
-
 -(void)retriveLifetimeUserLoggedFoodIDs{
-    
     NSLog(@"Retrieving...");
+    
+    NSMutableArray *tempAllDays = [NSMutableArray new];
+    
     self.dataForAllDays = [[NSMutableArray alloc]init];
     for (NSString *dateString in self.user.timeFood.allKeys) {
+        
+        NSLog(@"This is the date string: %@", dateString);
+        
+        
+        //testing date conversion
+        NSDateFormatter *dateformat = [NSDateFormatter new];
+        [dateformat setDateFormat:@"yyyyMMdd"];
+        NSDate *firebaseDateFormat = [dateformat dateFromString:dateString];
         OneDayData *oneDay = [[OneDayData alloc]init];
-        oneDay.date = dateString;
-        NSDictionary *food = self.user.timeFood[dateString];
-        NSArray * foodValues = food.allValues;
-        for (NSDictionary *singleEntry in foodValues){
-            for (NSString *singleID in singleEntry.allValues){
-                [self retriveTotalNutritionsToEachDay:singleID];
-            }
-        }
-        [self.dataForAllDays addObject:oneDay];
-        //NSLog(@"Data for the day: %@",self.dataForAllDays);
+        
+        oneDay.date = firebaseDateFormat;
+        
+        NSLog(@"Converted NSDATE: %@", oneDay.date);
+        
+        
+        NSDictionary *oneDayfood = self.user.timeFood[dateString];
+        NSLog(@"food: %@", oneDayfood);
+        
+        oneDay.keyIDs = oneDayfood.allValues;
+        NSLog(@"Foodvalues: %@",oneDay.keyIDs);
+        
+        [tempAllDays addObject:oneDay];
+
+        //[self.allDaysData addObject:oneDay];
+  
+        
     }
+    
+    NSSortDescriptor *sortDates = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDates];
+    self.allDaysData = [[tempAllDays sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    
+
+    [self retriveTotalNutritionsToEachDay:self.allDaysData];
 }
 
 
--(void)retriveTotalNutritionsToEachDay:(NSString *)fid{
-    NSLog(@"Retreiving each day...");
+-(void)retriveTotalNutritionsToEachDay:(NSArray *)allDays{
     
-    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://blinding-heat-8730.firebaseio.com/"];
-    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSDictionary *dict = snapshot.value[@"foods"];
-        //NSLog(@"%@", dict);
-        NSArray *foodItemArray = [dict objectForKey:fid];
-        //NSLog(@"%@", foodItemArray);
+    for (OneDayData *day in allDays)
+    {
+    
+        NSLog(@"Retreiving each day...");
         
         for (int i; i < foodItemArray.count; i++) {
             NSNumber *fpID = [[foodItemArray objectAtIndex:i] objectForKey:@"fpId"];
@@ -232,64 +241,32 @@
                 [self.calcium.points addObject:calciumValue];
                 NSLog(@"Calsium total: %@", self.calcium.points);
             }
+            [self.dates addObject:day.date];
+            NSLog(@"One day data has been parsed with date ONE DAY: %@", day.date);
+            NSLog(@"One day data has been parsed with date ARRAY: %@", self.dates);
             
             
             
-            // Iron
-            if ([fpID intValue] == 12)
-            {
-                NSDictionary *ironDict = [foodItemArray objectAtIndex:i];
-                NSNumber *ironValue = [ironDict objectForKey:@"value"] ;
-                [self.iron.points addObject:ironValue];
-                NSLog(@"iron total%@", self.iron.points);
-            }
+            //render stuff with a completion block...
+            [self getPointsWithCompletionHandler:^{
+                [self cellTitle];
+                [self hydrateDatasets];
+                [self createGraph];
+                [self.contentView addSubview:self.myGraph];
+                [self graphProperties];
+                [self drawAverageLine];
+                [self graphLabels];
+                [self gradientForGraphLine];
+            }];
             
             
-            // Vitamin A
-            if ([fpID intValue] == 13)
-            {
-                NSDictionary *vitADict = [foodItemArray objectAtIndex:i];
-                NSNumber *vitAValue = [vitADict objectForKey:@"value"] ;
-                [self.vitA.points addObject:vitAValue];
-                NSLog(@"Vitamin A total%@", self.vitA.points);
-            }
             
-            
-            // Vitamin C
-            if ([fpID intValue] == 14)
-            {
-                NSDictionary *vitCDict = [foodItemArray objectAtIndex:i];
-                NSNumber *vitCValue = [vitCDict objectForKey:@"value"] ;
-                [self.vitC.points addObject:vitCValue];
-                NSLog(@"Vitamin C total%@", self.vitC.points);
-            }
-            
-            else
-            {
-                NSLog(@"Invalid data");
-            }
-        }
-
-                
-        //render stuff with a completion block...
-        [self getPointsWithCompletionHandler:^{
-            [self cellTitle];
-            [self hydrateDatasets];
-            [self createGraph];
-            [self.contentView addSubview:self.myGraph];
-            [self graphProperties];
-            [self drawAverageLine];
-            [self graphLabels];
-            [self gradientForGraphLine];
+        } withCancelBlock:^(NSError *error) {
+            NSLog(@"%@", error.description);
         }];
-        
-        
-        
-    } withCancelBlock:^(NSError *error) {
-        NSLog(@"%@", error.description);
-    }];
-    
+    }
 }
+
 
 
 
@@ -316,14 +293,15 @@
     // Initing a label for each cell
     int cellX = cell.frame.origin.x;
     int cellY = cell.frame.origin.y;
-    self.buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 25)];
+    self.buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 40)];
     self.buttonLabel.text = [[self.nutritionsArray objectAtIndex:indexPath.row]title];
     self.buttonLabel.clipsToBounds = YES;
     self.buttonLabel.layer.masksToBounds = YES;
     self.buttonLabel.layer.cornerRadius = 8.0;
-    self.buttonLabel.layer.borderWidth = 1;
-    self.buttonLabel.layer.borderColor = [UIColor greenColor].CGColor;
-    self.buttonLabel.textColor = [UIColor greenColor];
+    //self.buttonLabel.layer.borderWidth = 1;
+    //self.buttonLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.buttonLabel.textColor = [UIColor blackColor];
+    self.buttonLabel.backgroundColor = [UIColor colorWithRed:184/255 green:195/255 blue:255/255 alpha:0.2];
     self.buttonLabel.textAlignment = NSTextAlignmentCenter;
     [self.nutritionsButtonView addSubview:self.buttonLabel];
 
@@ -333,22 +311,23 @@
 
 // size of each cell in the UICollectionView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(95, 100);
+    return CGSizeMake(95, 40);
 }
 
 
 // Action on cell pressed
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     //    [nc getDataFromFireBase];
 
-    NutritionCategory *nc = self.nutritionsArray[indexPath.row];
-    NSLog(@"%@",nc);
-    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
+    //NutritionCategory *nc = self.nutritionsArray[indexPath.row];
+    //NSLog(@"%@",nc);
+    //NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
     
     if (indexPath.row == 0)
     {
         self.arrayOfValues = self.calories.points;
+        //self.arrayOfDates = self.dates;
         [self.myGraph reloadGraph];
     }
     if (indexPath.row == 1)
@@ -439,12 +418,13 @@
 
 // Setup the cell title
 - (void) cellTitle{
-    self.label.text = @"Nutritions";
-    self.label.layer.masksToBounds = YES;
-    self.label.layer.cornerRadius = 8.0;
-    self.label.layer.borderWidth = 1;
-    self.label.layer.borderColor = [UIColor greenColor].CGColor;
-    self.label.textColor = [UIColor greenColor];
+    self.label.text = @"Nutritions Dashboard";
+    //self.label.layer.masksToBounds = YES;
+    //self.label.layer.cornerRadius = 8.0;
+    //self.label.layer.borderWidth = 1;
+    //self.label.layer.borderColor = [UIColor blackColor].CGColor;
+    self.label.textColor = [UIColor blackColor];
+    //self.label.backgroundColor = [UIColor lightGrayColor];
 }
 
 
@@ -453,7 +433,7 @@
 - (void)drawAverageLine{
     self.myGraph.averageLine.enableAverageLine = YES;
     self.myGraph.averageLine.alpha = 0.5;
-    self.myGraph.averageLine.color = [UIColor lightGrayColor];
+    self.myGraph.averageLine.color = [UIColor blueColor];
     self.myGraph.averageLine.width = 2.5;
     self.myGraph.averageLine.dashPattern = @[@(2),@(2)];
 }
@@ -462,7 +442,7 @@
 
 //Creating a graph
 -(void)createGraph{
-    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 70, self.frame.size.width-40, 280)];
+    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 100, self.frame.size.width-40, self.frame.size.height-200)];
     
     self.myGraph.enableBezierCurve = YES;
     self.myGraph.dataSource = self;
@@ -470,9 +450,9 @@
     self.myGraph.enablePopUpReport = YES;
     self.myGraph.layer.masksToBounds = YES;
     self.myGraph.layer.cornerRadius = 8.0;
-    self.myGraph.backgroundColor = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
-    self.myGraph.colorTop = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
-    self.myGraph.colorBottom = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
+//    self.myGraph.backgroundColor = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
+//    self.myGraph.colorTop = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
+//    self.myGraph.colorBottom = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
 }
 
 
@@ -517,34 +497,33 @@
     
     self.previousStepperValue = self.graphObjectIncrement.value;
     self.totalNumber = 0;
-    NSDate *baseDate = [NSDate date];
-    BOOL showNullValue = true;
+    //NSDate *baseDate = [NSDate date];
+    //BOOL showNullValue = true;
+    
     
     // Add objects to the array based on the stepper value
     for (int i = 0; i < self.calories.points.count; i++) {
-        //[self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
-//        if (self.calories.points != nil) {
-//            [self.arrayOfValues addObject:self.points[i]];
-//        }
-        
-        //[self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
-        //[self.arrayOfValues addObject:self.points[i]];
 
         [self.arrayOfValues addObject:self.calories.points[i]];
         
         
-        if (i == 0) {
-            [self.arrayOfDates addObject:baseDate]; // Dates for the X-Axis of the graph
-            //[self.arrayOfDates addObject:self.dates[i]]; // Dates for the X-Axis of the graph
-            
-        } else if (showNullValue && i == 4) {
-            [self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]]; // Dates for the X-Axis of the graph
-           
-            
-            self.arrayOfValues[i] = @(BEMNullGraphValue);
-        } else {
-            [self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]]; // Dates for the X-Axis of the graph
-        }
+        [self.arrayOfDates addObject:self.dates[i]];
+        
+        
+//        if (i == 0) {
+//            //[self.arrayOfDates addObject:baseDate];
+//            [self.arrayOfDates addObject:self.dates];
+//            //NSLog(@"Current Date: %@", baseDate);
+//            
+//        } else if (showNullValue && i == 4) {
+//            //[self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]];
+//            [self.arrayOfDates addObject:self.dates[i-1]];
+//            self.arrayOfValues[i] = @(BEMNullGraphValue);
+//            
+//        } else {
+//            //[self.arrayOfDates addObject:[self getDate:self.arrayOfDates[i-1]]];
+//            [self.arrayOfDates addObject:self.dates[i]];
+//        }
         
         self.totalNumber = self.totalNumber + [[self.arrayOfValues objectAtIndex:i] intValue]; // All of the values added together
     }
@@ -564,7 +543,8 @@
 
 // Returns the dates on label
 - (NSString *)labelForDateAtIndex:(NSInteger)index {
-    NSDate *date = self.arrayOfDates[index];
+    //NSDate *date = self.arrayOfDates[index];
+    NSDate *date = self.dates[index];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"MM/dd";
     NSString *label = [df stringFromDate:date];
@@ -573,28 +553,29 @@
 
 
 
-//Not being used now "It used to generate random numbers for graph"
-- (float)getValues {
-    float i1 = (float)(arc4random() % 5) / 100 ;
-    NSLog(@"%f",i1);
-    return i1;
-}
-
-
 
 - (IBAction)addOrRemovePointFromGraph:(id)sender {
     if (self.graphObjectIncrement.value > _previousStepperValue) {
-        // Add point
+
         NSLog(@" + pressed");
-        [self.arrayOfValues addObject:@([self getValues])];
-        NSDate *newDate = [self getDate:(NSDate *)[self.arrayOfDates lastObject]];
-        [self.arrayOfDates addObject:newDate];
-        [self.myGraph reloadGraph];
+        if (self.arrayOfValues.count > 2)
+        {
+            [self.arrayOfValues removeLastObject];
+            [self.arrayOfDates removeLastObject];
+            [self.myGraph reloadGraph];
+        }
+        else
+        {
+            NSLog(@"can't zoom in more than that");
+        }
+        
+        
     } else if (self.graphObjectIncrement.value < self.previousStepperValue) {
         // Remove point
         NSLog(@" - pressed");
-        [self.arrayOfValues removeObjectAtIndex:0];
-        [self.arrayOfDates removeObjectAtIndex:0];
+        self.arrayOfValues = self.points;
+        self.arrayOfDates = self.dates;
+        
         [self.myGraph reloadGraph];
     }
     
