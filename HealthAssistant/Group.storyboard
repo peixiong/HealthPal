@@ -107,7 +107,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="waterBottle" id="30X-h1-LTo" customClass="WaterSelectionCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="22.5" width="115" height="114"/>
+                                        <rect key="frame" x="0.0" y="23" width="115" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="114"/>
@@ -155,7 +155,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addNewContainer" id="13y-f9-LhE" customClass="WaterSelectAddNewContainerCollectionViewCell">
-                                        <rect key="frame" x="125" y="22.5" width="159" height="114"/>
+                                        <rect key="frame" x="125" y="23" width="159" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="159" height="114"/>
@@ -367,7 +367,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Water" image="group" id="Ww9-1B-ml7"/>
+                    <tabBarItem key="tabBarItem" title="Water" image="waterpng" id="Ww9-1B-ml7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -401,6 +401,6 @@
     </scenes>
     <resources>
         <image name="container4oz" width="510" height="340"/>
-        <image name="group" width="30" height="30"/>
+        <image name="waterpng" width="30" height="30"/>
     </resources>
 </document>

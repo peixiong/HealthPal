@@ -17,6 +17,7 @@
 @property NSArray<NSDictionary *> *foodInfoFromJason;
 @property NSMutableArray<Food *> *foodsResults;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIButton *recentFoodButton;
 
 @end
 
@@ -25,7 +26,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar.delegate = self;
+    self.recentFoodButton.layer.borderWidth = 10;
+    self.recentFoodButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor whiteColor]);
+    
+    self.foodsResults = [NSMutableArray new];
+    self.searchBar.text = @"chicken noodle";
+    NSString *modifiedSearchText = [self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSString *searchStr = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/search/%@?results=0:20&fields=item_name,brand_name,upc,nf_calories,nf_total_fat,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_serving_per_container,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams&appId=97e51eca&appKey=35feb79df2ec3bba88960183e4a929bc", modifiedSearchText];
+    [self loadJasonWithString: searchStr];
 }
+
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSLog(@"%@",self.searchBar.text);

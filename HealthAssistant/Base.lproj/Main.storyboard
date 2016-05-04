@@ -31,18 +31,24 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="CellID" id="1DT-oz-S9m" customClass="WelcomeCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="5.5" width="374" height="417"/>
+                                        <rect key="frame" x="0.0" y="6" width="374" height="417"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="417"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noH-M2-sZF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="noH-M2-sZF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="417"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="noH-M2-sZF" firstAttribute="top" secondItem="1DT-oz-S9m" secondAttribute="topMargin" constant="-8" id="Ber-lW-gPH"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="noH-M2-sZF" secondAttribute="bottom" constant="-8" id="idH-WH-aIq"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="noH-M2-sZF" secondAttribute="trailing" constant="-8" id="v7e-f6-ydq"/>
+                                            <constraint firstItem="noH-M2-sZF" firstAttribute="leading" secondItem="1DT-oz-S9m" secondAttribute="leadingMargin" constant="-8" id="zaC-pc-KGM"/>
+                                        </constraints>
                                         <size key="customSize" width="374" height="417"/>
                                         <connections>
                                             <outlet property="imageView" destination="noH-M2-sZF" id="kLd-fA-jOg"/>
@@ -467,7 +473,7 @@
         <scene sceneID="Oj7-02-0wc">
             <objects>
                 <viewControllerPlaceholder storyboardName="Group" id="lNM-aL-yTp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hna-rQ-RSx"/>
+                    <tabBarItem key="tabBarItem" title="Water" image="Water-drop" id="hna-rQ-RSx"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xp9-sc-jPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -487,7 +493,7 @@
         <scene sceneID="Jnk-Sj-9bL">
             <objects>
                 <viewControllerPlaceholder storyboardName="Suggestions" id="zuT-Xx-yHi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cl7-lM-ciI"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="suggestions" id="cl7-lM-ciI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UfB-XQ-kI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -505,7 +511,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Water-drop" width="178" height="178"/>
         <image name="panda-151605_960_720" width="655" height="720"/>
+        <image name="suggestions" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4pm-M5-30l"/>

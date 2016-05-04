@@ -409,7 +409,7 @@
                             <constraint firstItem="MEC-9B-5w1" firstAttribute="top" secondItem="6RL-iF-5gM" secondAttribute="bottom" id="xCW-BV-267"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chart" image="Charts" selectedImage="Charts" id="6bO-v3-Ol3"/>
+                    <tabBarItem key="tabBarItem" title="Chart" image="chartpng3" selectedImage="chartpng3" id="6bO-v3-Ol3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -419,10 +419,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ten-xk-Nda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2375.5" y="-601.5"/>
+            <point key="canvasLocation" x="2235.5" y="-594.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Charts" width="32" height="32"/>
+        <image name="chartpng3" width="30" height="30"/>
     </resources>
 </document>
