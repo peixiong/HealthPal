@@ -94,20 +94,20 @@
         }
 
     }
-    if (indexPath.section == 1){
-        GoalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"goal"];
-        
-        cell.goalLabel.text = self.goalNames[indexPath.row];
-        cell.suggestedValueLabel.text = self.suggestedValueFemale19to50Age[indexPath.row];
-        if (indexPath.row %2 == 0) {
-            cell.backgroundColor = [UIColor lightGrayColor];
-            return cell;
-        }
-        else{
-            cell.backgroundColor = [UIColor whiteColor];
-            return cell;
-        }
-    }
+//    if (indexPath.section == 1){
+//        GoalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"goal"];
+//        
+//        cell.goalLabel.text = self.goalNames[indexPath.row];
+//        cell.suggestedValueLabel.text = self.suggestedValueFemale19to50Age[indexPath.row];
+//        if (indexPath.row %2 == 0) {
+//            cell.backgroundColor = [UIColor lightGrayColor];
+//            return cell;
+//        }
+//        else{
+//            cell.backgroundColor = [UIColor whiteColor];
+//            return cell;
+//        }
+//    }
     else{
         LogOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"logout"];
         
@@ -120,20 +120,23 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-        if (section == 0){
-            return 5;
-        }if (section == 1){
-            return self.goalNames.count;
-        }if (section == 2){
-            return 1;
-        }else{
-            return 0;
-        }
+    if (section == 0)
+    {
+        return 5;
+    }
+//    if (section == 1)
+//    {
+//        return self.goalNames.count;
+//    }
+    else
+    {
+        return 1;
+    }
 }
 
 // Profile, Goals & Logout
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 
@@ -146,10 +149,10 @@
         case 0:
             sectionName = NSLocalizedString(@"Profile Information", @"Profile Information");
             break;
+//        case 1:
+//            sectionName = NSLocalizedString(@"Goals", @"Goals");
+//            break;
         case 1:
-            sectionName = NSLocalizedString(@"Goals", @"Goals");
-            break;
-        case 2:
             sectionName = NSLocalizedString(@"Logout", @"Logout");
             break;
         default:
@@ -171,8 +174,8 @@
             return 40.0f;
         case 1:
             return 80.0f;
-        case 2:
-            return 80.0f;
+//        case 2:
+//            return 80.0f;
     }
     return 0.0f;
 }

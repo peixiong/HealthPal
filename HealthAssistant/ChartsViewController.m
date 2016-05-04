@@ -37,26 +37,31 @@
     if(indexPath.row == 0)
     {
         NutritionsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nutritions"];
-        cell = [[NutritionsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell" user:self.user];
         
-        // cell.user = self.user;
+        cell.user = self.user;
+        [cell loadCell];
         return cell;
-        
-    }if (indexPath.row == 1){
-        WaterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Water"];
-        //cell.user = self.user;
-        return cell;
-        
-    }else {
-        ActivitiesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activities"];
-        //cell.user = self.user;
-        return cell;
+    }
+    
+//    }if (indexPath.row == 1){
+//        WaterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Water"];
+//        //cell.user = self.user;
+//        return cell;
+//        
+//    }else {
+//        ActivitiesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activities"];
+//        //cell.user = self.user;
+//        return cell;
+//    }
+    else
+    {
+        return nil;
     }
 
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 1;
 }
 
 

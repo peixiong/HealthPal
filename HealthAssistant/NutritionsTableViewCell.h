@@ -64,10 +64,10 @@
 @property NutritionCategory *vitC;
 
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style
-             reuseIdentifier:(NSString *)reuseIdentifier
-                        user:(User *)user;
+//-(instancetype)initWithStyle:(UITableViewCellStyle)style
+//             reuseIdentifier:(NSString *)reuseIdentifier
+//                        user:(User *)user;
 
-
+-(void)loadCell;
 
 @end
