@@ -30,7 +30,7 @@
 - (IBAction)addOrRemovePointFromGraph:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *labelDates;
 
-@property NSArray *points;
+@property NSMutableArray *points;
 @property NSMutableArray *dates;
 
 @property UILabel *buttonLabel;

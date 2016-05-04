@@ -183,7 +183,7 @@
                             NSDictionary *caloriesDict = [foodItemArray objectAtIndex:i];
                             NSString *calorieValue = [caloriesDict objectForKey:@"value"];
                             [self.calories.points addObject:calorieValue];
-                            //NSLog(@"Cal total: %@", self.calories.points);
+                            NSLog(@"Cal total: %@", self.calories.points);
                         }
                         
                         // Carbs
@@ -606,28 +606,29 @@
 
 
 
-//Not being used now "It used to generate random numbers for graph"
-//- (float)getValues {
-//    float i1 = (float)(arc4random() % 5) / 100 ;
-//    NSLog(@"%f",i1);
-//    return i1;
-//}
-
-
 
 - (IBAction)addOrRemovePointFromGraph:(id)sender {
     if (self.graphObjectIncrement.value > _previousStepperValue) {
-        // Add point
+
         NSLog(@" + pressed");
-        [self.arrayOfValues addObject:self.points]; // check that
-        NSDate *newDate = [self getDate:(NSDate *)[self.arrayOfDates lastObject]];
-        [self.arrayOfDates addObject:newDate];
-        [self.myGraph reloadGraph];
+        if (self.arrayOfValues.count > 2)
+        {
+            [self.arrayOfValues removeLastObject];
+            [self.arrayOfDates removeLastObject];
+            [self.myGraph reloadGraph];
+        }
+        else
+        {
+            NSLog(@"can't zoom in more than that");
+        }
+        
+        
     } else if (self.graphObjectIncrement.value < self.previousStepperValue) {
         // Remove point
         NSLog(@" - pressed");
-        [self.arrayOfValues removeObjectAtIndex:0];
-        [self.arrayOfDates removeObjectAtIndex:0];
+        self.arrayOfValues = self.points;
+        self.arrayOfDates = self.dates;
+        
         [self.myGraph reloadGraph];
     }
     
