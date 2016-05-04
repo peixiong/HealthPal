@@ -64,6 +64,13 @@
     return 1;
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return self.view.frame.size.height-100;
+    
+}
+
 
 
 @end

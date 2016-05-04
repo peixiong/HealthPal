@@ -18,6 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    
     //self.points = @[@34.1f,@25.1f,@38.1f,@24.1f,@42.f, @25.1f,@38.1f,@24.1f,@42.f];
     self.dates = @[@"2016-01-01 03:34:42 +0000", @"2016-01-02 03:34:42 +0000", @"2016-01-03 03:34:42 +0000", @"2016-01-04 03:34:42 +0000", @"2016-01-05 03:34:42 +0000", @"2016-01-06 03:34:42 +0000", @"2016-01-07 03:34:42 +0000", @"2016-01-08 03:34:42 +0000", @"2016-01-09 03:34:42 +0000"];
 
@@ -316,14 +317,15 @@
     // Initing a label for each cell
     int cellX = cell.frame.origin.x;
     int cellY = cell.frame.origin.y;
-    self.buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 25)];
+    self.buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(cellX, cellY, 100, 40)];
     self.buttonLabel.text = [[self.nutritionsArray objectAtIndex:indexPath.row]title];
     self.buttonLabel.clipsToBounds = YES;
     self.buttonLabel.layer.masksToBounds = YES;
     self.buttonLabel.layer.cornerRadius = 8.0;
-    self.buttonLabel.layer.borderWidth = 1;
-    self.buttonLabel.layer.borderColor = [UIColor greenColor].CGColor;
-    self.buttonLabel.textColor = [UIColor greenColor];
+    //self.buttonLabel.layer.borderWidth = 1;
+    //self.buttonLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.buttonLabel.textColor = [UIColor blackColor];
+    self.buttonLabel.backgroundColor = [UIColor colorWithRed:184/255 green:195/255 blue:255/255 alpha:0.2];
     self.buttonLabel.textAlignment = NSTextAlignmentCenter;
     [self.nutritionsButtonView addSubview:self.buttonLabel];
 
@@ -333,18 +335,18 @@
 
 // size of each cell in the UICollectionView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(95, 100);
+    return CGSizeMake(95, 40);
 }
 
 
 // Action on cell pressed
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     //    [nc getDataFromFireBase];
 
-    NutritionCategory *nc = self.nutritionsArray[indexPath.row];
-    NSLog(@"%@",nc);
-    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
+    //NutritionCategory *nc = self.nutritionsArray[indexPath.row];
+    //NSLog(@"%@",nc);
+    //NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
     
     if (indexPath.row == 0)
     {
@@ -439,12 +441,13 @@
 
 // Setup the cell title
 - (void) cellTitle{
-    self.label.text = @"Nutritions";
-    self.label.layer.masksToBounds = YES;
-    self.label.layer.cornerRadius = 8.0;
-    self.label.layer.borderWidth = 1;
-    self.label.layer.borderColor = [UIColor greenColor].CGColor;
-    self.label.textColor = [UIColor greenColor];
+    self.label.text = @"Nutritions Dashboard";
+    //self.label.layer.masksToBounds = YES;
+    //self.label.layer.cornerRadius = 8.0;
+    //self.label.layer.borderWidth = 1;
+    //self.label.layer.borderColor = [UIColor blackColor].CGColor;
+    self.label.textColor = [UIColor blackColor];
+    //self.label.backgroundColor = [UIColor lightGrayColor];
 }
 
 
@@ -453,7 +456,7 @@
 - (void)drawAverageLine{
     self.myGraph.averageLine.enableAverageLine = YES;
     self.myGraph.averageLine.alpha = 0.5;
-    self.myGraph.averageLine.color = [UIColor lightGrayColor];
+    self.myGraph.averageLine.color = [UIColor blueColor];
     self.myGraph.averageLine.width = 2.5;
     self.myGraph.averageLine.dashPattern = @[@(2),@(2)];
 }
@@ -462,7 +465,7 @@
 
 //Creating a graph
 -(void)createGraph{
-    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 70, self.frame.size.width-40, 280)];
+    self.myGraph = [[BEMSimpleLineGraphView alloc] initWithFrame:CGRectMake(20, 100, self.frame.size.width-40, self.frame.size.height-200)];
     
     self.myGraph.enableBezierCurve = YES;
     self.myGraph.dataSource = self;
@@ -470,9 +473,9 @@
     self.myGraph.enablePopUpReport = YES;
     self.myGraph.layer.masksToBounds = YES;
     self.myGraph.layer.cornerRadius = 8.0;
-    self.myGraph.backgroundColor = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
-    self.myGraph.colorTop = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
-    self.myGraph.colorBottom = [UIColor colorWithRed:102/255 green:255/255 blue:102/255 alpha:1.0];
+//    self.myGraph.backgroundColor = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
+//    self.myGraph.colorTop = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
+//    self.myGraph.colorBottom = [UIColor colorWithRed:0/255 green:255/255 blue:127/255 alpha:1.0];
 }
 
 
@@ -522,13 +525,6 @@
     
     // Add objects to the array based on the stepper value
     for (int i = 0; i < self.calories.points.count; i++) {
-        //[self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
-//        if (self.calories.points != nil) {
-//            [self.arrayOfValues addObject:self.points[i]];
-//        }
-        
-        //[self.arrayOfValues addObject:@([self getValues])]; // Get Floatvalues for the graph
-        //[self.arrayOfValues addObject:self.points[i]];
 
         [self.arrayOfValues addObject:self.calories.points[i]];
         
