@@ -49,10 +49,10 @@
                                                     </variation>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t9e-3Y-Yx5">
-                                                    <rect key="frame" x="18" y="38" width="347" height="40"/>
+                                                    <rect key="frame" x="18" y="38" width="347" height="100"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="JBg-3E-htr"/>
+                                                        <constraint firstAttribute="height" constant="100" id="JBg-3E-htr"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g87-sK-qJn">
                                                         <size key="itemSize" width="50" height="40"/>

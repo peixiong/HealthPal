@@ -333,7 +333,7 @@
 
 // size of each cell in the UICollectionView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(95, 40);
+    return CGSizeMake(95, 100);
 }
 
 
