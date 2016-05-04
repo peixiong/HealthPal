@@ -105,7 +105,7 @@
     [DateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     NSString *dayStr = [DateFormatter stringFromDate:[NSDate date]];
     
-    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:@"20160501" meal:self.whichMeal andFood:self.food];
+    [[FirebaseManager sharedInstance] saveFoodtoUserTimeFoodForUser:self.user day:dayStr meal:self.whichMeal andFood:self.food];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
