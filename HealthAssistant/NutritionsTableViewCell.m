@@ -158,88 +158,141 @@
     
         NSLog(@"Retreiving each day...");
         
-        for (int i; i < foodItemArray.count; i++) {
-            NSNumber *fpID = [[foodItemArray objectAtIndex:i] objectForKey:@"fpId"];
-            NSLog(@"current fpid: %@", [[foodItemArray objectAtIndex:i] objectForKey:@"fpId"]);
-            NSLog(@"food item: %@", [foodItemArray objectAtIndex:i]);
-            
-            
-            // Calories
-            if ([fpID intValue] == 5)
-            {
-                NSDictionary *caloriesDict = [foodItemArray objectAtIndex:i];
-                NSString *calorieValue = [caloriesDict objectForKey:@"value"];
-                NSLog(@"%@", calorieValue);
-                [self.calories.points addObject:calorieValue];
-                NSLog(@"Cal total: %@", self.calories.points);
-            }
-            
-            // Carbs
-            if ([fpID intValue] == 6)
-            {
-                NSDictionary *carbsDict = [foodItemArray objectAtIndex:i];
-                NSNumber *carbsValue = [carbsDict objectForKey:@"value"] ;
-                [self.carbs.points addObject:carbsValue];
-                NSLog(@"Carb total: %@", self.carbs.points);
-            }
-            
-            
-            // Protien
-            if ([fpID intValue] == 7)
-            {
-                NSDictionary *protienDict = [foodItemArray ogitbjectAtIndex:i];
-                NSNumber *protienValue = [protienDict objectForKey:@"value"] ;
-                [self.protien.points addObject:protienValue];
-                NSLog(@"protien total: %@", self.protien.points);
-            }
-            
-            
-            // fat
-            if ([fpID intValue] == 8)
-            {
-                NSDictionary *fatDict = [foodItemArray objectAtIndex:i];
-                NSNumber *fatValue = [fatDict objectForKey:@"value"] ;
-                [self.fat.points addObject:fatValue];
-                NSLog(@"fat total: %@", self.fat.points);
-            }
-            
-            
-            
-            // Sugar
-            if ([fpID intValue] == 9)
-            {
-                NSDictionary *sugarDict = [foodItemArray objectAtIndex:i];
-                NSNumber *sugarValue = [sugarDict objectForKey:@"value"] ;
-                [self.sugar.points addObject:sugarValue];
-                NSLog(@"sugar total: %@", self.sugar.points);
-            }
-            
-            
-            // Sodium
-            if ([fpID intValue] == 10)
-            {
-                NSDictionary *sodiumDict = [foodItemArray objectAtIndex:i];
-                NSNumber *sodiumValue = [sodiumDict objectForKey:@"value"];
-                [self.sodium.points addObject:sodiumValue];
-                NSLog(@"sodium total: %@", self.sodium.points);
-            }
-            
-            // Calcium
-            if ([fpID intValue] == 11)
-            {
-                NSDictionary *calciumDict = [foodItemArray objectAtIndex:i];
-                NSNumber *calciumValue = [calciumDict objectForKey:@"value"];
-                [self.calcium.points addObject:calciumValue];
-                NSLog(@"Calsium total: %@", self.calcium.points);
-            }
-            
-            // Calcium
-            if ([fpID intValue] == 11)
-            {
-                NSDictionary *calciumDict = [foodItemArray objectAtIndex:i];
-                NSNumber *calciumValue = [calciumDict objectForKey:@"value"];
-                [self.calcium.points addObject:calciumValue];
-                NSLog(@"Calsium total: %@", self.calcium.points);
+        Firebase *ref = [[Firebase alloc] initWithUrl: @"https://blinding-heat-8730.firebaseio.com/"];
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSDictionary *firebaseFoodDictionary = snapshot.value[@"foods"];
+        
+            for (NSDictionary *oneMeal in day.keyIDs){
+
+                for (NSString *singleID in oneMeal.allValues){
+                    
+                    NSLog(@"Parsing this single ID: %@ ...", singleID);
+                
+                    NSArray *foodItemArray = [firebaseFoodDictionary objectForKey:singleID];
+                    //NSLog(@"%@", foodItemArray);
+                    
+                    for (int i; i < foodItemArray.count; i++) {
+                        NSNumber *fpID = [[foodItemArray objectAtIndex:i] objectForKey:@"fpId"];
+                        //NSLog(@"current fpid: %@", [[foodItemArray objectAtIndex:i] objectForKey:@"fpId"]);
+                        //NSLog(@"food item: %@", [foodItemArray objectAtIndex:i]);
+                        
+                        
+                        // Calories
+                        if ([fpID intValue] == 5)
+                        {
+                            NSDictionary *caloriesDict = [foodItemArray objectAtIndex:i];
+                            NSString *calorieValue = [caloriesDict objectForKey:@"value"];
+                            [self.calories.points addObject:calorieValue];
+                            NSLog(@"Cal total: %@", self.calories.points);
+                        }
+                        
+                        // Carbs
+                        if ([fpID intValue] == 6)
+                        {
+                            NSDictionary *carbsDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *carbsValue = [carbsDict objectForKey:@"value"] ;
+                            [self.carbs.points addObject:carbsValue];
+                            //NSLog(@"Carb total: %@", self.carbs.points);
+                        }
+                        
+                        
+                        // Protien
+                        if ([fpID intValue] == 7)
+                        {
+                            NSDictionary *protienDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *protienValue = [protienDict objectForKey:@"value"] ;
+                            [self.protien.points addObject:protienValue];
+                            //NSLog(@"protien total: %@", self.protien.points);
+                        }
+                        
+                        
+                        // fat
+                        if ([fpID intValue] == 8)
+                        {
+                            NSDictionary *fatDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *fatValue = [fatDict objectForKey:@"value"] ;
+                            [self.fat.points addObject:fatValue];
+                            //NSLog(@"fat total: %@", self.fat.points);
+                        }
+                        
+                        
+                        
+                        // Sugar
+                        if ([fpID intValue] == 9)
+                        {
+                            NSDictionary *sugarDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *sugarValue = [sugarDict objectForKey:@"value"] ;
+                            [self.sugar.points addObject:sugarValue];
+                            //NSLog(@"sugar total: %@", self.sugar.points);
+                        }
+                        
+                        
+                        // Sodium
+                        if ([fpID intValue] == 10)
+                        {
+                            NSDictionary *sodiumDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *sodiumValue = [sodiumDict objectForKey:@"value"];
+                            [self.sodium.points addObject:sodiumValue];
+                            //NSLog(@"sodium total: %@", self.sodium.points);
+                        }
+                        
+                        // Calcium
+                        if ([fpID intValue] == 11)
+                        {
+                            NSDictionary *calciumDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *calciumValue = [calciumDict objectForKey:@"value"];
+                            [self.calcium.points addObject:calciumValue];
+                            //NSLog(@"Calsium total: %@", self.calcium.points);
+                        }
+                        
+                        // Calcium
+                        if ([fpID intValue] == 11)
+                        {
+                            NSDictionary *calciumDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *calciumValue = [calciumDict objectForKey:@"value"];
+                            [self.calcium.points addObject:calciumValue];
+                            //NSLog(@"Calsium total: %@", self.calcium.points);
+                        }
+                        
+                        
+                        
+                        // Iron
+                        if ([fpID intValue] == 12)
+                        {
+                            NSDictionary *ironDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *ironValue = [ironDict objectForKey:@"value"] ;
+                            [self.iron.points addObject:ironValue];
+                            //NSLog(@"iron total%@", self.iron.points);
+                        }
+                        
+                        
+                        // Vitamin A
+                        if ([fpID intValue] == 13)
+                        {
+                            NSDictionary *vitADict = [foodItemArray objectAtIndex:i];
+                            NSNumber *vitAValue = [vitADict objectForKey:@"value"] ;
+                            [self.vitA.points addObject:vitAValue];
+                            //NSLog(@"Vitamin A total%@", self.vitA.points);
+                        }
+                        
+                        
+                        // Vitamin C
+                        if ([fpID intValue] == 14)
+                        {
+                            NSDictionary *vitCDict = [foodItemArray objectAtIndex:i];
+                            NSNumber *vitCValue = [vitCDict objectForKey:@"value"] ;
+                            [self.vitC.points addObject:vitCValue];
+                            //NSLog(@"Vitamin C total%@", self.vitC.points);
+                        }
+                        
+                        else
+                        {
+                            //NSLog(@"Invalid data");
+                        }
+                        
+                    }
+                    
+                }
             }
             [self.dates addObject:day.date];
             NSLog(@"One day data has been parsed with date ONE DAY: %@", day.date);
