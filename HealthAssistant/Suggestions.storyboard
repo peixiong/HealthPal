@@ -330,7 +330,7 @@
         <scene sceneID="pai-kl-FuR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="htm-Aj-vjn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Suggestion" image="suggestions" id="mgJ-tD-VdM"/>
+                    <tabBarItem key="tabBarItem" title="Suggestion" image="suggestionspng2" selectedImage="suggestionspng2" id="mgJ-tD-VdM"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -351,6 +351,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="suggestions" width="30" height="30"/>
+        <image name="suggestionspng2" width="30" height="30"/>
     </resources>
 </document>

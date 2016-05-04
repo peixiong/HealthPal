@@ -17,6 +17,7 @@
 @property NSArray<NSDictionary *> *foodInfoFromJason;
 @property NSMutableArray<Food *> *foodsResults;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIButton *recentFoodButton;
 
 @end
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar.delegate = self;
+    self.recentFoodButton.layer.borderWidth = 10;
+    self.recentFoodButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor whiteColor]);
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
