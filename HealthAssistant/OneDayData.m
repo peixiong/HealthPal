@@ -12,9 +12,9 @@
 
 
 //Lazy Instantiation
--(NSMutableArray *)keyIDs{
+-(NSArray *)keyIDs{
     if (!_keyIDs) {
-        _keyIDs = [[NSMutableArray alloc]init];
+        _keyIDs = [[NSArray alloc]init];
     }
     return _keyIDs;
 }
