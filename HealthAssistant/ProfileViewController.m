@@ -190,6 +190,9 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (IBAction)onLogoutButtonPressed:(UIButton *)sender {
+    
+}
 
 @end
 
