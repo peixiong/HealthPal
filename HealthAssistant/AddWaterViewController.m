@@ -275,10 +275,12 @@
     [self adjustWaterLevel];
 }
 - (IBAction)onMinusGoalButtonPressed:(UIButton *)sender {
-    self.goalSize = self.goalSize - 2;
-    self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
-    [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
-    [self adjustWaterLevel];
+    if (self.goalSize >= 2) {
+        self.goalSize = self.goalSize - 2;
+        self.goalLabel.text = [NSString stringWithFormat:@"%li oz", (long)self.goalSize];
+        [[FirebaseManager sharedInstance] updateWaterGoalWith:(NSString *)self.user.uid andGoal:[NSString stringWithFormat:@"%li", self.goalSize]];
+        [self adjustWaterLevel];
+    }
 }
 
 
