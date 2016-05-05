@@ -139,57 +139,6 @@
     return 2;
 }
 
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSString *sectionName;
-    
-    switch (section)
-    {
-        case 0:
-            sectionName = NSLocalizedString(@"Profile Information", @"Profile Information");
-            break;
-//        case 1:
-//            sectionName = NSLocalizedString(@"Goals", @"Goals");
-//            break;
-        case 1:
-            sectionName = NSLocalizedString(@"Logout", @"Logout");
-            break;
-        default:
-            sectionName = @"";
-            break;
-    }
-    return sectionName;
-}
-
-
-
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    switch (indexPath.section)
-    
-    {
-        case 0:
-            return 40.0f;
-        case 1:
-            return 80.0f;
-//        case 2:
-//            return 80.0f;
-    }
-    return 0.0f;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Goal has been selected" message:@"Alert message" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertController addAction:ok];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
 - (IBAction)onLogoutButtonPressed:(UIButton *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"userId"];

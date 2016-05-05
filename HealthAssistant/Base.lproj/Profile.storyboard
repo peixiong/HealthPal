@@ -193,7 +193,7 @@
                                                     <connections>
                                                         <action selector="logout:" destination="Lyu-kn-X44" eventType="touchUpInside" id="A54-wp-bMe"/>
                                                         <action selector="onLogoutButtonPressed:" destination="uzc-cp-8a9" eventType="touchUpInside" id="VfQ-hy-Cbu"/>
-                                                        <segue destination="JTW-og-o9R" kind="unwind" unwindAction="unwindSegue:" id="1Eq-yh-MPZ"/>
+                                                        <segue destination="JTW-og-o9R" kind="unwind" unwindAction="unwindSegue:" id="fzt-OC-siX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

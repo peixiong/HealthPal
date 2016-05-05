@@ -67,6 +67,7 @@
 
 //facebook login
 - (IBAction)onFacebookLoginPressed:(UIButton *)sender {
+    [FirebaseManager sharedInstance].delegate = self;
     [[FirebaseManager sharedInstance] facebookLogin];
 }
 
