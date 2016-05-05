@@ -100,8 +100,11 @@
         self.user.weight = snapshot.value[@"weight"];
         self.user.height = snapshot.value[@"height"];
         self.user.gender = snapshot.value[@"gender"];
-        self.user.waterGoal = snapshot.value[@"waterGoal"];
-        
+        if (snapshot.value[@"waterGoal"] == [NSNull null]) {
+            self.user.waterGoal = @"64";
+        } else {
+            self.user.waterGoal = snapshot.value[@"waterGoal"];
+        }
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didLoginWithUser:)]) {
             [self.delegate didLoginWithUser:self.user];
         } else {

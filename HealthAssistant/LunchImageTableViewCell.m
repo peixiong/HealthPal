@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.segmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+    [self.pickerView selectRow:1 inComponent:0 animated:YES];
 }
 
 - (IBAction)onSelectPhotoButtonPressed:(UISegmentedControl *)sender{

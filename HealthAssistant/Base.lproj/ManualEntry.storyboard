@@ -139,14 +139,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberries-1" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-AD-IOC">
-                                            <rect key="frame" x="193" y="8" width="182" height="163"/>
-                                        </imageView>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NVT-nf-RPe">
-                                            <rect key="frame" x="33" y="10" width="143" height="29"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raspberries-1" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-AD-IOC">
+                                            <rect key="frame" x="185" y="8" width="182" height="163"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="143" id="2EB-0U-UCA"/>
-                                                <constraint firstAttribute="height" constant="28" id="tRA-3G-zOM"/>
+                                                <constraint firstAttribute="width" constant="182" id="G7Z-R3-MTp"/>
+                                                <constraint firstAttribute="height" constant="163" id="sfg-fY-erR"/>
+                                            </constraints>
+                                        </imageView>
+                                        <pickerView contentMode="scaleToFill" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="jkl-jc-rOq">
+                                            <rect key="frame" x="33" y="8" width="143" height="117"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="143" id="kcf-vt-rOZ"/>
+                                                <constraint firstAttribute="height" constant="117" id="uzP-Y2-GTD"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="dataSource" destination="bk9-lp-1Kq" id="tHh-Id-dVY"/>
+                                                <outlet property="delegate" destination="bk9-lp-1Kq" id="bh9-Iq-Uva"/>
+                                            </connections>
+                                        </pickerView>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NVT-nf-RPe">
+                                            <rect key="frame" x="33" y="143" width="143" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="7i6-ig-EaV"/>
+                                                <constraint firstAttribute="width" constant="143" id="BtH-t7-5wN"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="Photos"/>
@@ -156,23 +171,14 @@
                                                 <action selector="onSelectPhotoButtonPressed:" destination="ihF-to-tgM" eventType="valueChanged" id="zyq-hK-BJZ"/>
                                             </connections>
                                         </segmentedControl>
-                                        <pickerView contentMode="scaleToFill" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="jkl-jc-rOq">
-                                            <rect key="frame" x="33" y="46" width="143" height="117"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="143" id="8bI-Nc-vqE"/>
-                                            </constraints>
-                                            <connections>
-                                                <outlet property="dataSource" destination="bk9-lp-1Kq" id="tHh-Id-dVY"/>
-                                                <outlet property="delegate" destination="bk9-lp-1Kq" id="bh9-Iq-Uva"/>
-                                            </connections>
-                                        </pickerView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NVT-nf-RPe" firstAttribute="top" secondItem="K0x-tL-4mG" secondAttribute="topMargin" constant="2" id="Liu-nq-f7g"/>
-                                        <constraint firstItem="jkl-jc-rOq" firstAttribute="leading" secondItem="K0x-tL-4mG" secondAttribute="leadingMargin" constant="25" id="QZp-Gc-Pdb"/>
-                                        <constraint firstItem="jkl-jc-rOq" firstAttribute="top" secondItem="NVT-nf-RPe" secondAttribute="bottom" constant="8" id="kA0-EZ-AMV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jkl-jc-rOq" secondAttribute="bottom" constant="8" id="oP3-MX-fqg"/>
-                                        <constraint firstItem="NVT-nf-RPe" firstAttribute="leading" secondItem="K0x-tL-4mG" secondAttribute="leadingMargin" constant="25" id="qRa-kO-tOT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wcv-AD-IOC" secondAttribute="trailing" id="4dK-VR-RPc"/>
+                                        <constraint firstItem="NVT-nf-RPe" firstAttribute="top" secondItem="jkl-jc-rOq" secondAttribute="bottom" constant="18" id="C9W-JB-cfg"/>
+                                        <constraint firstItem="jkl-jc-rOq" firstAttribute="leading" secondItem="K0x-tL-4mG" secondAttribute="leadingMargin" constant="25" id="Lww-Jh-9sU"/>
+                                        <constraint firstItem="jkl-jc-rOq" firstAttribute="top" secondItem="K0x-tL-4mG" secondAttribute="topMargin" id="Tcp-le-C42"/>
+                                        <constraint firstItem="wcv-AD-IOC" firstAttribute="top" secondItem="K0x-tL-4mG" secondAttribute="topMargin" id="VSo-MF-OK7"/>
+                                        <constraint firstItem="NVT-nf-RPe" firstAttribute="leading" secondItem="K0x-tL-4mG" secondAttribute="leadingMargin" constant="25" id="VlH-Jj-JTA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

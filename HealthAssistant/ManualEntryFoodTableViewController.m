@@ -35,7 +35,7 @@
     [FirebaseManager sharedInstance].delegate = self;
     self.navigationItem.title = @"Creat Your Food";
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-    self.foodImage = [UIImage imageNamed:@"007Squirtle_Pokemon_Mystery_Dungeon_Explorers_of_Sky"];
+    self.foodImage = [UIImage imageNamed:@"raspberries-1"];
     //test data for user.selectedFoodProperties
     self.user.selectedFoodProperties = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15];
     self.colorArray  = [[NSArray alloc] initWithObjects:@"Breakfast",@"Lunch",@"Dinner",@"Snack", nil];
